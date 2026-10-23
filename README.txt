@@ -27,3 +27,12 @@ GOOGLE DRIVE SETUP
 - Configure OAuth consent screen for your account/testing users as required by Google's current setup.
 - Create OAuth client ID > Web application; add hosted origin (e.g. https://YOURNAME.github.io) as Authorized JavaScript origin.
 - Paste the Client ID (ends in .apps.googleusercontent.com) in Sync panel, then press Sync Now while online and sign into Google.
+
+UPDATED FEATURES
+- The Sync Now tab and Google Drive sync action have been removed.
+- Recipes remain stored locally on this device. Use Download backup to create a JSON file and save it to Google Drive manually if desired.
+- Recipes have an optional Calories per serving field. The recipe detail view shows a calorie chart; whole-recipe calories are estimated only when the servings field starts with a numeric count.
+- If imported text explicitly includes a calorie figure, auto-fill may populate it. Review the value. Calories are not automatically inferred from ingredient names because that can be inaccurate.
+
+SHARE FEATURE
+- Open a recipe and tap Share recipe. On supported phones, Android's share sheet lets you send the recipe to Messages, email, or another app. If unavailable, the app copies the recipe text or displays it for copying.

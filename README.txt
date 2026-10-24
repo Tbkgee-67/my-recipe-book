@@ -1,50 +1,56 @@
-MY RECIPE BOOK — INSTALLABLE HOME-SCREEN WEB APP
+MY RECIPE BOOK — OFFLINE-FIRST INSTALLABLE WEB APP
+==================================================
 
-Included features
-- Offline-first recipe and shopping-list storage in this browser on this device.
-- Search, add, edit, view, delete, shopping list, and print a recipe.
-- Import recipe text from TXT/MD/CSV/HTML/EML and extract selectable text from PDFs (PDF reader loads from the internet on first PDF use).
-- JSON backup download and merge restore (does not replace existing local recipes).
-- Manual Google Drive Sync Now using Drive appDataFolder. Recipe records merge by ID and latest updatedAt; deletion markers are retained to help propagate deletions.
-- PWA manifest, service worker, and app icons for installing to the Samsung S25 home screen.
+FEATURES
+- Recipes and shopping list saved locally in this browser.
+- Works offline after the first successful load and service-worker cache.
+- Add, edit, search, delete, and print recipes.
+- Import TXT and other text files; import text-based PDFs (PDF text extraction may require internet access to load its reader library).
+- Download a JSON backup and restore it later. Restore merges by recipe ID and preserves existing local recipes.
+- No Google Drive sync, Google sign-in, or cloud account connection.
 
-IMPORTANT LIMITATIONS / SETUP
-1. This is a PWA source package, not an APK. It must be hosted at an HTTPS address for service workers and installation. You can use GitHub Pages or another HTTPS static host.
-2. Google Drive Sync requires Google Cloud setup. Create a Google Cloud project, enable Google Drive API, configure an OAuth 2.0 Client ID of type Web application, and add the exact HTTPS origin of the hosted app to Authorized JavaScript origins. Paste that client ID into the app's Google Drive sync panel. Never paste a Google password or client secret into the app. Test sync using a small test dataset first.
-3. The app's data is saved in the browser's localStorage. Clearing Chrome site data or using a different browser/profile can remove or isolate it. Download JSON backups regularly.
-4. PDF text extraction needs internet access the first time because PDF.js is loaded from a CDN. Scanned/image-only PDFs may not have selectable text to extract.
-5. The PWA and Google Drive sync code have not been independently penetration-tested or fully end-to-end verified here. Keep separate backups until tested.
+FILES
+- index.html: app
+- manifest.webmanifest: app name and installation settings
+- sw.js: service-worker cache
+- icons/icon-192.png and icons/icon-512.png: app icons
 
-HOW TO HOST WITH GITHUB PAGES
-- Create a GitHub repository.
-- Upload the contents of this folder (index.html, manifest.webmanifest, sw.js, icons folder) to the repository root.
-- In repository Settings > Pages, deploy from the main branch and root folder.
-- Open the generated HTTPS Pages URL in Chrome on the Samsung S25.
-- Visit once while online; use Chrome menu ⋮ > Add to Home screen or Install app.
+INSTALL ON SAMSUNG S25
+1. Upload all files and the icons folder to the root of your GitHub repository.
+2. Enable GitHub Pages from Settings > Pages, using the main branch and root folder.
+3. Open the resulting HTTPS address in Chrome on your Samsung S25.
+4. Chrome menu (⋮) > Add to Home screen or Install app. Wording can vary by version.
+5. Keep a separate JSON backup. Browser storage is local to that browser/device and is not a cloud backup.
 
-GOOGLE DRIVE SETUP
-- Google Cloud Console: enable Google Drive API.
-- Configure OAuth consent screen for your account/testing users as required by Google's current setup.
-- Create OAuth client ID > Web application; add hosted origin (e.g. https://YOURNAME.github.io) as Authorized JavaScript origin.
-- Paste the Client ID (ends in .apps.googleusercontent.com) in Sync panel, then press Sync Now while online and sign into Google.
+BACKUPS
+Use Import & backup > Download backup regularly. To recover recipes, choose Restore backup and select a previously downloaded JSON backup. Confirm the merge. Existing recipes are preserved unless a backup contains a newer version of a recipe with the same ID.
 
-UPDATED FEATURES
-- The Sync Now tab and Google Drive sync action have been removed.
-- Recipes remain stored locally on this device. Use Download backup to create a JSON file and save it to Google Drive manually if desired.
-- Recipes have an optional Calories per serving field. The recipe detail view shows a calorie chart; whole-recipe calories are estimated only when the servings field starts with a numeric count.
-- If imported text explicitly includes a calorie figure, auto-fill may populate it. Review the value. Calories are not automatically inferred from ingredient names because that can be inaccurate.
-
-SHARE FEATURE
-- Open a recipe and tap Share recipe. On supported phones, Android's share sheet lets you send the recipe to Messages, email, or another app. If unavailable, the app copies the recipe text or displays it for copying.
+LIMITATIONS
+- There is no Google Drive sync or automatic cross-device synchronization.
+- Offline storage can be cleared by browser/site-data cleanup; maintain external backups.
+- PDF import works best with selectable text; scanned/image-only PDFs require OCR separately.
 
 
-PHOTO FEATURE
-- The Add/Edit Recipe form includes an optional "Recipe photo" picker.
-- On a phone, tap the picker to choose an image from the gallery or take a photo if the browser offers that option.
-- The app resizes photos before storing them with the recipe in this browser.
-- Photos are stored in this browser's local storage. Include photos in backups and keep backup files safe.
+NAVIGATION UPDATE
+The four main navigation buttons are fixed to the bottom of the screen for easier thumb access on mobile. The page includes bottom padding so content is not hidden behind the navigation bar.
 
-IMPORTANT UPLOAD NOTE
-- This ZIP is arranged so index.html, sw.js, manifest.webmanifest, and the icons folder are directly at the top level.
-- Upload the CONTENTS of this ZIP to the repository root (the main file list), not the ZIP itself and not inside the MyRecipeBookPWA folder.
-- Keep your existing repository files until you confirm the updated app loads correctly.
+Recipe photos update:
+- In Add recipe or Edit recipe, tap “Take photo” to use the phone camera, or “Upload photo files” to select existing images.
+- Up to 8 photos can be attached to each recipe. Photos are resized to reduce storage use and saved with the recipe in this browser.
+- Photos appear above the recipe title when opened and when printed; the first photo also appears on recipe cards.
+- Include photos in your regular JSON backup. Photos are stored locally in this browser and are not automatically synced to another device.
+
+Recipe categories: choose Dinner, Breakfast, Lunch, Snacks, Dessert, Bread, Appetizers & Sides, Soups & Salads, or Drinks when adding/editing a recipe. Choose Other / custom category to enter your own category. Existing custom categories remain editable.
+
+
+Recipe URL import
+- Open Import & backup and paste a recipe webpage address into Recipe website URL, then choose Import from URL.
+- Automatic import works when the site allows browser access and publishes structured recipe data (Schema.org Recipe).
+- Some websites block browser access or do not publish recipe data. In that case, choose Open website, copy the ingredients and instructions, and paste them into the text import box below.
+
+
+NEW FEATURES — SYNC EVERYWHERE + RECIPE SCANNER
+- Recipe Scanner can photograph a printed recipe or use an uploaded image. OCR places recognized text in the recipe text box for review before import. First use needs internet to load Tesseract.js. Recognition quality depends on photo clarity; review the text before saving.
+- Sync Everywhere uses the private Google Drive appDataFolder. Configure Google Cloud: enable Google Drive API, create an OAuth Web Client ID, configure consent, and add the exact HTTPS GitHub Pages origin to Authorized JavaScript origins. Paste the Client ID in the app and choose Connect Google & sync. Do not put a client secret in this app.
+- Connect Google on each device/browser session. While authorized and online, recipe saves trigger automatic sync; the Sync now button is available too. Recipes remain stored locally and can be used offline.
+- Keep a downloaded JSON backup before updating. Google sign-in can require testing-user setup or verification depending on your Google project settings.

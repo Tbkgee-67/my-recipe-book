@@ -1,0 +1,24 @@
+{
+  "name": "My Recipe Book",
+  "short_name": "Recipes",
+  "description": "Personal recipe book with categories, favorites, printing, imports, and backups.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf8f0",
+  "theme_color": "#456b4b",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

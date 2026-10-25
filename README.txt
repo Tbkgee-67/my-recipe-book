@@ -7,3 +7,6 @@ Limitations: PDF layouts vary and must be reviewed. Scanned PDFs need OCR. To im
 IMPORTANT: This is a fresh rebuild, not tested on your live GitHub Pages site. Back up recipes before replacing files. Do not clear browser data: your current recipes may still be in local storage.
 
 Install: extract ZIP; upload files to the repository root; replace index.html, manifest.webmanifest, and sw.js; keep icons folder and unrelated files. Reload the site after GitHub Pages updates.
+
+
+PIN protection: Use “PIN settings” to set a private 4-digit PIN. The PIN is required before deleting individual recipes, deleting all recipes, or restoring/merging a JSON backup. Store the PIN somewhere safe; this local app cannot recover it if forgotten. The PIN is a casual-use safeguard, not strong security against someone who can directly edit browser storage.

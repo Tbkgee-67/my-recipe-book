@@ -23,7 +23,7 @@
 
 <dialog id="detailDlg"><div class="mh"><h2>Recipe</h2><button class="alt" id="closeDetail">Close</button></div><div class="mb"><div id="detail"></div><div class="row"><button id="printBtn">Print recipe</button><button class="alt" id="editBtn">Edit</button><button class="alt" id="favBtn">☆ Favorite</button><button class="danger" id="deleteBtn">Delete</button></div></div></dialog>
 <dialog id="importDlg"><div class="mh"><h2>Import recipes</h2><button class="alt" id="closeImport">Close</button></div><div class="mb"><p>Choose a PDF, TXT, Markdown, CSV, HTML, or JSON backup, or paste text from a recipe or email. Imported recipes open for review before saving.</p><div class="field"><label for="file">Choose file</label><input id="file" type="file" accept=".pdf,.txt,.md,.csv,.json,.html,.htm,text/*,application/pdf,application/json"></div><div class="field" style="margin-top:10px"><label for="paste">Paste recipe or email text</label><textarea id="paste"></textarea></div><div class="field" style="margin-top:10px"><label for="url">Recipe website URL</label><input id="url" type="url" placeholder="https://…"></div><p class="help">PDFs with selectable text work best. Scanned PDFs need OCR and may require manual correction. Gmail: copy the recipe from the email and paste it here. Direct Gmail and automatic Drive sync need Google authorization setup.</p><div class="row"><button id="parseBtn">Review imported recipe</button><button class="alt" id="cancelImport">Cancel</button></div></div></dialog>
-<dialog id="backupDlg"><div class="mh"><h2>Backup / Restore</h2><button class="alt" id="closeBackup">Close</button></div><div class="mb"><p>Download a JSON backup and keep it somewhere safe.</p><button id="exportBtn">Download recipe backup</button><hr><p>Restore / merge a JSON backup. Existing recipes are kept; matching IDs are updated.</p><div class="field"><label for="restoreFile">Choose backup JSON</label><input id="restoreFile" type="file" accept=".json,application/json"></div><div class="row"><button id="restoreBtn">Restore / merge</button><button class="danger" id="deleteAllBtn">Delete ALL recipes</button></div><p class="help">Restoring a backup and deleting all recipes require your 4-digit PIN. For Google Drive, download this backup and upload it to Drive. Automatic Drive sync is not configured in this rebuild.</p></div></dialog>
+<dialog id="backupDlg"><div class="mh"><h2>Backup / Restore</h2><button class="alt" id="closeBackup">Close</button></div><div class="mb"><p>Download a JSON backup and keep it somewhere safe.</p><div class="row" style="margin-top:0"><button id="exportBtn">Download recipe backup</button><button class="alt" id="chooseBackupBtn" type="button">Choose save location</button><button class="alt" id="shareBackupBtn" type="button">Share / save backup</button></div><p class="help">Choose save location works only in browsers that support a file picker. Share / save backup may let you send the file to Google Drive or another app. Otherwise, download the backup and move it using My Files.</p><hr><p>Restore / merge a JSON backup. Existing recipes are kept; matching IDs are updated.</p><div class="field"><label for="restoreFile">Choose backup JSON</label><input id="restoreFile" type="file" accept=".json,application/json"></div><div class="row"><button id="restoreBtn">Restore / merge</button><button class="danger" id="deleteAllBtn">Delete ALL recipes</button></div><p class="help">Restoring a backup and deleting all recipes require your 4-digit PIN. For Google Drive, download this backup and upload it to Drive. Automatic Drive sync is not configured in this rebuild.</p></div></dialog>
 <dialog id="shopDlg"><div class="mh"><h2>Shopping list</h2><button class="alt" id="closeShop">Close</button></div><div class="mb"><div class="field"><label for="shopRecipe">Add ingredients from recipe</label><select id="shopRecipe"><option value="">Choose recipe…</option></select></div><div class="field" style="margin-top:10px"><label for="shopText">Shopping list</label><textarea id="shopText"></textarea></div><div class="row"><button id="shopPrint">Print list</button><button class="alt" id="shopCopy">Copy list</button></div></div></dialog>
 
 <script>
@@ -61,7 +61,45 @@ function parseText(raw){let lines=raw.replace(/\r/g,'').replace(/\u00a0/g,' ').s
 async function pdfText(file){if(!window.pdfjsLib){await new Promise((res,rej)=>{let s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';s.onload=res;s.onerror=()=>rej(Error('PDF support could not load. Check internet, or paste the PDF text.'));document.head.append(s)});window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}let pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise,out=[];for(let n=1;n<=pdf.numPages;n++){let p=await pdf.getPage(n),c=await p.getTextContent(),a=c.items.filter(x=>x.str.trim()).map(x=>({t:x.str.trim(),x:x.transform[4],y:x.transform[5]})),ys=[...new Set(a.map(x=>Math.round(x.y/3)*3))].sort((x,y)=>y-x),lines=ys.map(y=>({y,x:Math.min(...a.filter(i=>Math.abs(i.y-y)<=2.5).map(i=>i.x)),t:a.filter(i=>Math.abs(i.y-y)<=2.5).sort((i,j)=>i.x-j.x).map(i=>i.t).join(' ')}));out.push(lines.sort((x,y)=>y.y-x.y).map(x=>x.t).join('\n'))}return out.join('\n\n')}
 $('parseBtn').onclick=async()=>{try{let text=$('paste').value.trim(),f=$('file').files?.[0],url=$('url').value.trim();if(f){if(/\.json$/i.test(f.name)){let o=JSON.parse(await f.text());if(o.recipes){if(!await authorizeDestructiveAction())return;merge(o);close('importDlg');render();say('Backup restored.');return}text=JSON.stringify(o)}else if(/\.pdf$/i.test(f.name)||f.type==='application/pdf')text=await pdfText(f);else if(/\.html?$/i.test(f.name)){let d=new DOMParser().parseFromString(await f.text(),'text/html');text=d.body.innerText}else text=await f.text()}if(url)throw Error('Direct website import may be blocked by the website. Copy the recipe text and paste it above.');if(!text)throw Error('Choose a file or paste recipe text first.');let seed=parseText(text);close('importDlg');edit(null,seed);say('Review the imported recipe carefully before saving.')}catch(e){say(e.message||'Import failed.',true)}};
 $('backupBtn').onclick=()=>open('backupDlg');$('closeBackup').onclick=()=>close('backupDlg');
-$('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify({app:'My Recipe Book',version:1,categories,recipes},null,2)],{type:'application/json'}),a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download='my-recipe-book-backup.json';a.click();URL.revokeObjectURL(u);say('Backup downloaded.')};
+function makeBackupBlob(){return new Blob([JSON.stringify({app:'My Recipe Book',version:1,categories,recipes},null,2)],{type:'application/json'})}
+function downloadBackup(){
+  try {
+    const url=URL.createObjectURL(makeBackupBlob());
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='my-recipe-book-backup.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    say('Backup download started. Check Downloads.');
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  } catch(e) { say('Backup failed: '+(e.message||'unknown error'),true); }
+}
+$('exportBtn').onclick=downloadBackup;
+$('chooseBackupBtn').onclick=async()=>{
+  try {
+    if(typeof window.showSaveFilePicker!=='function'){
+      say('This browser does not offer a choose-folder picker. Try Share / save backup, or Download recipe backup and move it with My Files.',true);
+      return;
+    }
+    const handle=await window.showSaveFilePicker({suggestedName:'my-recipe-book-backup.json',types:[{description:'JSON recipe backup',accept:{'application/json':['.json']}}]});
+    const writable=await handle.createWritable();
+    await writable.write(makeBackupBlob());
+    await writable.close();
+    say('Backup saved to the location you selected. Please verify the file.');
+  } catch(e) { if(e.name!=='AbortError')say('Could not save backup: '+(e.message||'unknown error'),true); }
+};
+$('shareBackupBtn').onclick=async()=>{
+  try {
+    const file=new File([makeBackupBlob()], 'my-recipe-book-backup.json',{type:'application/json'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){
+      await navigator.share({title:'My Recipe Book backup',text:'Recipe backup JSON file',files:[file]});
+      say('Share sheet opened. Choose a destination and confirm the save there.');
+    } else {
+      say('Sharing files is not supported in this browser. Use Download recipe backup instead.',true);
+    }
+  } catch(e) { if(e.name!=='AbortError')say('Could not share backup: '+(e.message||'unknown error'),true); }
+};
 function merge(o){let inc=Array.isArray(o)?o:o.recipes||[];for(let raw of inc){let r=norm(raw),i=recipes.findIndex(x=>x.id===r.id);if(i>=0)recipes[i]=r;else{if(recipes.some(x=>x.title===r.title&&x.ingredients===r.ingredients))continue;recipes.push(r)}r.categories.forEach(c=>{if(!cats.includes(c))cats.push(c)})}if(Array.isArray(o.categories))o.categories.forEach(c=>{if(!cats.includes(c))cats.push(c)});save()}
 $('restoreBtn').onclick=async()=>{try{if(!await authorizeDestructiveAction())return;let f=$('restoreFile').files?.[0];if(!f)throw Error('Choose a JSON backup first.');let o=JSON.parse(await f.text());if(!Array.isArray(o)&&!Array.isArray(o.recipes))throw Error('This does not look like a recipe backup.');merge(o);render();say('Backup restored / merged.')}catch(e){say(e.message,true)}};
 $('pinSettingsBtn').onclick=async()=>{try{await setPinFlow()}catch(e){say('Could not set PIN in this browser. Please try again.',true)}};

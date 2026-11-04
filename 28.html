@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>28-Day Chair Tai Chi – Short Video Demonstrations</title>
+<style>
+:root{--ink:#203b32;--muted:#5f7169;--green:#26785d;--line:#d9e5de;--bg:#f4f8f5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:linear-gradient(135deg,#e2efe7,#f7faf8);padding:26px 16px;border-bottom:1px solid var(--line)}
+.wrap{max-width:1120px;margin:auto;padding:0 15px}h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.15;margin:0 0 8px}header p{margin:0;color:var(--muted)}
+.notice{margin:16px 0 0;background:white;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:10px;padding:11px 13px;font-size:.92rem}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0 12px}input,select,button{font:inherit}input[type=search],select{padding:10px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink)}input[type=search]{flex:1;min-width:190px}button{padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);cursor:pointer}button.primary{background:var(--green);color:white;border-color:var(--green)}
+.progressline{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}.bar{height:9px;background:#e0e9e3;border-radius:20px;overflow:hidden;margin:6px 0 20px}.bar span{display:block;width:0;height:100%;background:var(--green);transition:width .2s}
+.week{margin:25px 0}.week h2{font-size:1.25rem;margin:0 0 3px}.week>p{margin:0 0 13px;color:var(--muted);font-size:.93rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 2px 9px #1d392d0b}
+.cardhead{padding:13px 14px 7px;display:flex;justify-content:space-between;gap:10px}.day{font-size:.76rem;color:var(--green);font-weight:750;text-transform:uppercase;letter-spacing:.05em}h3{margin:1px 0 0;font-size:1.06rem;line-height:1.25}.time{font-size:.8rem;color:var(--muted);white-space:nowrap}
+
+.video-wrap{margin:0 12px;background:#edf4ef;border:1px solid #e1ece4;border-radius:12px;padding:8px}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#17251f;border-radius:9px;overflow:hidden}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-label{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:7px 2px 0;color:var(--muted);font-size:.78rem}
+.video-label a{color:var(--green);font-weight:700;text-decoration:none}
+.video-label a:hover{text-decoration:underline}
+.instructions{padding:10px 14px 0;font-size:.91rem}
+.cue{padding:5px 14px 0;color:var(--muted);font-size:.83rem}
+.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:11px 14px 14px}
+.done{margin-left:auto;font-size:.86rem}.done input{accent-color:var(--green);vertical-align:middle}
+.optional{padding:0 14px 12px;color:var(--muted);font-size:.82rem}
+footer{padding:26px 0 40px;color:var(--muted);font-size:.86rem}
+@media print{body{background:white}.video-frame{display:none}.video-label a{display:inline}.card{break-inside:avoid;box-shadow:none}.week{break-inside:avoid}}
+@media print{body{background:white}.toolbar,.actions button{display:none}.card{break-inside:avoid;box-shadow:none}.week{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>28-Day Chair Tai Chi</h1>
+<p>Short instructor video clips • seated first • optional supported standing only where noted</p>
+<div class="notice"><b>How to use the videos:</b> Press play on the short clip in each daily card. The clip starts at the relevant movement and is trimmed to a short section where possible. Use the written instructions and movement cue alongside the demonstration. If a clip does not load, use the “Open video” link.</div></div></header>
+<main class="wrap">
+<div class="toolbar">
+<input id="search" type="search" placeholder="Search exercises…" aria-label="Search exercises">
+<select id="weekFilter" aria-label="Filter by week"><option value="all">All weeks</option><option value="1">Week 1</option><option value="2">Week 2</option><option value="3">Week 3</option><option value="4">Week 4</option></select>
+
+</div>
+<div class="progressline"><b id="count">0 of 28 completed</b><span id="percent">0%</span></div><div class="bar"><span id="bar"></span></div>
+<div id="lessons"></div>
+<footer><b>Safety:</b> Use a sturdy chair without wheels and keep both feet supported. Move slowly, stay in a comfortable range and breathe normally. Never force a stretch or twist. Skip any movement that causes pain. Optional standing is not necessary; if attempted, hold a stable chair and have another person nearby if balance is uncertain. Stop for sharp pain, dizziness, chest discomfort or unusual breathlessness. This is general wellness guidance, not individualized rehabilitation.</footer>
+</main>
+<script>
+const weeks=[
+["Week 1 — Getting started","Learn posture, breathing and simple flowing arm movements.",[
+["Opening & breathing","Sit tall but relaxed. Breathe naturally. Float both hands up gently, then lower them.","5–7 min","arms","seated tai chi opening breathing arm floats","Hands rise with an easy inhale; lower with an easy exhale."],
+["Raising the arms","Start with hands resting near your thighs. Lift hands forward to a comfortable height, then lower slowly.","5–7 min","arms","seated tai chi arm raising exercise","Keep shoulders down; do not lift above a comfortable height."],
+["Gathering energy","Open hands softly out to the sides, then bring them back toward the centre as if gathering a ball.","5–7 min","open","seated tai chi gathering energy opening closing","Keep elbows soft and wrists relaxed."],
+["Cloud hands","Move one hand across your body as the other drifts the opposite way. Change sides slowly.","6–8 min","cloud","seated tai chi cloud hands tutorial","Keep the movement smooth; avoid large trunk twists."],
+["Rowing the boat","Reach both hands forward. Draw elbows back beside your ribs, then reach forward again.","6–8 min","row","seated tai chi rowing the boat","Imagine moving through water; do not pull hard."],
+["Pushing the waves","Bring hands near your chest. Gently press palms forward, then draw them back.","6–8 min","push","seated tai chi pushing waves exercise","Keep wrists straight and elbows slightly bent."],
+["Week 1 review","Repeat arm raising, gathering energy, cloud hands and gentle pushes. Pause between movements.","7–8 min","flow","beginner seated tai chi full routine","Move slowly and keep breathing naturally."]]],
+["Week 2 — Coordination","Add classic Tai Chi-inspired arm shapes and gentle foot movements.",[
+["Parting the horse’s mane","Hold hands as if cradling a ball. Let one hand float forward while the other settles near the waist; switch sides.","8–10 min","horse","seated tai chi parting wild horses mane","Keep the chest facing mostly forward."],
+["Brushing the knee","One hand floats forward while the other sweeps gently down beside the knee. Alternate sides.","8–10 min","horse","seated tai chi brush knee movement","Do not bend deeply or reach toward the floor."],
+["White crane spreads wings","Start with hands near the chest. Open one arm higher and the other lower, then return and change sides.","8–10 min","crane","seated tai chi white crane spreads wings","Keep elbows soft; use a small range."],
+["Playing the lute","Bring hands in front of your chest as if holding a small instrument. Settle, then change which hand is higher.","8–10 min","lute","seated tai chi playing the lute","Keep hands relaxed and shoulders easy."],
+["Wave hands like clouds","Repeat the side-to-side cloud hands movement, letting the hands pass smoothly in front of you.","8–10 min","cloud","seated tai chi wave hands like clouds","Let your eyes follow your hands gently."],
+["Gentle heel and toe flow","Keep toes down and lift heels; lower. Then keep heels down and lift toes. Alternate slowly.","8–10 min","legs","seated tai chi ankle heel toe movements","Move ankles only as far as comfortable."],
+["Week 2 review","Link horse’s mane, brush knee, crane wings and cloud hands with a short pause between each.","9–10 min","flow","seated tai chi beginner follow along routine","Choose a smaller range if shoulders or back feel tight."]]],
+["Week 3 — Strength & control","Add gentle leg actions and practise controlled transitions.",[
+["Opening plus cloud hands","Begin with three slow arm floats, then move into cloud hands from side to side.","10–12 min","cloud","seated tai chi opening cloud hands follow along","Keep your pelvis steady and shoulders relaxed."],
+["Silk-reeling arms","Make small circles with your hands and forearms, as if slowly winding silk. Reverse direction halfway.","10–12 min","silk","seated tai chi silk reeling arms","Keep circles small and continuous."],
+["Gentle knee lifts","Hold the sides of the chair if helpful. Lift one knee slightly, lower, then change legs; foot slides are an alternative.","10–12 min","legs","seated tai chi gentle knee lifts","Do not lean backward or strain your hip."],
+["Seated weight-shift awareness","Sit evenly. Shift a little more weight onto one sitting bone, return to centre, then change sides.","10–12 min","shift","seated tai chi seated weight shifting","This is a very small shift, not a deep lean."],
+["Alternating palm pushes","Bring hands near the chest. Press one palm gently forward, return it, and change hands.","10–12 min","push","seated tai chi alternating palm push","Keep your torso facing forward."],
+["Gather and release","Open arms comfortably as you breathe in; bring hands toward the centre as you breathe out.","10–12 min","open","seated qigong gather energy breathing","Do not hold your breath; use a natural rhythm."],
+["Week 3 review","Choose four movements from the first three weeks and connect them into one slow sequence.","12–14 min","flow","seated tai chi 15 minute beginner routine","Take a short rest whenever needed."]]],
+["Week 4 — Complete routine","Bring the movements together in a calm, flowing practice.",[
+["Five-movement sequence","Practise opening, cloud hands, horse’s mane, brush knee and gathering energy in order.","12–15 min","flow","seated tai chi five simple moves routine","Pause briefly between movements."],
+["Arms with foot patterns","Add gentle heel lifts or toe taps while doing simple arm floats. You may do arms and feet separately.","12–15 min","legs","seated tai chi coordination arms feet","Coordination is optional; comfort comes first."],
+["Crane and lute sequence","Open into the crane-wing shape, return to centre, then form the lute shape. Switch sides.","12–15 min","crane","seated tai chi crane wings playing lute","Keep the movements smooth and unforced."],
+["Gentle full-body flow","Combine arm floats, cloud hands, palm pushes, heel lifts and relaxed breathing.","12–15 min","flow","seated tai chi full body flow seniors","Stay seated throughout."],
+["Optional supported standing","Seated option: repeat gentle weight shifts and heel raises. Optional: stand behind the chair holding it, shift weight slightly side to side, then sit.","12–15 min","shift","chair supported tai chi standing weight shift beginner","Standing is optional, not required. Do not try it if unsteady."],
+["Choose-your-flow day","Repeat the movements you enjoy most. Keep the pace easy and smooth.","15–18 min","flow","15 minute seated tai chi follow along seniors","Take breaks and shorten the session if needed."],
+["Final 28-day practice","Complete your favourite seated sequence and finish with slow, relaxed breathing.","15–20 min","flow","20 minute seated tai chi beginner full routine","Celebrate your progress; there is no need to push harder."]]]
+];
+
+// Short excerpts from real instructor demonstrations.
+// NHS adapted Tai Chi clip: ZbGvYXB08uk; WA Centre for Rural Health seated Tai Chi: KC01DP3z0U0.
+function videoFor(day, title){
+ const t=title.toLowerCase();
+ let id='KC01DP3z0U0', start=58, end=105, label='Seated Tai Chi — WA Centre for Rural Health';
+ if(/cloud/.test(t)){id='ZbGvYXB08uk';start=834;end=875;label='Cloud hands — adapted NHS Tai Chi';}
+ else if(/push|palm/.test(t)){id='ZbGvYXB08uk';start=748;end=790;label='Palm push — adapted NHS Tai Chi';}
+ else if(/horse|rainbow|weight-shift|weight shift/.test(t)){id='ZbGvYXB08uk';start=226;end=270;label='Painting the rainbow / gentle weight shift — adapted NHS Tai Chi';}
+ else if(/brush knee|monkey/.test(t)){id='ZbGvYXB08uk';start=397;end=440;label='Repulse monkey — adapted NHS Tai Chi';}
+ else if(/crane|separating clouds/.test(t)){id='ZbGvYXB08uk';start=301;end=345;label='Separating the clouds — adapted NHS Tai Chi';}
+ else if(/lute|supporting a ball|gather/.test(t)){id='ZbGvYXB08uk';start=560;end=605;label='Supporting a ball / gathering motion — adapted NHS Tai Chi';}
+ else if(/heel|toe|knee lift|leg|arms with foot/.test(t)){id='KC01DP3z0U0';start=255;end=305;label='Gentle seated leg and side movement — WA Centre for Rural Health';}
+ else if(/silk|circle/.test(t)){id='ZbGvYXB08uk';start=834;end=875;label='Smooth flowing hand movement — adapted NHS Tai Chi';}
+ else if(/open|breath|opening|gather/.test(t)){id='KC01DP3z0U0';start=58;end=110;label='Breathing and opening arm flow — WA Centre for Rural Health';}
+ else if(/row/.test(t)){id='ZbGvYXB08uk';start=476;end=520;label='Rowing the boat — adapted NHS Tai Chi';}
+ else if(/full|sequence|review|choose|final|flow/.test(t)){id='KC01DP3z0U0';start=0;end=58;label='Seated Tai Chi follow-along — WA Centre for Rural Health';}
+ const embed=`https://www.youtube-nocookie.com/embed/${id}?start=${start}&end=${end}&rel=0&playsinline=1`;
+ const watch=`https://www.youtube.com/watch?v=${id}&t=${start}s`;
+ return {embed,watch,label};
+}
+const root=document.getElementById('lessons');
+weeks.forEach((w,wi)=>{
+ const sec=document.createElement('section');sec.className='week';sec.dataset.week=wi+1;
+ sec.innerHTML=`<h2>${w[0]}</h2><p>${w[1]}</p><div class="grid"></div>`;
+ w[2].forEach((d,di)=>{
+  const n=wi*7+di+1,card=document.createElement('article');card.className='card';card.dataset.move=d[3];card.dataset.search=(d[0]+' '+d[1]+' '+w[0]).toLowerCase();
+  const v=videoFor(n,d[0]+' '+d[1]);
+  card.innerHTML=`<div class="cardhead"><div><div class="day">Day ${n}</div><h3>${d[0]}</h3></div><span class="time">${d[2]}</span></div>
+  <div class="video-wrap"><div class="video-frame"><iframe src="${v.embed}" title="Day ${n} ${d[0]} video demonstration" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="video-label"><span>${v.label} · short clip</span><a href="${v.watch}" target="_blank" rel="noopener">Open video ↗</a></div></div>
+  <div class="instructions">${d[1]}</div><div class="cue"><b>Movement cue:</b> ${d[5]}</div>
+  <div class="actions"><span class="done"><label><input type="checkbox" class="complete"> Done</label></span></div>
+  ${n===26?'<div class="optional">Optional standing only if steady and safe. The seated alternative is fully sufficient.</div>':''}`;
+  sec.querySelector('.grid').appendChild(card);
+ });
+ root.appendChild(sec);
+});
+function progress(){let all=[...document.querySelectorAll('.complete')],n=all.filter(x=>x.checked).length;document.getElementById('count').textContent=`${n} of 28 completed`;document.getElementById('percent').textContent=Math.round(n/28*100)+'%';document.getElementById('bar').style.width=(n/28*100)+'%'}
+document.addEventListener('change',e=>{if(e.target.matches('.complete'))progress()});
+function filter(){let q=document.getElementById('search').value.toLowerCase(),w=document.getElementById('weekFilter').value;document.querySelectorAll('.week').forEach(s=>{let count=0;s.querySelectorAll('.card').forEach(c=>{let ok=c.dataset.search.includes(q);c.style.display=ok?'':'none';if(ok)count++});s.style.display=count&&(w==='all'||s.dataset.week===w)?'':'none'})}
+document.getElementById('search').addEventListener('input',filter);document.getElementById('weekFilter').addEventListener('change',filter);
+</script>
+</body></html>

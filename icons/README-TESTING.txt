@@ -1,32 +1,28 @@
-MY RECIPE BOOK — PHASE 15 TEST BUILD
+MY RECIPE BOOK — PHASE 16 TEST BUILD
 
-Phase 15 continues from the user-confirmed working Phase 14 package.
+Starting point: your confirmed working Phase 15 package.
 
-CHANGE IN THIS PHASE
-- Extracted the standalone Wine & Mead calculator logic (ABV, sugar boost, and sweetness planning) from its inline script in index.html into scripts/wine-mead-calculators.js.
-- The external script retains the original script id and is loaded at the exact same location in index.html, before the existing wine/mead navigation script. This preserves the prior execution order.
+Phase 16 change:
+- Extracted the standalone Cooking History page handler from index.html into scripts/cooking-history.js.
+- The external script is loaded at the same location as the original inline script, preserving its execution order and dependencies.
+- The original script contents are preserved exactly in the new file.
 
-UNCHANGED
-- styles.css is unchanged from Phase 14.
-- All Phase 14 scripts are retained unchanged.
-- The existing wine-mead-navigation.js file is unchanged.
-- Other app logic, recipe data, photos, backup/restore, Google Drive behavior, theme handling, and PWA behavior are otherwise unchanged.
-- This is a separate testing build. Do not replace the live app with it until it has been tested and explicitly approved.
-
-GITHUB TEST FOLDER UPDATE
+UPLOAD INSTRUCTIONS
 1. Extract this ZIP.
-2. Upload the Phase 15 index.html to the existing GitHub testing folder, replacing the Phase 14 index.html.
-3. Upload scripts/wine-mead-calculators.js into the existing scripts folder.
-4. Leave styles.css and all other existing scripts untouched.
-5. Refresh the testing site (hard refresh if needed).
+2. In your GitHub TESTING folder only, replace index.html with this Phase 16 index.html.
+3. Upload scripts/cooking-history.js into your existing scripts folder.
+4. Leave styles.css and every other existing script untouched.
+5. Refresh the testing website (a hard refresh may be needed).
 
-TESTS
-- Open the Wine & Mead tools.
-- Test the ABV calculator with original gravity 1.060 and final gravity 1.010; it should show an estimated ABV.
-- Test invalid readings and the reset button.
-- Test the sugar/ABV boost calculator and its unit selector, target selector, calculate, and reset controls.
-- Test the sweetness calculator and its unit selector, target selector, calculate, and reset controls.
-- Confirm Wine & Mead navigation still works.
-- Check representative existing functions: recipe photos after refresh, backup/restore, Quick Tools, Baking/Brewing tools, and dark/light mode.
+TEST CHECKLIST
+- Open Cooking History.
+- Add a cooking record, including date, rating, and notes.
+- Search/filter the history.
+- Edit a record and confirm changes save.
+- Use Cook Again on a recipe that still exists.
+- Delete a record and confirm it stays deleted after refresh.
+- Confirm previous features still work: recipe photos after refresh/reopen, backup/restore, Quick Tools, Baking/Brewing tools, Wine & Mead calculators, Custom Brew page, Welcome Guide, and dark/light mode.
 
-Please report the results before moving to Phase 16.
+IMPORTANT
+- This is a TEST build. Do not replace the live app.
+- Report any issue before moving to Phase 17.

@@ -1,18 +1,18 @@
-My Recipe Book — Phase 11 testing
+My Recipe Book — Phase 12 testing package
 
-This package starts from the user-confirmed Phase 10 version.
+Starting point: the confirmed Phase 11 package.
 
-Change in Phase 11:
-- Moved only the Browser Compatibility Notice script into scripts/browser-compatibility.js.
-- The external script is loaded at the original script position.
-- All other inline JavaScript, existing separated scripts, and styles.css are preserved.
+Change in this phase:
+- Extracted only the standalone Install My Recipe Book invitation / installation-instructions handler into scripts/install-invite.js.
+- The external script is loaded at the same location as the original inline script, preserving classic-script execution order.
+- No other application JavaScript or CSS was intentionally changed.
 
 GitHub upload:
 1. Extract this ZIP.
 2. Upload/replace index.html in the icons testing folder.
-3. Add scripts/browser-compatibility.js to the existing scripts folder.
-4. Keep all previous scripts and styles.css in place.
+3. Upload scripts/install-invite.js into the existing icons/scripts folder.
+4. Keep all previously uploaded script files and styles.css in place.
 
-Test the browser compatibility notice: check that it appears when appropriate, Close dismisses it, Check again reruns the check, and it respects its 30-day dismissal period. Also retest recipe photos after refresh/reopening and previously tested app features.
+Test the install invitation: dismiss it, reopen the site, use the install/instructions button, and check that an installed app does not show the invitation. Also test previously working features and recipe photos after refresh/reopening.
 
-This is a testing build. Do not replace the live app until the test is confirmed.
+This is a testing copy only. Do not replace the live app until the test is confirmed.

@@ -3026,15 +3026,7 @@ body[data-mrb-theme="dark"] .section-choice-desc{color:#d4c7b5}
 .quick-tools-panel-header strong{color:var(--ink);font-size:.98rem}
 .quick-tools-close-btn{flex:0 0 auto;min-height:36px;padding:6px 11px}
 </style>
-<script id="quick-tools-close-button-handler">
-(()=>{
- const button=document.getElementById('quickToolsCloseBtn');
- const menu=document.getElementById('quickToolsDropdown');
- if(button&&menu){
-  button.addEventListener('click',()=>{menu.open=false;});
- }
-})();
-</script>
+<script id="quick-tools-close-button-handler" src="./scripts/quick-tools-close.js?v=phase2"></script>
 </body></html>
 
 

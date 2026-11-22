@@ -1,23 +1,28 @@
-My Recipe Book — Phase 13 testing package
+MY RECIPE BOOK — PHASE 14 TEST BUILD
 
-Starting point: the user-confirmed Phase 12 package.
+Phase 14 continues from the user-confirmed working Phase 13 package.
 
-Change in this phase:
-- Extracted only the standalone Welcome / How-to-Use Guide script from index.html into scripts/welcome-guide.js.
-- Replaced the original inline script at the same location with a classic external script tag using the same element ID.
-- The script's code is preserved exactly; all other JavaScript, CSS, and app markup are retained.
+CHANGE IN THIS PHASE
+- Extracted the standalone Custom Brew page logic from its inline script in index.html into scripts/custom-brew-page-logic.js.
+- The external script is loaded at the same location in index.html and retains the original script id, preserving execution order and the existing page markup.
 
-GitHub upload:
+UNCHANGED
+- styles.css is unchanged from Phase 13.
+- All Phase 13 scripts are retained unchanged.
+- The main application code, recipe data handling, photos, backup/restore, Google Drive behavior, theme handling, and other app features are otherwise unchanged.
+- This is a separate testing build. Do not replace the live app with it until it has been tested and explicitly approved.
+
+GITHUB TEST FOLDER UPDATE
 1. Extract this ZIP.
-2. Upload/replace index.html in the icons testing folder.
-3. Upload scripts/welcome-guide.js into the existing icons/scripts folder.
-4. Keep all previously uploaded scripts and styles.css in place. Do not delete earlier phase files.
+2. Upload the Phase 14 index.html to the existing GitHub testing folder, replacing its Phase 13 index.html.
+3. Upload scripts/custom-brew-page-logic.js into the existing scripts folder.
+4. Leave styles.css and all other existing scripts untouched.
+5. Refresh the testing site (a hard refresh if needed).
 
-Test:
-- Open the Welcome / How-to-Use Guide.
-- Advance through the tutorial and close it.
-- Confirm the guide's completion/hide behavior works as before.
-- Reopen the guide using its in-app button.
-- Test recipe viewing/editing, photos after refresh and app reopen, backup/restore, Quick Tools, Baking/Brewing tools, and dark/light mode.
+TESTS
+- Open the Custom Brew page.
+- Create, edit, and delete a custom brew entry; confirm entries remain after refresh/reopening.
+- Confirm the Custom Brew page navigation and its buttons work.
+- Check representative existing functions: recipe photos after refresh, backup/restore, Quick Tools, Baking/Brewing tools, and dark/light mode.
 
-This is a testing copy only. Do not replace the live app until Phase 13 is confirmed working.
+Please report the results before moving to Phase 15.

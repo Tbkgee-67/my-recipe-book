@@ -1,21 +1,7 @@
-My Recipe Book — Phase 2 JavaScript split test
+My Recipe Book — Phase 8 testing
 
-This is a separate testing copy based on the confirmed working Phase 1 build.
+This phase starts from the Phase 7 testing package. It moves only the small Dough Calculator Back-button navigation handler into scripts/dough-calculator-back-navigation.js. The external script is loaded in the same document position as the original inline handler. Other inline JavaScript blocks and styles are unchanged.
 
-Files:
-- index.html
-- styles.css
-- scripts/quick-tools-close.js
+Upload the contents of this package into the existing GitHub icons testing folder. Replace index.html and add scripts/dough-calculator-back-navigation.js to the existing scripts folder. Keep all previous script files, styles.css, icons, manifest, and service-worker assets in place.
 
-Upload the contents of this package into the existing GitHub testing folder:
-https://tbkgee-67.github.io/my-recipe-book/icons/
-Keep existing icons, manifest, service-worker, and other app assets in place.
-The scripts folder must be uploaded with its subfolder structure intact.
-
-Only the small Quick Tools Close-button handler was moved into an external file.
-It remains at the same position in the HTML so it runs at the same point in page loading.
-All other inline JavaScript blocks are intended to remain unchanged.
-
-Test the app appearance and normal functions, especially opening and closing Quick Tools.
-Also test recipe photos after refresh and after closing/reopening the installed app.
-Do not replace the live app until this testing version is confirmed.
+Test opening the Dough Calculator from Tools and using its Back button. Confirm it returns to the Baking Tools dropdown as before. Also retest recipe photos after refresh/reopen, Quick Tools, dark/light mode, update notice, terms, Dry Cure Calculator, and Wine/Mead navigation. Do not replace the live app until testing is complete.

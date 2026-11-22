@@ -1,12 +1,15 @@
-
-const CACHE = 'my-recipe-book-rebuilt-v5';
-const FILES = ['./', './index.html', './manifest.webmanifest'];
+// My Recipe Book service worker — photo persistence release v6
+const CACHE = 'my-recipe-book-rebuilt-v6';
+const CACHE_PREFIX = 'my-recipe-book-rebuilt-';
+const APP_FILES = ['./', './index.html', 
+'./manifest.webmanifest'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE)
-      .then(cache => cache.addAll(FILES))
-      .then(() => self.skipWaiting())
+      .then(cache => cache.addAll(APP_FILES))
+      .then(() => 
+self.skipWaiting())
   );
 });
 
@@ -15,10 +18,8 @@ self.addEventListener('activate', event => {
     caches.keys()
       .then(keys => Promise.all(
         keys
-          .filter(key =>
-            key.startsWith('my-recipe-book-rebuilt-') &&
-            key !== CACHE
-          )
+          .filter(key => 
+key.startsWith(CACHE_PREFIX) && key !== CACHE)
           .map(key => caches.delete(key))
       ))
       .then(() => self.clients.claim())
@@ -26,50 +27,47 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  if (
-    event.request.method !== 'GET' ||
-    new URL(event.request.url).origin !== self.location.origin
-  ) {
-    return;
-  }
+  const request = event.request;
+  if (request.method !== 'GET') return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
 
-  const isPage =
-    event.request.mode === 'navigate' ||
-    event.request.destination === 'document' ||
-    event.request.url.endsWith('/index.html');
+  const isPage = request.mode === 'navigate' ||
+    request.destination === 'document' ||
+    url.pathname.endsWith('/index.html');
 
   if (isPage) {
-    event.respondWith(
-      fetch(event.request, { cache: 'no-store' })
-        .then(response => {
+    
+event.respondWith(
+      fetch(request, { cache: 'no-store' })
+        .then(async response => {
           if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE).then(cache =>
-              cache.put(event.request, copy)
-            );
+            const cache = await caches.open(CACHE);
+            await cache.put(request, 
+response.clone());
           }
           return response;
         })
-        .catch(() =>
-          caches.match(event.request)
-            .then(cached =>
-              cached || caches.match('./index.html')
-            )
-        )
+        .catch(async () => {
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          const appShell = new 
+URL('./index.html', self.registration.scope).href;
+          return (await caches.match(appShell)) || Response.error();
+        })
     );
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then(cached => {
+  
+event.respondWith(
+    caches.match(request).then(cached => {
       if (cached) return cached;
-
-      return fetch(event.request).then(response => {
+      return fetch(request).then(async response => {
         if (response && response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache =>
-            cache.put(event.request, copy)
-          );
+          const cache = 
+await caches.open(CACHE);
+          await cache.put(request, response.clone());
         }
         return response;
       });

@@ -1,5 +1,5 @@
 
-const CACHE = 'my-recipe-book-rebuilt-v4';
+const CACHE = 'my-recipe-book-rebuilt-v5';
 const FILES = ['./', './index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', event => {

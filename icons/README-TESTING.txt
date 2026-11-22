@@ -1,7 +1,10 @@
-My Recipe Book — Phase 8 testing
+My Recipe Book — Phase 9 testing
 
-This phase starts from the Phase 7 testing package. It moves only the small Dough Calculator Back-button navigation handler into scripts/dough-calculator-back-navigation.js. The external script is loaded in the same document position as the original inline handler. Other inline JavaScript blocks and styles are unchanged.
+This phase starts from the user-confirmed Phase 8 package. It moves only the standalone ingredient substitution finder into:
+  scripts/substitution-finder.js
 
-Upload the contents of this package into the existing GitHub icons testing folder. Replace index.html and add scripts/dough-calculator-back-navigation.js to the existing scripts folder. Keep all previous script files, styles.css, icons, manifest, and service-worker assets in place.
+Upload the contents of this folder into the existing GitHub icons testing folder. Replace index.html, add scripts/substitution-finder.js inside the existing scripts folder, and keep all earlier scripts, styles.css, icons, manifest, and service-worker assets in their existing locations.
 
-Test opening the Dough Calculator from Tools and using its Back button. Confirm it returns to the Baking Tools dropdown as before. Also retest recipe photos after refresh/reopen, Quick Tools, dark/light mode, update notice, terms, Dry Cure Calculator, and Wine/Mead navigation. Do not replace the live app until testing is complete.
+Test the ingredient substitution search, clear button, and results. Also perform your usual regression checks: recipe photos after refresh/reopen, Quick Tools, dark/light mode, calculators, and other existing app functions.
+
+This is a test build only. Do not replace the live app until you approve it. A syntax check was performed, but browser/runtime behavior still needs your testing.

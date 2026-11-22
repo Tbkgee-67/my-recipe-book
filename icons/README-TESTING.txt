@@ -1,18 +1,18 @@
-My Recipe Book — Phase 10 testing package
+My Recipe Book — Phase 11 testing
 
-This phase starts from the user-confirmed Phase 9 testing package.
+This package starts from the user-confirmed Phase 10 version.
 
-Change in Phase 10:
-- The standalone Pantry / ingredient-to-recipe matching script was moved from index.html into scripts/pantry-recipe-matcher.js.
-- The JavaScript source was copied byte-for-byte; its loading position is unchanged.
-- All other files and scripts from Phase 9 are preserved.
+Change in Phase 11:
+- Moved only the Browser Compatibility Notice script into scripts/browser-compatibility.js.
+- The external script is loaded at the original script position.
+- All other inline JavaScript, existing separated scripts, and styles.css are preserved.
 
 GitHub upload:
 1. Extract this ZIP.
-2. Upload/replace index.html in the existing icons testing folder.
-3. Add scripts/pantry-recipe-matcher.js to the existing scripts folder.
-4. Keep styles.css and all previously added scripts in place.
+2. Upload/replace index.html in the icons testing folder.
+3. Add scripts/browser-compatibility.js to the existing scripts folder.
+4. Keep all previous scripts and styles.css in place.
 
-Test the pantry ingredient list, Find Recipes, Ctrl/Command+Enter search, Clear, and View recipe. Also test recipe photos after refresh/reopening and the features from earlier phases.
+Test the browser compatibility notice: check that it appears when appropriate, Close dismisses it, Check again reruns the check, and it respects its 30-day dismissal period. Also retest recipe photos after refresh/reopening and previously tested app features.
 
-This is a testing build only. Do not replace the live app until the testing version is confirmed.
+This is a testing build. Do not replace the live app until the test is confirmed.

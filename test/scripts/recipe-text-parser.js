@@ -1,0 +1,7 @@
+/* Phase 44: Recipe import text parser. Extracted without changing parsing rules. */
+(function(global){
+  'use strict';
+  function parseRecipeImportText(raw){let lines=raw.replace(/\r/g,'').replace(/\u00a0/g,' ').split('\n').map(s=>s.trim()).filter(Boolean),sections={before:[],ingredients:[],directions:[],nutrition:[],notes:[]},sec='before';for(let l of lines){l=l.replace(/^[•●▪◦·]+\s*/,'').replace(/^I\s+(?=\d|[½¼¾⅓⅔⅛⅜⅝⅞])/,'').trim();if(!l)continue;if(/^(ingredients?|what you.?ll need)$/i.test(l)){sec='ingredients';continue}if(/^(directions?|instructions?|method|steps|preparation|how to make)$/i.test(l)){sec='directions';continue}if(/^(nutrition|nutrition facts|nutritional information|per serving)$/i.test(l)){sec='nutrition';continue}if(/^(notes?|tips|storage|source|grandma.?s tips)$/i.test(l)){sec='notes';continue}let bucket=sections[sec];if(bucket[bucket.length-1]!==l)bucket.push(l)}let title=sections.before[0]||'Imported recipe',all=raw.toLowerCase(),categories=[];if(/\bpizza\b/.test(all))categories.push('Pizza');if(/\bsourdough\b/.test(all))categories.push('Sourdough');return{title,description:sections.before.slice(1).join(' ').slice(0,800),categories,ingredients:sections.ingredients.join('\n')||raw,directions:sections.directions.join('\n'),nutrition:sections.nutrition.join('\n'),notes:sections.notes.join('\n')}
+  }
+  global.MRBRecipeTextParser={parse:parseRecipeImportText};
+})(window);

@@ -1339,3 +1339,25 @@ html body[data-mrb-theme="dark"] #sugarNutritionPage #sugarFoodResults .recipe-n
   color: #ffe2a2 !important;
   opacity: 1 !important;
 }
+
+/* Restore all collapsible tool panels in light mode */
+body[data-mrb-theme="light"] .tool-dropdown {
+  background: #ffffff !important;
+  color: #253126 !important;
+  border: 1px solid #dce3d9 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown > summary {
+  background: #f2f6f0 !important;
+  color: #253126 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown > .tool-content {
+  background: #ffffff !important;
+  color: #253126 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown p,
+body[data-mrb-theme="light"] .tool-dropdown label {
+  color: #253126 !important;
+}

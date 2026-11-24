@@ -1361,3 +1361,31 @@ body[data-mrb-theme="light"] .tool-dropdown p,
 body[data-mrb-theme="light"] .tool-dropdown label {
   color: #253126 !important;
 }
+
+/* Fix Dough Calculator result text */
+#doughCalculator .scale-panel,
+#doughCalculator .scale-panel * {
+  color: #f5eee7 !important;
+}
+
+#doughCalculator .scale-panel h2,
+#doughCalculator .scale-panel h3,
+#doughCalculator .scale-panel strong {
+  color: #ffd36a !important;
+}
+
+/* Fix Sugar & Nutrition Checker cards in light mode */
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat {
+  background: #ffffff !important;
+  color: #29251f !important;
+}
+
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat span {
+  color: #716b63 !important;
+  opacity: 1 !important;
+}
+
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat strong {
+  color: #29251f !important;
+  opacity: 1 !important;
+}

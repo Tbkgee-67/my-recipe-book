@@ -1320,3 +1320,15 @@ body{font:16px Arial;max-width:760px;margin:25px auto}pre{white-space:pre-wrap;f
 /* ===== next original style block ===== */
 
 body{font:16px Arial;padding:24px}h1{font-size:22px}pre{white-space:pre-wrap;font:16px/1.6 Arial}
+
+/* Sugar & Nutrition Checker — dark mode result cards */
+body[data-mrb-theme="dark"] #sugarNutritionChecker #sugarFoodResults .recipe-nutrition-stat {
+  background: #30251e !important;
+  color: #f5eee7 !important;
+  border-color: #66513e !important;
+}
+
+body[data-mrb-theme="dark"] #sugarNutritionChecker #sugarFoodResults .recipe-nutrition-stat span,
+body[data-mrb-theme="dark"] #sugarNutritionChecker #sugarFoodResults .recipe-nutrition-stat strong {
+  color: #f5eee7 !important;
+}

@@ -1389,3 +1389,21 @@ body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutri
   color: #29251f !important;
   opacity: 1 !important;
 }
+/* Correct Dough Calculator result text */
+#doughResults,
+#doughResults * {
+  color: #f5eee7 !important;
+}
+
+#doughResults h2,
+#doughResults h3,
+#doughResults strong {
+  color: #ffd36a !important;
+}
+
+/* Correct Sugar & Nutrition Checker result cards */
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat,
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat * {
+  color: #29251f !important;
+  opacity: 1 !important;
+}

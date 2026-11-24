@@ -1320,3 +1320,140 @@ body{font:16px Arial;max-width:760px;margin:25px auto}pre{white-space:pre-wrap;f
 /* ===== next original style block ===== */
 
 body{font:16px Arial;padding:24px}h1{font-size:22px}pre{white-space:pre-wrap;font:16px/1.6 Arial}
+
+/* Sugar & Nutrition Checker — dark mode result cards */
+html body[data-mrb-theme="dark"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat {
+  background: #30251e !important;
+  background-image: none !important;
+  color: #f5eee7 !important;
+  border: 1px solid #806343 !important;
+  box-shadow: none !important;
+}
+
+html body[data-mrb-theme="dark"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat span {
+  color: #e2d2bd !important;
+  opacity: 1 !important;
+}
+
+html body[data-mrb-theme="dark"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat strong {
+  color: #ffe2a2 !important;
+  opacity: 1 !important;
+}
+
+/* Restore all collapsible tool panels in light mode */
+body[data-mrb-theme="light"] .tool-dropdown {
+  background: #ffffff !important;
+  color: #253126 !important;
+  border: 1px solid #dce3d9 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown > summary {
+  background: #f2f6f0 !important;
+  color: #253126 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown > .tool-content {
+  background: #ffffff !important;
+  color: #253126 !important;
+}
+
+body[data-mrb-theme="light"] .tool-dropdown p,
+body[data-mrb-theme="light"] .tool-dropdown label {
+  color: #253126 !important;
+}
+
+/* Fix Dough Calculator result text */
+#doughCalculator .scale-panel,
+#doughCalculator .scale-panel * {
+  color: #f5eee7 !important;
+}
+
+#doughCalculator .scale-panel h2,
+#doughCalculator .scale-panel h3,
+#doughCalculator .scale-panel strong {
+  color: #ffd36a !important;
+}
+
+/* Fix Sugar & Nutrition Checker cards in light mode */
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat {
+  background: #ffffff !important;
+  color: #29251f !important;
+}
+
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat span {
+  color: #716b63 !important;
+  opacity: 1 !important;
+}
+
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat strong {
+  color: #29251f !important;
+  opacity: 1 !important;
+}
+/* Correct Dough Calculator result text */
+#doughResults,
+#doughResults * {
+  color: #f5eee7 !important;
+}
+
+#doughResults h2,
+#doughResults h3,
+#doughResults strong {
+  color: #ffd36a !important;
+}
+
+/* Correct Sugar & Nutrition Checker result cards */
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat,
+body[data-mrb-theme="light"] #sugarNutritionPage #sugarFoodResults .recipe-nutrition-stat * {
+  color: #29251f !important;
+  opacity: 1 !important;
+}
+
+
+/* Calorie Calculator — dark mode readability fix */
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator {
+  background: #211a16 !important;
+  color: #f5eee7 !important;
+  border-color: #66513e !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator h3 {
+  color: #f5eee7 !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .nutrition-intro,
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-head {
+  color: #e7ded4 !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-row {
+  background: #30251e !important;
+  color: #f5eee7 !important;
+  border-color: #66513e !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-row label {
+  color: #d8c8b8 !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator input {
+  background: #17120f !important;
+  color: #fff4e8 !important;
+  border-color: #796047 !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator input::placeholder {
+  color: #c9b9a8 !important;
+  opacity: 1 !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-stat {
+  background: #30251e !important;
+  color: #f5eee7 !important;
+  border-color: #66513e !important;
+}
+
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-stat span,
+body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-nutrition-stat strong {
+  color: #f5eee7 !important;
+}
+

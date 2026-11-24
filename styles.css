@@ -1,0 +1,1322 @@
+
+
+:root{--g:#1A73E8;--p:#eaf1e8;--bg:#fbf8f0;--line:#dce3d9;--ink:#253126;--muted:#667267}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,Arial}header{background:var(--g);color:white;padding:3px 10px;position:sticky;top:0;z-index:3}.head,main,footer{max-width:1100px;margin:auto}.head{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand gear";align-items:center;column-gap:8px;position:relative;padding:0;min-height:30px}.launch-row{display:flex;justify-content:flex-start;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 8px;padding:0}.head-brand{min-width:0;grid-area:brand;height:30px;display:flex;align-items:center;overflow:hidden}.head-brand h1{margin:0;font-size:.96rem;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.head-actions{grid-area:gear;display:flex;align-items:center;height:30px}.timer-launch{height:30px;padding:0 8px;border-radius:9px;font-size:.78rem;background:#ffffff24;border:1px solid #ffffff70;color:white}.timer-launch:focus-visible{outline:3px solid white;outline-offset:2px}.starter-launch{display:none!important;position:static;height:30px;padding:0 8px;border-radius:9px;font-size:.78rem;background:#ffffff24;border:1px solid #ffffff70;color:white}.starter-launch:focus-visible{outline:3px solid white;outline-offset:2px}.head-actions{grid-area:gear;display:flex;align-items:center;gap:7px}.head-actions .tools-gear{grid-area:auto;position:static;min-width:30px;width:auto;height:30px;padding:0 8px;border-radius:9px;display:grid;place-items:center;font-size:1rem;background:#ffffff24;border:1px solid #ffffff70;color:white}.tools-gear:focus-visible{outline:3px solid white;outline-offset:2px}.tools-gear[aria-current="page"]{background:white;color:var(--g)}h1{font-size:1.25rem;margin:0}.head-brand>div{font-size:.82rem;line-height:1.25}button,input,textarea,select{font:inherit}button{border:0;border-radius:9px;background:var(--g);color:white;padding:10px 13px;font-weight:650;cursor:pointer}button.alt{background:#e7ece5;color:#263627}button.danger{background:#a63e32}input,textarea,select{width:100%;padding:10px;border:1px solid #bac8b8;border-radius:9px;background:white;color:var(--ink)}textarea{min-height:100px;resize:vertical}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.search{flex:1;min-width:170px}main{padding:10px 16px 16px}.layout{display:grid;grid-template-columns:175px 1fr;gap:15px}aside,.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:12px}.layout>aside{padding:8px;border-radius:10px;align-self:start}.cat-heading{display:flex;align-items:center;justify-content:space-between;gap:5px}.cat-heading h2{font-size:1rem;margin:0}.cat-toggle{padding:4px 7px;font-size:.72rem;white-space:nowrap;margin:0}.catlist{display:grid;gap:2px;padding:2px 0}.catrow{display:flex;align-items:center;gap:2px;min-width:0}.cat-order-controls{display:none}.cat-longpress-delete,.cat-longpress-rename{display:block;flex-shrink:0;background:#e7ece5!important;color:#263627!important;padding:4px 7px!important;min-width:30px!important;min-height:30px!important;font-size:.82rem!important}.cat-options-visible .cat-longpress-delete,.cat-options-visible .cat-longpress-rename{display:block}.cat-options-visible{background:#eef4ff;border-radius:8px;padding:2px}.cat-options-visible .cattool{min-width:34px!important;min-height:34px!important;font-size:1rem!important}.cat-reorder-ready{outline:2px dashed var(--g);outline-offset:1px;opacity:.85}.catrow[draggable="true"]{cursor:grab;touch-action:pan-y}.catrow.cat-dragging{opacity:.45}.catrow[draggable="true"]{cursor:grab}.cat-dragging{opacity:.45}.catrow>.cat{flex:1;min-width:0;background:transparent;color:var(--ink);text-align:left;display:flex;justify-content:space-between;padding:5px 5px;gap:4px;font-size:.88rem}.cattools{display:flex;gap:1px}.cattool{background:#e7ece5;color:#263627;padding:3px 5px;border-radius:5px;min-width:24px;font-size:.78rem}.layout>aside #categoryContents>.field{margin-top:8px!important}.layout>aside #categoryContents label{font-size:.78rem}.layout>aside #categoryContents input{padding:6px 7px;font-size:.82rem}.layout>aside #categoryContents .toolbar button{padding:6px 8px;font-size:.8rem}.cat.active{background:var(--p);color:var(--g)}.cattools{display:flex;gap:1px}.cattool{background:#e7ece5;color:#263627;padding:5px 7px;border-radius:6px;min-width:28px;font-size:.9rem}.cattool.catdelete{background:#f8e8e5!important;color:#8a2f25!important}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.card{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}.card img{width:100%;height:140px;object-fit:contain;background:#f7f7f4;padding:4px}.body{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}.recipe-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.recipe-card-heading h3{margin:0;min-width:0;overflow-wrap:anywhere}.body h3{margin:0}.muted{color:var(--muted);font-size:.9rem;white-space:pre-wrap}.pills{display:flex;gap:5px;flex-wrap:wrap}.pill{background:#eef2eb;border-radius:20px;padding:3px 8px;font-size:.78rem}.actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto}.actions button{padding:7px 9px;font-size:.88rem}.empty{padding:28px;text-align:center;border:1px dashed #bcc8b9;border-radius:12px;background:white;color:var(--muted)}.hidden{display:none!important}#status{padding:10px;margin-bottom:10px;border-radius:9px;background:#edf3e9}#status:empty{display:none}#status.err{background:#fbe9e6;color:#7d261d}dialog{border:0;border-radius:14px;width:min(760px,calc(100% - 20px));max-height:92vh;padding:0;overflow:auto;box-shadow:0 15px 60px #0004}dialog::backdrop{background:#17231899}#detailDlg{width:100vw;width:100dvw;max-width:none;height:100vh;height:100dvh;max-height:none;margin:0;border-radius:0;overflow-y:auto;overscroll-behavior:contain}#detailDlg .mh{position:sticky;top:0;z-index:2}#detailDlg .mb{padding:16px;min-height:calc(100dvh - 54px)}.mh{background:var(--g);color:white;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}.mh h2{margin:0;font-size:1.1rem}.mb{padding:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.full{grid-column:1/-1}label{font-weight:700;font-size:.9rem}.help{font-size:.82rem;color:var(--muted)}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}#detail h3{border-bottom:1px solid var(--line);padding-bottom:5px;margin:20px 0 8px}#detail{touch-action:pan-y;border:3px solid #1A73E8;border-radius:14px;padding:14px;margin:4px 0 16px;background:#fff;box-shadow:0 3px 12px #1A73E822;transition:border-color .2s,box-shadow .2s}#detail h2:first-of-type{margin-top:4px}#detail .photo{border-radius:9px}.recipe-links{margin-top:18px;padding:10px 12px;background:#f7faff;border:1px solid var(--line);border-radius:10px}.recipe-links h3{margin:0 0 8px!important}.recipe-links p{margin:8px 0}.recipe-links a{color:#145db5;font-weight:700;text-decoration:underline;overflow-wrap:anywhere}.recipe-title-box{display:flex;align-items:center;gap:8px;margin:0 0 10px;padding:8px 10px;background:#f7faff;border:1px solid var(--line);border-radius:9px}.recipe-title-box h2{margin:0!important;flex:1;min-width:0;overflow-wrap:anywhere;font-size:1.05em}.mh .recipe-zoom-controls{display:flex;align-items:center;justify-content:center;gap:3px;margin:0 8px 0 auto;padding:0;background:transparent;border:0;border-radius:0;flex-shrink:0}.mh .recipe-zoom-controls button{min-width:34px;padding:3px 6px;font-size:1.25rem;line-height:1.1;background:transparent;border:0;outline:0;box-shadow:none;color:#fff;font-weight:800}.mh .recipe-zoom-controls strong{min-width:36px;text-align:center;color:#fff;font-size:.76rem;font-variant-numeric:tabular-nums}.recipe-zoom-controls{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin:0 0 12px;padding:8px 10px;background:#f2f6f0;border:1px solid var(--line);border-radius:10px}.recipe-zoom-controls span{margin-right:auto;font-size:.88rem;font-weight:650}.recipe-zoom-controls button{min-width:38px;padding:6px 10px}.recipe-zoom-controls strong{min-width:48px;text-align:center;font-variant-numeric:tabular-nums}
+.recipe-swipe-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}.recipe-swipe-nav button{padding:8px 10px;font-size:.9rem}.recipe-swipe-count{font-size:.8rem;color:var(--muted);text-align:center}.scale-panel{border:1px solid var(--line);background:#f7faff;border-radius:12px;padding:12px;margin:14px 0}.scale-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}.scale-controls label{font-size:.82rem}.scale-controls input{padding:8px}.scale-note{font-size:.8rem;color:var(--muted);margin:7px 0 0}.recipe-baking-timer{border:1px solid var(--line);background:#f7faff;border-radius:12px;padding:12px;margin:0 0 18px}.recipe-baking-timer h3{margin:0 0 9px!important;border:0!important;padding:0!important}.recipe-timer-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.recipe-timer-inputs label{font-size:.82rem}.recipe-timer-inputs input{padding:8px}.recipe-timer-display{text-align:center;font-size:2.2rem;font-weight:800;letter-spacing:.04em;color:var(--g);font-variant-numeric:tabular-nums;padding:8px 0}.recipe-timer-actions{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}.recipe-timer-actions button{padding:8px 11px;font-size:.88rem}.recipe-baking-timer #recipeTimerStatus{text-align:center;margin:8px 0 0}
+.photo{display:block;width:auto;height:auto;max-width:100%;max-height:420px;object-fit:contain;margin:0 auto 12px}@media(max-width:700px){.head{column-gap:6px}.head-actions{gap:5px}.head-brand h1{font-size:1.05rem}.head-brand>div{font-size:.72rem}.head-actions .sdt-icon-button{width:42px;height:42px;min-width:42px}.head-actions .timer-icon-button,.head-actions .tools-gear{width:34px;height:34px;min-width:34px}.layout{grid-template-columns:1fr}.layout>aside{padding:9px}.catlist{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.full{grid-column:auto}.cards{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}.card img{width:100%;height:140px;object-fit:contain;background:#fff;display:block}}/* Consistent compact title boxes across every app page */ .app-page>.toolbar>h2{display:flex;align-items:center;min-height:22px;height:22px;margin:0;padding:0 5px;border-radius:5px;background:var(--g);color:#fff;font-size:.78rem!important;line-height:1.05;flex:1;min-width:0} .app-page>.toolbar>button{min-height:30px;padding:5px 10px;font-size:.84rem} @media print{header,aside,.toolbar,.actions,footer,dialog{display:none!important}main{padding:0}.layout{display:block}.cards{display:block}.card{border:0;break-inside:avoid}}
+ .page-tabs{display:flex;gap:8px;margin:0 0 14px;padding:5px;background:#e7ece5;border-radius:12px;position:sticky;top:76px;z-index:2}.page-tab{flex:1;background:transparent;color:var(--ink);padding:12px 10px}.page-tab.active{background:var(--g);color:white;box-shadow:0 2px 5px #0002}.app-page{min-width:0}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}.tool-button{text-align:left;min-height:64px;padding:16px;font-size:1rem}.panel{padding:18px}@media(max-width:700px){.page-tabs{top:70px}.tools-grid{grid-template-columns:1fr}.tool-button{min-height:58px}}
+/* Cooking temperatures: compact dark reference rows inspired by the supplied example */
+#cookingTemperatures{background:#121212!important;color:#f5f5f5;border:1px solid #303030;border-radius:14px;padding:16px}
+#cookingTemperatures h3{color:#fff;margin-bottom:14px}
+#cookingTemperatures .temp-about{background:#1e1e1e!important;border:1px solid #373737!important;color:#f2f2f2;border-radius:13px;padding:16px;margin-bottom:14px}
+#cookingTemperatures .temp-about .help{color:#969696}
+#cookingTemperatures .temp-search{display:block;margin-bottom:14px}
+#cookingTemperatures .temp-search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+#cookingTemperatures .temp-search input{background:#1b1b1b;color:#fff;border:0;border-radius:28px;padding:14px 18px;font-size:1rem}
+#cookingTemperatures .temp-search input::placeholder{color:#a3a3a3}
+#cookingTemperatures .temp-group{margin:18px 0 0;background:#292929;padding:13px 15px;border:1px solid #353535;border-bottom:0;border-radius:12px 12px 0 0;font-size:.88rem;font-weight:800;letter-spacing:.035em}
+#cookingTemperatures .temp-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 15px;border:1px solid #303030;border-top:0;background:#121212;flex-wrap:wrap}
+#cookingTemperatures .temp-row:last-child{border-radius:0 0 12px 12px}
+#cookingTemperatures .temp-name{flex:1;min-width:170px;font-size:1rem;line-height:1.35}
+#cookingTemperatures .temp-detail{color:#969696;margin-top:5px;font-size:.9rem;line-height:1.5}
+#cookingTemperatures .temp-right{text-align:right;min-width:145px}
+#cookingTemperatures .temp-value{font-weight:800;font-size:1.08rem;line-height:1.4;margin-bottom:8px;white-space:nowrap}
+#cookingTemperatures .temp-chip{display:inline-flex;align-items:center;justify-content:center;min-width:120px;padding:9px 11px;border-radius:10px;font-size:.82rem}
+#cookingTemperatures .temp-chip.safe{background:#10271b;color:#27c76f}
+#cookingTemperatures .temp-chip.preference{background:#202020;color:#9a9a9a}
+#cookingTemperatures .temp-chip.oil{background:#21172f;color:#a16bff}
+#cookingTemperatures .temp-empty{padding:22px;text-align:center;color:#aaa;background:#1b1b1b;border:1px dashed #444;border-radius:12px}
+@media(max-width:480px){#cookingTemperatures{padding:12px}#cookingTemperatures .temp-row{padding:16px 12px;gap:10px}#cookingTemperatures .temp-name{min-width:145px}#cookingTemperatures .temp-right{min-width:130px}#cookingTemperatures .temp-value{font-size:1rem}#cookingTemperatures .temp-chip{min-width:112px}}
+
+/* Collapsible tool panels */
+.tool-dropdown{border:1px solid var(--line);border-radius:12px;background:white;margin-top:12px;overflow:hidden}
+.tool-dropdown>summary{list-style:none;cursor:pointer;padding:16px;font-weight:750;font-size:1rem;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f2f6f0}
+.tool-dropdown>summary::-webkit-details-marker{display:none}
+.tool-dropdown>summary::after{content:'＋';font-size:1.25rem;color:var(--g);font-weight:800}
+.tool-dropdown[open]>summary::after{content:'−'}
+.tool-dropdown>.tool-content{margin:0;border:0;border-radius:0;padding:14px}.tool-dropdown .tool-button{width:100%;min-height:48px}.tools-sections{display:grid;grid-template-columns:1fr;gap:0;margin-top:12px}
+.tool-dropdown .tool-content>h3:first-child{display:none}.main-tool-dropdown{margin-top:14px}.main-tool-dropdown>summary{background:#eaf1e7;font-size:1.08rem;padding:18px}.main-tool-dropdown>.tool-content{padding:8px 12px 14px}.main-tool-dropdown .tool-dropdown{margin-top:10px}
+/* Match the App Tools dropdown to the Categories panel presentation. */
+#toolsPage .main-tool-dropdown{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px #0002;margin-top:14px}
+#toolsPage .main-tool-dropdown>summary{background:#fff;color:var(--ink);font-size:1rem;padding:14px 12px;border-bottom:1px solid var(--line)}
+#toolsPage .main-tool-dropdown>.tool-content{background:#fff;padding:10px 12px 12px}
+#toolsPage .main-tool-dropdown .tools-sections{display:grid;grid-template-columns:1fr;gap:6px;margin:0}
+#toolsPage .main-tool-dropdown .tool-dropdown{background:#fff;border:1px solid var(--line);border-radius:9px;margin:0;overflow:hidden}
+#toolsPage .main-tool-dropdown .tool-dropdown>summary{background:#f7f9f6;color:var(--ink);padding:11px 12px;font-size:.94rem}
+#toolsPage .main-tool-dropdown .tool-dropdown>.tool-content{padding:10px 12px;background:#fff}
+#toolsPage .main-tool-dropdown .tool-button{width:100%;min-height:42px}
+@media(max-width:700px){#toolsPage .main-tool-dropdown>summary{padding:13px 11px}#toolsPage .main-tool-dropdown .tool-dropdown>summary{padding:11px}}
+@media(max-width:700px){.tool-dropdown>summary{padding:14px;font-size:.98rem}}
+
+
+.timer-icon-button{display:none!important;min-width:30px;width:30px;padding:0;font-size:1rem;line-height:1}
+.recipe-shortcuts{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 10px;padding:0}.recipe-shortcuts button{padding:9px 13px;font-size:.9rem;min-height:40px}.recipe-shortcuts button.alt{background:#e7ece5;color:#263627}@media(max-width:420px){.recipe-shortcuts button{flex:1 1 145px}}
+
+
+.recipe-shortcuts{gap:6px;margin:0 0 8px;align-items:center}.recipe-shortcuts button{min-height:32px;height:32px;padding:5px 9px;font-size:.78rem;border-radius:8px;flex:0 0 auto}.recipe-shortcuts button.alt{background:#e7ece5;color:#263627}.head-actions .timer-icon-button{display:none!important;min-width:38px;width:38px;height:38px;padding:0;font-size:1.35rem;line-height:1}.head-actions .tools-gear{min-width:38px;width:38px;height:38px;padding:0;font-size:1.2rem}.head-brand{height:38px}.head-actions .sdt-icon-button{width:48px;height:48px;min-width:48px;padding:2px;border-radius:50%;overflow:hidden;background:#fff;border:2px solid #d2b27c}.sdt-icon-button img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%}.recipe-shortcuts button:focus-visible{outline:2px solid var(--g);outline-offset:2px}@media(max-width:420px){.recipe-shortcuts button{flex:0 0 auto}}
+#quickStarterBtn,#quickTimerBtn{display:none!important}
+
+#quickToolsLinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px}
+.quick-tool-choice{display:flex;align-items:center;gap:9px;padding:8px 4px;border-bottom:1px solid var(--line);font-size:.92rem}
+.quick-tool-choice input{width:18px;height:18px;flex:0 0 auto}
+.quick-tool-group{font-weight:700;margin:10px 0 4px}
+/* Baking Tools menu lives beside the recipe page title. */
+.recipe-list-toolbar{gap:7px;}
+.quick-tools-menu{position:relative;flex:0 0 auto;overflow:visible;border:0;background:transparent;margin:0;}
+.quick-tool-order-list{display:flex;flex-direction:column;gap:6px;margin:8px 0 12px}.quick-tool-order-row{display:flex;align-items:center;gap:7px;padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--panel,#fff)}.quick-tool-order-row[draggable="true"]{cursor:grab}.quick-tool-order-row.dragging{opacity:.45}.quick-tool-order-row .qt-name{flex:1;min-width:0;font-size:.9rem}.quick-tool-order-row .qt-move{display:none!important}.quick-tool-order-row .qt-drag{color:var(--muted);font-size:1.25rem;user-select:none;touch-action:none;cursor:grab;padding:4px 7px;border-radius:6px;background:#f2f6f0}.quick-tool-order-row.dragging{opacity:.45;border:2px dashed var(--g)}.quick-tool-order-row.drop-target{border-color:var(--g);background:#eef4ff}.quick-tool-manager-heading{font-weight:700;margin:10px 0 5px}
+
+.head-actions .quick-tools-menu>summary{width:auto;min-width:38px;height:30px;padding:0 9px;border-radius:9px;background:#ffffff24;border:1px solid #ffffff70;color:white;font-size:.82rem;font-weight:700;white-space:nowrap;} .head-actions .quick-tools-menu[open]>summary{background:white;color:var(--g);} .head-actions .quick-tools-menu>.quick-tools-popover{right:0;top:calc(100% + 6px);}
+.quick-tools-menu>summary{list-style:none;display:flex;align-items:center;justify-content:center;width:auto;min-width:38px;height:38px;padding:0 9px;border-radius:9px;background:#e7ece5;color:#263627;font-size:.82rem;font-weight:700;white-space:nowrap;cursor:pointer;}
+.quick-tools-menu>summary::-webkit-details-marker{display:none;}
+.quick-tools-menu>summary::after{content:none!important;}
+.quick-tools-menu>summary{display:flex;align-items:center;justify-content:center;gap:2px;}
+.quick-tools-menu .qt-apps-icon{display:block;width:19px;height:19px;flex:0 0 19px;}
+.quick-tools-menu .qt-arrow{font-size:.62em;line-height:1;transition:transform .12s ease;}
+.quick-tools-menu[open] .qt-arrow{transform:rotate(180deg);}
+.quick-tools-menu[open]>summary{background:#dce8f8;color:#174f9b;}
+.quick-tools-menu>.quick-tools-popover{position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:min(330px,calc(100vw - 34px));max-height:min(72vh,560px);overflow:auto;margin:0;padding:12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px #0003;}
+.quick-tools-popover>.tools-sections{margin-top:0;gap:7px;}
+.quick-tools-popover>.tools-sections>.tool-button{min-height:42px;padding:8px 10px;font-size:.88rem;}
+.quick-tools-popover>.tool-dropdown>summary{padding:10px;font-size:.88rem;}
+.cat-toggle{min-width:30px;width:30px;height:30px;padding:0!important;display:grid;place-items:center;font-size:1rem!important;font-weight:800;}
+/* Android compatibility: safe-area padding, legacy viewport fallbacks, and touch targets */
+html{min-height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-height:100vh;min-height:100dvh;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,input,textarea,select{touch-action:manipulation}
+button{min-height:40px;-webkit-tap-highlight-color:transparent}
+input,textarea,select{max-width:100%;font-size:16px}
+img{max-width:100%;height:auto}
+#detailDlg{width:100vw;height:100vh;max-height:100vh}
+@supports (height:100dvh){#detailDlg{height:100dvh;max-height:100dvh}}
+@media(max-width:420px){#detailDlg .mh{gap:5px;padding:7px}.mh h2{font-size:.95rem}.mh .recipe-zoom-controls{gap:2px;margin-left:auto;padding:1px 2px}.mh .recipe-zoom-controls button{min-width:30px;padding:3px 4px;font-size:1.15rem;line-height:1.1;font-weight:800;border:0;outline:0;box-shadow:none}.mh .recipe-zoom-controls strong{min-width:31px;font-size:.72rem;color:#fff}#closeDetail{padding:5px 7px;font-size:.8rem}}@media(max-width:360px){main{padding-left:9px;padding-right:9px}.cards{grid-template-columns:1fr}.recipe-swipe-nav button{padding:7px 8px;font-size:.82rem}}
+@media(hover:none){button{cursor:default}}
+
+/* Header controls: Categories, Quick Tools and Settings share one size. */
+#recipesPage .layout{grid-template-columns:1fr;}
+.head-actions{gap:6px;}
+.head-actions .tools-gear,
+.head-actions .quick-tools-menu>summary,
+.head-actions .categories-menu>summary{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;padding:0!important;display:grid;place-items:center;border-radius:9px;font-size:1.2rem;line-height:1;background:#ffffff24;border:1px solid #ffffff70;color:#fff;box-sizing:border-box;}
+.head-actions .quick-tools-menu,.head-actions .categories-menu{position:relative;flex:0 0 auto;overflow:visible;border:0;background:transparent;margin:0;padding:0;}
+.head-actions .quick-tools-menu>summary,.head-actions .categories-menu>summary{list-style:none;cursor:pointer;}
+.head-actions .quick-tools-menu>summary::-webkit-details-marker,.head-actions .categories-menu>summary::-webkit-details-marker{display:none;}
+.head-actions .quick-tools-menu[open]>summary,.head-actions .categories-menu[open]>summary{background:#fff;color:var(--g);}
+.head-actions .categories-menu>.categories-popover{position:absolute;right:0;top:calc(100% + 6px);z-index:21;width:min(320px,calc(100vw - 24px));max-height:min(72vh,560px);overflow:auto;margin:0;padding:12px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 28px #0003;}
+.head-actions .categories-popover .cat-heading h2{font-size:1rem;margin:0;color:var(--ink);}
+.head-actions .categories-popover .catlist{grid-template-columns:1fr;}
+.head-actions .categories-popover #categoryContents.hidden{display:none!important;}
+.head-actions .tools-gear[aria-label="Open Tools and Settings"]{font-size:1.2rem;}
+@media(max-width:700px){.head-actions{gap:5px}.head-actions .tools-gear,.head-actions .categories-menu>summary{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important}.head-actions .quick-tools-menu>summary{width:auto!important;min-width:38px!important;height:38px!important;min-height:38px!important;padding:0 8px!important;font-size:.78rem!important}}
+
+/* Match the Quick Tools popover to the Categories dropdown display */
+/* Quick Tools opens in the same centered, scrollable overlay as Categories. */
+.head-actions .quick-tools-menu[open]{position:static;z-index:40;}
+.head-actions .quick-tools-menu[open]::before{content:"";position:fixed;inset:0;background:#17231888;z-index:39;}
+.head-actions .quick-tools-menu>.quick-tools-popover{position:fixed;left:50%;top:50%;right:auto;transform:translate(-50%,-50%);z-index:41;width:min(440px,calc(100vw - 28px));max-height:min(84dvh,760px);overflow-y:auto;overscroll-behavior:contain;margin:0;padding:14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 40px #0005;}
+.head-actions .quick-tools-popover>.tools-sections{display:grid;grid-template-columns:1fr;gap:5px;margin:0;}
+.head-actions .quick-tools-popover .tool-button{width:100%;min-height:40px;padding:8px 10px;text-align:left;justify-content:flex-start;border-radius:8px;font-size:.9rem;}
+.head-actions .quick-tools-popover>.tool-dropdown{margin-top:10px;border-top:1px solid var(--line);padding-top:8px;}
+.head-actions .quick-tools-popover>.tool-dropdown>summary{padding:8px 5px;color:var(--ink);font-size:.9rem;}
+
+/* One combined Tools & Settings dropdown for Baking Tools and App Tools. */
+#toolsPage .unified-tools-dropdown{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px #0002;margin-top:14px}
+#toolsPage .unified-tools-dropdown>summary{background:#fff;color:var(--ink);font-size:1rem;padding:14px 12px;border-bottom:1px solid var(--line)}
+#toolsPage .unified-tools-dropdown>.tool-content{background:#fff;padding:10px 12px 12px}
+#toolsPage .unified-tools-dropdown .tools-sections{display:grid;grid-template-columns:1fr;gap:6px;margin:0}
+#toolsPage .unified-tools-dropdown .tool-dropdown{background:#fff;border:1px solid var(--line);border-radius:9px;margin:0;overflow:hidden}
+#toolsPage .unified-tools-dropdown .tool-dropdown>summary{background:#f7f9f6;color:var(--ink);padding:11px 12px;font-size:.94rem}
+#toolsPage .unified-tools-dropdown .tool-dropdown>.tool-content{padding:10px 12px;background:#fff}
+#toolsPage .unified-tools-dropdown>.tool-content>.tools-sections>button.tool-button{width:100%;min-height:42px}
+@media(max-width:700px){#toolsPage .unified-tools-dropdown>summary{padding:13px 11px}}
+
+/* Categories selector sits beside the current-category heading. */
+.recipe-list-toolbar .category-location-menu{position:relative;flex:0 0 auto;margin-right:auto;border:0;background:transparent;padding:0;}
+.recipe-list-toolbar .category-location-menu>summary{list-style:none;cursor:pointer;display:grid;place-items:center;min-width:38px;height:34px;padding:0 10px;border-radius:8px;background:#e7ece5;color:#263627;font-weight:700;border:1px solid var(--line);}
+.recipe-list-toolbar .category-location-menu>summary::-webkit-details-marker{display:none;}
+.recipe-list-toolbar .category-location-menu[open]>summary{background:var(--p);color:var(--g);}
+.recipe-list-toolbar .category-location-menu[open]{position:static;z-index:40;}
+.recipe-list-toolbar .category-location-menu[open]::before{content:"";position:fixed;inset:0;background:#17231888;z-index:39;}
+.recipe-list-toolbar .category-location-menu>.categories-popover{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:41;width:min(440px,calc(100vw - 28px));max-height:min(84dvh,760px);overflow-y:auto;overscroll-behavior:contain;margin:0;padding:14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 40px #0005;}
+.recipe-list-toolbar .categories-popover .cat-heading h2{font-size:1rem;margin:0;color:var(--ink);}
+.recipe-list-toolbar .categories-popover .catlist{grid-template-columns:1fr;}
+
+/* Standalone ingredient nutrition and calorie calculator */
+.recipe-nutrition-calculator{border:1px solid var(--line);background:#f7f9f6;border-radius:12px;padding:12px;margin:18px 0 4px}
+.recipe-nutrition-calculator h3{margin:0 0 6px!important;border:0!important;padding:0!important}
+.recipe-nutrition-calculator .nutrition-intro{font-size:.82rem;color:var(--muted);margin:0 0 10px}
+.recipe-nutrition-table{display:grid;gap:8px}
+.recipe-nutrition-row{display:grid;grid-template-columns:minmax(100px,1.5fr) repeat(5,minmax(62px,1fr));gap:5px;align-items:center;padding:7px;background:#fff;border:1px solid var(--line);border-radius:8px}
+.recipe-nutrition-row .nutrition-ingredient{font-size:.82rem;font-weight:650;overflow-wrap:anywhere}
+.recipe-nutrition-row label{font-size:.68rem;color:var(--muted);display:block}
+.recipe-nutrition-row input{padding:6px 4px;font-size:.82rem;min-width:0}
+.recipe-nutrition-head{display:grid;grid-template-columns:minmax(100px,1.5fr) repeat(5,minmax(62px,1fr));gap:5px;padding:0 7px;color:var(--muted);font-size:.68rem}
+.recipe-nutrition-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.recipe-nutrition-stat{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px}
+.recipe-nutrition-stat span{display:block;font-size:.75rem;color:var(--muted)}
+.recipe-nutrition-stat strong{font-size:1.12rem}
+.recipe-nutrition-servings{max-width:150px}
+.recipe-nutrition-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+@media(max-width:560px){.recipe-nutrition-head{display:none}.recipe-nutrition-row{grid-template-columns:1fr 1fr 1fr;gap:7px}.recipe-nutrition-row .nutrition-ingredient{grid-column:1/-1}.recipe-nutrition-row .nutrition-field{min-width:0}.recipe-nutrition-results{grid-template-columns:1fr 1fr}}
+
+/* Parent categories reveal nested categories in an expandable dropdown. */
+.category-dropdown-item{min-width:0;position:relative;align-self:start}.category-dropdown-line{display:flex;align-items:stretch;gap:4px}.category-dropdown-line>.category-tile{flex:1;min-width:0}.category-dropdown-toggle{flex:0 0 38px;padding:5px 8px;background:#e7ece5;color:#263627;border:1px solid var(--line);border-radius:9px;font-size:1rem}.category-subcategory-menu{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr;gap:5px;margin:0;padding:8px;border:1px solid var(--line);border-left:3px solid var(--g);background:#fff;border-radius:9px;box-shadow:0 7px 20px #0003;min-width:150px}.category-dropdown-item.category-menu-open{z-index:51}.category-subitem .category-tile{font-size:.9rem;background:#fff}.category-subitem .category-subcategory-menu{left:8px;right:auto;width:calc(100% - 8px)}
+/* Option 3: consistent widescreen recipe photos and category management */
+#recipesPage .card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;padding:0;background:#f7f7f4}
+#recipesPage .category-accordion .accordion-heading-actions{display:flex;align-items:center;gap:9px;flex-shrink:0}
+#recipesPage .category-accordion .accordion-delete-category{background:#f8e8e5;color:#8a2f25;padding:5px 9px;font-size:.76rem;border-radius:7px}
+#recipesPage .category-accordion summary{gap:10px}
+#recipesPage .category-accordion .accordion-category-manager{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px;margin-top:4px}
+#recipesPage .category-accordion .accordion-add-row{display:flex;gap:8px;margin-top:9px}
+#recipesPage .category-accordion .accordion-add-row input{min-width:0;flex:1}
+#recipesPage .category-accordion .accordion-add-row button{flex-shrink:0;padding:8px 12px}
+#recipesPage .category-accordion .accordion-empty{margin:0;padding:8px 2px}
+@media(max-width:560px){#recipesPage .category-accordion .accordion-add-row{flex-direction:column}#recipesPage .category-accordion .accordion-add-row button{width:100%}}
+
+/* Option 2: compact Add Category row beside the category-name field. */
+#recipesPage .accordion-category-manager .accordion-add-row{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;}
+#recipesPage .accordion-category-manager .accordion-add-row input{flex:1 1 auto;min-width:0;width:0;padding:7px 8px;font-size:.84rem;}
+#recipesPage .accordion-category-manager .accordion-add-row button{flex:0 0 auto;width:auto;min-height:32px;padding:5px 9px;font-size:.78rem;white-space:nowrap;}
+
+.accordion-category-actions{display:none;gap:5px;margin-left:8px}.category-actions-visible .accordion-category-actions{display:inline-flex}.accordion-category-actions button{padding:4px 7px;font-size:.75rem;white-space:nowrap}
+.category-manager-row:active{background:#eef4ff}.category-manager-row button{padding:7px 9px;font-size:.82rem;white-space:nowrap}@media(max-width:420px){.category-manager-row{gap:5px!important;padding:7px!important}.category-manager-row button{padding:6px 7px;font-size:.75rem}}
+
+/* Recipe Calendar & multi-day progress planner */
+#calendarPage .calendar-month{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:12px}
+#calendarPage .calendar-day{min-height:66px;padding:6px 3px;background:#fff;border:1px solid var(--line);border-radius:8px;color:var(--ink);font-size:.82rem;display:flex;flex-direction:column;align-items:center;gap:4px}
+#calendarPage .calendar-day.today{outline:2px solid var(--g)}
+#calendarPage .calendar-day.selected{background:#eaf1ff;border-color:var(--g)}
+#calendarPage .calendar-day.has-task:after{content:'•';color:var(--g);font-size:1.1rem;line-height:.6}
+#calendarPage .calendar-weekday{text-align:center;font-size:.72rem;color:var(--muted);font-weight:700}
+.calendar-plan{border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+.calendar-task{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}
+.calendar-task:last-child{border-bottom:0}
+.calendar-task input{width:19px;min-width:19px;margin-top:2px}
+.calendar-task.done span{text-decoration:line-through;color:var(--muted)}
+@media(max-width:420px){#calendarPage .calendar-day{min-height:52px;font-size:.75rem;padding:5px 1px}}
+
+/* Clear visual separation between the three tool groups. */
+#toolsPage .panel>.tool-content>.tools-sections{
+  background:var(--soft, #f5f7f3);
+  border:1px solid var(--line, #d8ded5);
+  border-radius:14px;
+  padding:14px;
+  gap:8px;
+  margin-top:12px;
+}
+#toolsPage .panel>.tool-content>.tools-sections::before{
+  content:"🥖 Baking Tools";
+  display:block;
+  padding:9px 12px;
+  margin:0 0 4px;
+  border-left:5px solid #8a9b62;
+  border-radius:7px;
+  background:#e8efdf;
+  color:#293522;
+  font-size:1.08rem;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+#toolsPage .wine-mead-tools-dropdown{
+  margin:8px 0 10px;
+  border:2px solid #b58a55;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fffaf2;
+  box-shadow:0 3px 10px #00000012;
+}
+#toolsPage .wine-mead-tools-dropdown>summary{
+  background:#f3e5d1;
+  color:#573b20;
+  padding:14px 13px;
+  font-size:1.04rem;
+  font-weight:800;
+}
+#toolsPage .wine-mead-tools-dropdown>.tool-content{
+  background:#fffaf2;
+  border-top:1px solid #e3cfb4;
+  padding:12px;
+}
+#toolsPage .main-tool-dropdown{
+  border:2px solid #7793b2;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f4f8fc;
+  box-shadow:0 3px 10px #00000012;
+  margin-top:16px;
+}
+#toolsPage .main-tool-dropdown>summary{
+  background:#e2edf8;
+  color:#203b56;
+  padding:15px 13px;
+  font-size:1.05rem;
+  font-weight:800;
+  border-bottom:0;
+}
+#toolsPage .main-tool-dropdown>.tool-content{
+  background:#f4f8fc;
+  border-top:1px solid #c7d7e7;
+  padding:12px;
+}
+#toolsPage .main-tool-dropdown .tool-dropdown{border-color:#c7d7e7}
+@media(max-width:600px){
+  #toolsPage .panel>.tool-content>.tools-sections{padding:9px;gap:7px}
+  #toolsPage .panel>.tool-content>.tools-sections::before{font-size:1rem;padding:9px 10px}
+}
+/* Distinct, high-contrast section headers and panels on the Tools page. */
+#toolsPage .tools-direct-group{margin:18px 0 22px;padding:12px;border:2px solid;border-radius:15px;box-shadow:0 3px 12px #00000012}
+#toolsPage .tools-direct-heading{margin:0 0 12px;padding:12px 14px;border-radius:9px;font-size:1.12rem;font-weight:850;letter-spacing:.02em}
+#toolsPage .tools-direct-group-0{border-color:#6d8d4c;background:#f2f7ed}
+#toolsPage .tools-direct-group-0 .tools-direct-heading{background:#dcebcf;color:#263d1d;border-left:7px solid #587b37}
+#toolsPage .tools-direct-group-1{border-color:#b58a43;background:#fff8eb}
+#toolsPage .tools-direct-group-1 .tools-direct-heading{background:#f5e2bd;color:#563b16;border-left:7px solid #a87827}
+#toolsPage .tools-direct-group-2{border-color:#6689ae;background:#f0f6fc}
+#toolsPage .tools-direct-group-2 .tools-direct-heading{background:#d9e8f7;color:#203d5a;border-left:7px solid #426f9c}
+@media(max-width:600px){#toolsPage .tools-direct-group{padding:8px;margin:14px 0 18px}#toolsPage .tools-direct-heading{font-size:1.04rem;padding:10px 11px}}
+
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Match the working recipe-list layout: two-column category tiles and recipe cards. */
+#recipesPage .category-tiles{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:9px;
+  margin:0 0 14px;
+}
+#recipesPage .category-dropdown-item{min-width:0;position:relative;align-self:start}
+#recipesPage .category-dropdown-line{display:flex;align-items:stretch;gap:4px}
+#recipesPage .category-dropdown-line>.category-tile{flex:1;min-width:0}
+#recipesPage .category-subcategory-menu{
+  position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:50;
+  display:grid;grid-template-columns:1fr;gap:5px;margin:0;padding:8px;
+  border:1px solid var(--line);border-left:3px solid var(--g);
+  background:#fff;border-radius:9px;box-shadow:0 7px 20px #0003;min-width:150px;
+}
+#recipesPage .category-dropdown-item.category-menu-open{z-index:51}
+#recipesPage .category-subitem .category-tile{font-size:.9rem;background:#fff}
+#recipesPage .category-subitem .category-subcategory-menu{left:8px;right:auto;width:calc(100% - 8px)}
+#recipesPage .category-tile{min-width:0}
+#recipesPage #cards.cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+#recipesPage #cards .card{min-width:0}
+#recipesPage #cards .card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+#recipesPage #cards .card .body{min-width:0;padding:10px;gap:7px}
+#recipesPage .accordion-category-manager .accordion-add-row{
+  display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:8px;width:100%;margin:0 0 12px;
+}
+#recipesPage .accordion-category-manager .accordion-add-row input{flex:1 1 auto;min-width:0;width:0}
+#recipesPage .accordion-category-manager .accordion-add-row button{flex:0 0 auto;white-space:nowrap}
+@media(max-width:500px){
+  #recipesPage .category-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #recipesPage #cards.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  #recipesPage #cards .card .body{padding:8px}
+  #recipesPage #cards .card .actions{gap:4px;flex-wrap:wrap}
+  #recipesPage #cards .card .actions button{padding:6px 7px;font-size:.78rem}
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+@media(max-width:700px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  main,#recipesPage,#recipesPage .layout,#recipesPage .layout>section,#recipesPage .cards{width:100%;max-width:100%;min-width:0}
+  #recipesPage .layout{display:block}
+  #recipesPage .layout>section{display:block}
+  #recipesPage .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));}
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+.tools-direct-groups .wine-mead-tools-dropdown{display:block;width:100%;margin:0;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.tools-direct-groups .wine-mead-tools-dropdown>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 12px;background:#f2f6f0;color:var(--ink);font-weight:750;cursor:pointer;list-style:none}
+.tools-direct-groups .wine-mead-tools-dropdown>summary::-webkit-details-marker{display:none}
+.tools-direct-groups .wine-mead-tools-dropdown>.tool-content{padding:10px 12px;background:#fff}
+.tools-direct-groups .wine-mead-tools-dropdown .tool-button{width:100%;min-height:44px}
+
+
+/* ---- Original style block boundary ---- */
+
+
+@media (min-width:701px){
+  .head-actions #quickToolsDropdown{flex:0 0 auto!important;min-width:max-content!important;}
+  .head-actions #quickToolsDropdown>summary{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    width:auto!important;min-width:112px!important;max-width:none!important;
+    height:38px!important;min-height:38px!important;padding:0 12px!important;
+    white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;
+    font-size:.84rem!important;line-height:1.15!important;font-weight:700!important;
+    border-radius:9px!important;box-sizing:border-box!important;
+  }
+}
+@media(max-width:700px){
+  .head-actions #quickToolsDropdown>summary{min-width:104px!important;padding:0 10px!important;font-size:.8rem!important;}
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Category navigation matches the approved phone layout: a single swipeable pill row. */
+#recipesPage .recipe-list-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;width:100%;min-width:0;margin-bottom:12px}
+#recipesPage .recipe-list-toolbar #listTitle{flex:0 0 auto;white-space:nowrap}
+#recipesPage .recipe-list-toolbar #switchSectionBtn{flex:0 0 auto;padding:6px 8px;font-size:.78rem;white-space:nowrap}
+#recipesPage .recipe-list-toolbar #categorySearchHost{flex:1 1 auto!important;min-width:0!important;max-width:none!important}
+#recipesPage .recipe-list-toolbar #search{width:100%;min-width:0}
+#recipesPage .category-tiles{display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:9px;width:100%;max-width:100%;margin:0 0 14px;padding:2px 0 8px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+#recipesPage .category-tiles>.category-tile,
+#recipesPage .category-tiles .category-dropdown-item{flex:0 0 auto;min-width:max-content;max-width:260px}
+#recipesPage .category-tiles .category-tile{display:inline-flex;flex-direction:row;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);text-align:center;white-space:nowrap;font-weight:650}
+#recipesPage .category-tiles .category-tile strong{font-size:.94rem;white-space:nowrap;overflow-wrap:normal}
+#recipesPage .category-tiles .category-tile span{font-size:.85rem;color:var(--muted)}
+#recipesPage .category-tiles .category-tile.active{border:2px solid var(--g);background:var(--g);color:#fff;box-shadow:0 3px 9px #1a73e833}
+#recipesPage .category-tiles .category-tile.active span{color:#fff}
+#recipesPage .category-tiles .category-dropdown-item{display:flex;align-items:center;gap:4px}
+#recipesPage .category-tiles .category-dropdown-line{display:flex;align-items:center;gap:4px}
+#recipesPage .category-tiles .category-dropdown-toggle{min-height:40px;border-radius:999px}
+#recipesPage .category-tiles .category-subcategory-menu{position:fixed;top:auto;left:auto;right:auto;min-width:180px;max-width:80vw;max-height:55vh;overflow:auto}
+@media(max-width:700px){
+ #recipesPage .recipe-list-toolbar{gap:9px;flex-wrap:nowrap}
+ #recipesPage .recipe-list-toolbar #listTitle{font-size:1.05rem!important}
+ #recipesPage .category-tiles{gap:9px}
+ #recipesPage .category-tiles .category-tile{min-height:48px;padding:8px 17px}
+ #recipesPage .category-tiles .category-tile strong{font-size:1rem}
+}
+@media(max-width:420px){#recipesPage .recipe-list-toolbar #listTitle{font-size:1rem!important}}
+
+/* Windows desktop layout: preserve the approved swipeable category-pill row. */
+@media (min-width:701px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  header{width:100%}
+  .head,main,footer{width:100%;max-width:1440px;margin-left:auto;margin-right:auto}
+  .head{padding-left:18px;padding-right:18px;min-width:0;grid-template-columns:minmax(0,1fr) auto}
+  .head-brand,.head-actions{min-width:0;max-width:100%}
+  .head-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+  .head-actions #quickToolsDropdown{flex:0 0 auto!important;min-width:max-content!important}
+  .head-actions #quickToolsDropdown>summary{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    width:auto!important;min-width:112px!important;max-width:none!important;
+    height:38px!important;min-height:38px!important;padding:0 12px!important;
+    white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;
+    font-size:.84rem!important;line-height:1.15!important;font-weight:700!important;
+    border-radius:9px!important;box-sizing:border-box!important
+  }
+  main{padding:14px 22px 22px;min-width:0}
+  #recipesPage,#recipesPage .layout,#recipesPage .layout>section{width:100%;max-width:100%;min-width:0}
+  #recipesPage .layout{display:block}
+  #recipesPage .recipe-list-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;width:100%;min-width:0}
+  #recipesPage .recipe-list-toolbar #listTitle{flex:0 1 auto;min-width:120px}
+  #recipesPage .recipe-list-toolbar #categorySearchHost{flex:1 1 260px!important;width:auto!important;max-width:420px!important;min-width:180px!important}
+  #recipesPage .recipe-list-toolbar #search{width:100%;min-width:0}
+  #recipesPage .recipe-list-toolbar #sort{flex:0 1 190px;max-width:220px;min-width:150px}
+  /* Keep categories as the approved single horizontal row on Windows too. */
+  #recipesPage .category-tiles{display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:9px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  #recipesPage .category-tiles>.category-tile,
+  #recipesPage .category-tiles .category-dropdown-item{flex:0 0 auto;min-width:max-content;max-width:260px}
+  #recipesPage #cards.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;width:100%;max-width:100%;min-width:0}
+  #recipesPage #cards .card{width:100%;max-width:100%;min-width:0}
+  #recipesPage #cards .card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  #recipesPage #cards .card .body{min-width:0}
+  #recipesPage .panel,#recipesPage .empty{max-width:100%;min-width:0}
+  #recipesPage *{min-width:0}
+  #recipesPage button,#recipesPage select{max-width:100%}
+}
+@media(max-width:700px){
+  .head-actions #quickToolsDropdown>summary{min-width:104px!important;padding:0 10px!important;font-size:.8rem!important}
+}
+
+
+
+/* ---- Original style block boundary ---- */
+
+
+
+/* City Steading-inspired visual preview. Existing recipe data, controls and app logic are retained. */
+:root{
+ --g:#f3b323;--p:#3a2b1e;--bg:#120f0d;--line:#514238;--ink:#f5eee7;--muted:#b8aaa0;
+ --panel:#211a16;--soft:#30251e;--honey:#f5b52a;--wood:#1b1613;
+ color-scheme:dark;
+}
+html,body{background:#120f0d!important;color:#f5eee7!important}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif!important;line-height:1.5}
+header{background:rgba(27,22,19,.97)!important;color:#f8f1e8!important;border-bottom:1px solid #514238;box-shadow:0 8px 24px #0007;padding:8px 14px!important}
+.head,main,footer{max-width:1280px!important}
+.head{min-height:52px!important;grid-template-columns:minmax(0,1fr) auto!important;padding:2px 0!important}
+.head-brand{height:auto!important;min-height:42px!important}
+.head-brand h1{font-family:Georgia,'Times New Roman',serif!important;color:#f6bd3b!important;font-size:1.45rem!important;letter-spacing:.01em}
+.head-actions{height:auto!important;gap:8px!important}
+.head-actions button,.head-actions summary{background:#342820!important;color:#f9d889!important;border:1px solid #5a4738!important;border-radius:11px!important;min-height:38px!important}
+main{padding:20px 18px 26px!important}
+#recipesPage .layout{display:block!important;max-width:100%!important}
+#recipesPage .layout>section{min-width:0!important}
+#recipesPage .recipe-list-toolbar{background:#211a16!important;border:1px solid #514238!important;border-radius:17px!important;padding:14px!important;gap:12px!important;box-shadow:0 8px 22px #0005!important;margin-bottom:15px!important}
+#listTitle{color:#f6bd3b!important;font-family:Georgia,'Times New Roman',serif!important;font-size:1.25rem!important}
+#categorySearchHost{max-width:440px!important;flex:1 1 240px!important}
+input,textarea,select{background:#17120f!important;color:#f5eee7!important;border:1px solid #5a493c!important;border-radius:10px!important}
+input::placeholder,textarea::placeholder{color:#98877a!important}
+input:focus,textarea:focus,select:focus{outline:2px solid #d99a22!important;outline-offset:1px}
+button{background:#d99518!important;color:#21170e!important;border:1px solid #e6a92d!important;border-radius:10px!important;font-weight:700!important;box-shadow:0 2px 5px #0003;transition:background .15s,transform .15s}
+button:hover{background:#f4b936!important;color:#21170e!important}
+button.alt,.cattool,.category-tile,.tool-button.alt{background:#30251e!important;color:#eee2d6!important;border:1px solid #5a493c!important}
+button.alt:hover,.tool-button.alt:hover,.category-tile:hover{background:#433329!important;color:#ffe2a0!important}
+button.danger{background:#873b30!important;color:#fff!important;border-color:#a95649!important}
+#recipesPage #cards.cards{grid-template-columns:repeat(auto-fill,minmax(min(100%,285px),1fr))!important;gap:17px!important}
+#recipesPage #cards .card,.card{background:#211a16!important;color:#f5eee7!important;border:1px solid #514238!important;border-radius:17px!important;overflow:hidden!important;box-shadow:0 7px 20px #0006!important;transition:transform .18s,box-shadow .18s,border-color .18s!important}
+#recipesPage #cards .card:hover,.card:hover{transform:translateY(-2px);border-color:#a97a2c!important;box-shadow:0 12px 28px #0008!important}
+#recipesPage #cards .card img,.card img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:cover!important;background:#17120f!important;padding:0!important}
+#recipesPage #cards .card .body,.card .body{padding:14px!important;gap:9px!important;background:#211a16!important;color:#f5eee7!important}
+.card h3,.recipe-card-heading h3{color:#f6bd3b!important;font-family:Georgia,'Times New Roman',serif!important;font-size:1.08rem!important}
+.muted,.help,.recipe-swipe-count{color:#b8aaa0!important}
+.pill{background:#392b20!important;color:#f5d48c!important;border:1px solid #5d4832!important;border-radius:999px!important}
+.empty{background:#211a16!important;color:#c6b8aa!important;border:1px dashed #6b5747!important;border-radius:16px!important}
+#status{background:#30251e!important;color:#f5eee7!important;border:1px solid #6a543d!important}
+#status.err{background:#51251f!important;color:#ffe3dd!important}
+#recipesPage #welcomeGuideLaunch{background:linear-gradient(135deg,#30251e,#211a16)!important;border:1px solid #785a31!important;color:#f5eee7!important;border-radius:17px!important;box-shadow:0 7px 20px #0005!important}
+#welcomeGuideLaunch h2{color:#f6bd3b!important}
+#welcomeGuideLaunch>div:last-child{border-color:#5a493c!important}
+footer{background:#1b1613!important;color:#b8aaa0!important;border-top:1px solid #514238!important;padding:18px!important}
+footer button{background:#30251e!important;color:#f5eee7!important}
+.tools-sections{gap:10px!important}
+.tool-button{min-height:48px!important;text-align:left!important;border-radius:12px!important}
+.tool-dropdown{background:#211a16!important;border:1px solid #514238!important;border-radius:13px!important;overflow:hidden}
+.tool-dropdown>summary{background:#30251e!important;color:#f5d48c!important;padding:13px 14px!important;border-radius:10px!important}
+.tool-dropdown>.tool-content{background:#211a16!important;color:#f5eee7!important}
+#toolsPage .panel{padding:17px!important;border-radius:17px!important}
+#detailDlg,#editor,#importDlg,#backupDlg,#appIconDlg,#cookingHistoryDlg,#cookingEntryDlg,#licenseTermsDlg{background:#1b1613!important;color:#f5eee7!important;border:1px solid #66513e!important;border-radius:18px!important;box-shadow:0 18px 60px #000b!important}
+dialog::backdrop{background:#050403c9!important;backdrop-filter:blur(4px)}
+.mh{background:#2a2019!important;color:#f6bd3b!important;border-bottom:1px solid #5a493c!important;padding:14px 17px!important}
+.mh h2{color:#f6bd3b!important;font-family:Georgia,'Times New Roman',serif!important}
+.mb{background:#1b1613!important;color:#f5eee7!important}
+#detail{background:#211a16!important;color:#f5eee7!important;border:1px solid #765a37!important;border-radius:15px!important;box-shadow:0 5px 18px #0005!important}
+#detail h2,#detail h3{color:#f6bd3b!important;border-color:#5a493c!important}
+#detail p,#detail li,#detail pre{color:#f2e9df!important}
+.recipe-title-box{background:#30251e!important;border-color:#5a493c!important;color:#f6bd3b!important}
+.recipe-links{background:#30251e!important;border-color:#5a493c!important}
+.recipe-links a{color:#f6c75e!important}
+.scale-panel,.recipe-baking-timer{background:#30251e!important;border-color:#5a493c!important}
+.recipe-timer-display{color:#f6bd3b!important}
+#detailDlg .mh .recipe-zoom-controls strong{color:#f6bd3b!important}
+#detailDlg .mh .recipe-zoom-controls button{color:#f6bd3b!important}
+#browserCompatibilityNotice,#recipeBookUpdateNotice{background:#211a16!important;color:#f5eee7!important;border-color:#d99a22!important}
+#recipeBookInstallInvite{background:#211a16!important;color:#f5eee7!important}
+#recipeBookInstallInvite .install-invite-head{background:#30251e!important;color:#f6bd3b!important}
+#recipeBookInstallInvite .install-instructions{background:#30251e!important;color:#f5eee7!important}
+@media(max-width:700px){
+ main{padding:12px 10px 20px!important}
+ #recipesPage .recipe-list-toolbar{padding:11px!important;gap:9px!important}
+ #categorySearchHost{max-width:none!important;flex-basis:100%!important;order:2}
+ #listTitle{order:1}
+ #categoriesDropdown{order:3}
+ #sort{order:4;flex:1;min-width:130px}
+ #recipesPage #cards.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #recipesPage #cards .card .body{padding:9px!important;gap:7px!important}
+ .head-brand h1{font-size:1.12rem!important}
+ .head-actions button,.head-actions summary{min-height:34px!important;padding:5px 8px!important}
+}
+@media(max-width:390px){#recipesPage #cards.cards{grid-template-columns:1fr!important}}
+
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Extend the dark City Steading palette to App Tools and Quick Tools only. */
+#toolsPage .panel,
+#toolsPage .tool-content,
+#toolsPage .main-tool-dropdown,
+#toolsPage .tool-dropdown,
+#toolsPage .wine-mead-tools-dropdown,
+#toolsPage .tools-sections,
+#toolsPage .tools-sections > *,
+#toolsPage .tool-button,
+#toolsPage details,
+#toolsPage details > summary {
+  color: var(--ink, #f4ead7);
+}
+#toolsPage .panel,
+#toolsPage .tool-content,
+#toolsPage .main-tool-dropdown,
+#toolsPage .tool-dropdown,
+#toolsPage .wine-mead-tools-dropdown {
+  background: #211b16 !important;
+  border-color: #665039 !important;
+}
+#toolsPage .main-tool-dropdown > summary,
+#toolsPage .tool-dropdown > summary,
+#toolsPage .wine-mead-tools-dropdown > summary,
+#toolsPage details > summary {
+  background: #34271c !important;
+  color: #f2c46d !important;
+  border-color: #665039 !important;
+}
+#toolsPage .tool-button,
+#toolsPage button,
+#toolsPage .btn,
+#toolsPage button.alt {
+  background: #493522 !important;
+  color: #ffe2a2 !important;
+  border: 1px solid #9b7545 !important;
+}
+#toolsPage .tool-button:hover,
+#toolsPage button:hover,
+#toolsPage .btn:hover {
+  background: #60452a !important;
+}
+#toolsPage input,
+#toolsPage select,
+#toolsPage textarea {
+  background: #171310 !important;
+  color: #f7eedf !important;
+  border: 1px solid #806343 !important;
+}
+#toolsPage label,
+#toolsPage p,
+#toolsPage .help,
+#toolsPage small,
+#toolsPage h1,
+#toolsPage h2,
+#toolsPage h3,
+#toolsPage strong,
+#toolsPage .field {
+  color: #eadcc5;
+}
+#toolsPage hr,
+#toolsPage .divider { border-color: #665039 !important; }
+#toolsPage a { color: #f2c46d; }
+
+/* Quick Tools popover and its tool links; category dropdown is intentionally untouched. */
+#quickToolsDropdown .quick-tools-popover,
+#quickToolsDropdown > .tool-content,
+#quickToolsDropdown .tools-sections,
+#quickToolsDropdown .tool-dropdown,
+#quickToolsDropdown .tool-dropdown > .tool-content {
+  background: #211b16 !important;
+  color: #f4ead7 !important;
+  border-color: #665039 !important;
+}
+#quickToolsDropdown .quick-tools-popover {
+  border: 1px solid #806343 !important;
+  box-shadow: 0 12px 30px #0009 !important;
+}
+#quickToolsDropdown .quick-tools-popover button,
+#quickToolsDropdown .quick-tools-popover a,
+#quickToolsDropdown .quick-tools-popover .tool-button,
+#quickToolsDropdown .quick-tools-popover .quick-tool-link {
+  background: #493522 !important;
+  color: #ffe2a2 !important;
+  border-color: #9b7545 !important;
+}
+#quickToolsDropdown .quick-tools-popover button:hover,
+#quickToolsDropdown .quick-tools-popover a:hover {
+  background: #60452a !important;
+}
+#quickToolsDropdown .quick-tools-popover summary {
+  background: #34271c !important;
+  color: #f2c46d !important;
+  border-color: #665039 !important;
+}
+#quickToolsDropdown .quick-tools-popover p,
+#quickToolsDropdown .quick-tools-popover .help,
+#quickToolsDropdown .quick-tools-popover label,
+#quickToolsDropdown .quick-tools-popover .quick-tool-choice,
+#quickToolsDropdown .quick-tools-popover .quick-tool-group {
+  color: #eadcc5 !important;
+}
+#quickToolsDropdown .quick-tools-popover input,
+#quickToolsDropdown .quick-tools-popover select {
+  background: #171310 !important;
+  color: #f7eedf !important;
+  border-color: #806343 !important;
+}
+#quickToolsDropdown .quick-tool-order-row {
+  background: #30241a !important;
+  color: #f4ead7 !important;
+  border-color: #665039 !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Recipe Calendar theme support: both themes use readable, matching surfaces. */
+body[data-mrb-theme="light"] #calendarPage { background:#f5f2ec!important; color:#29251f!important; }
+body[data-mrb-theme="light"] #calendarPage .panel,
+body[data-mrb-theme="light"] #calendarPage .calendar-plan,
+body[data-mrb-theme="light"] #calendarPage .calendar-card { background:#fff!important; color:#29251f!important; border-color:#d9d4ca!important; }
+body[data-mrb-theme="light"] #calendarPage h1, body[data-mrb-theme="light"] #calendarPage h2,
+body[data-mrb-theme="light"] #calendarPage h3, body[data-mrb-theme="light"] #calendarPage h4,
+body[data-mrb-theme="light"] #calendarPage label, body[data-mrb-theme="light"] #calendarPage p,
+body[data-mrb-theme="light"] #calendarPage .help, body[data-mrb-theme="light"] #calendarPage .muted,
+body[data-mrb-theme="light"] #calendarPage .calendar-weekday, body[data-mrb-theme="light"] #calendarPage .calendar-task { color:#29251f!important; opacity:1!important; }
+body[data-mrb-theme="light"] #calendarPage input, body[data-mrb-theme="light"] #calendarPage select,
+body[data-mrb-theme="light"] #calendarPage textarea { background:#fff!important; color:#29251f!important; border:1px solid #c9c2b7!important; color-scheme:light; }
+body[data-mrb-theme="light"] #calendarPage input::placeholder, body[data-mrb-theme="light"] #calendarPage textarea::placeholder { color:#77716a!important; opacity:1!important; }
+body[data-mrb-theme="light"] #calendarPage .calendar-day { background:#fff!important; color:#29251f!important; }
+body[data-mrb-theme="light"] #calendarPage .calendar-day.selected { background:#eaf1ff!important; }
+body[data-mrb-theme="dark"] #calendarPage { background:#17110e!important; color:#f3e8d5!important; }
+body[data-mrb-theme="dark"] #calendarPage .panel,
+body[data-mrb-theme="dark"] #calendarPage .calendar-plan,
+body[data-mrb-theme="dark"] #calendarPage .calendar-card { background:#2b201a!important; color:#f3e8d5!important; border-color:#624b38!important; }
+body[data-mrb-theme="dark"] #calendarPage h1, body[data-mrb-theme="dark"] #calendarPage h2,
+body[data-mrb-theme="dark"] #calendarPage h3, body[data-mrb-theme="dark"] #calendarPage h4,
+body[data-mrb-theme="dark"] #calendarPage label, body[data-mrb-theme="dark"] #calendarPage p,
+body[data-mrb-theme="dark"] #calendarPage .help, body[data-mrb-theme="dark"] #calendarPage .muted,
+body[data-mrb-theme="dark"] #calendarPage .calendar-weekday, body[data-mrb-theme="dark"] #calendarPage .calendar-task { color:#f3e8d5!important; opacity:1!important; }
+body[data-mrb-theme="dark"] #calendarPage input, body[data-mrb-theme="dark"] #calendarPage select,
+body[data-mrb-theme="dark"] #calendarPage textarea { background:#17110e!important; color:#f7eedf!important; border:1px solid #806343!important; color-scheme:dark; }
+body[data-mrb-theme="dark"] #calendarPage input::placeholder, body[data-mrb-theme="dark"] #calendarPage textarea::placeholder { color:#c5b5a1!important; opacity:1!important; }
+body[data-mrb-theme="dark"] #calendarPage .calendar-day { background:#241a15!important; color:#f3e8d5!important; border-color:#624b38!important; }
+body[data-mrb-theme="dark"] #calendarPage .calendar-day.selected { background:#6a451d!important; }
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Dark-mode repair for every standalone tool page and calculator panel.
+   Scoped away from recipe cards and the normal light theme. */
+body[data-mrb-theme="dark"] .tool-content,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage),
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) .panel,
+body[data-mrb-theme="dark"] .panel.tool-content,
+body[data-mrb-theme="dark"] #standaloneNutritionCalculator,
+body[data-mrb-theme="dark"] #sugarNutritionChecker,
+body[data-mrb-theme="dark"] #doughCalculator,
+body[data-mrb-theme="dark"] #abvCalculator,
+body[data-mrb-theme="dark"] #abvBoostCalculator,
+body[data-mrb-theme="dark"] #sweetnessCalculator,
+body[data-mrb-theme="dark"] #hydrationCalculator,
+body[data-mrb-theme="dark"] #dryCureCalculator,
+body[data-mrb-theme="dark"] #timerPage,
+body[data-mrb-theme="dark"] #sugarNutritionPage {
+  background:#211a16 !important;
+  color:#f5eee7 !important;
+  border-color:#66513e !important;
+}
+body[data-mrb-theme="dark"] .tool-content h1,
+body[data-mrb-theme="dark"] .tool-content h2,
+body[data-mrb-theme="dark"] .tool-content h3,
+body[data-mrb-theme="dark"] .tool-content h4,
+body[data-mrb-theme="dark"] .tool-content label,
+body[data-mrb-theme="dark"] .tool-content p,
+body[data-mrb-theme="dark"] .tool-content li,
+body[data-mrb-theme="dark"] .tool-content small,
+body[data-mrb-theme="dark"] .tool-content strong,
+body[data-mrb-theme="dark"] .tool-content .help,
+body[data-mrb-theme="dark"] .tool-content .muted,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) h1,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) h2,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) h3,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) h4,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) label,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) p,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) li,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) small,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) strong,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) .help,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) .muted {
+  color:#eadcc5 !important;
+  opacity:1 !important;
+}
+body[data-mrb-theme="dark"] .tool-content [style*="background"],
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) [style*="background"] {
+  background-color:#30251e !important;
+  color:#f5eee7 !important;
+  border-color:#66513e !important;
+}
+body[data-mrb-theme="dark"] .tool-content input,
+body[data-mrb-theme="dark"] .tool-content select,
+body[data-mrb-theme="dark"] .tool-content textarea,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) input,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) select,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) textarea {
+  background:#17120f !important;
+  color:#f7eedf !important;
+  border:1px solid #806343 !important;
+  color-scheme:dark !important;
+}
+body[data-mrb-theme="dark"] .tool-content input::placeholder,
+body[data-mrb-theme="dark"] .tool-content textarea::placeholder,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) input::placeholder,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) textarea::placeholder {
+  color:#b8aaa0 !important;
+  opacity:1 !important;
+}
+body[data-mrb-theme="dark"] .tool-content button,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) button {
+  background:#d99518 !important;
+  color:#21170e !important;
+  border-color:#e6a92d !important;
+}
+body[data-mrb-theme="dark"] .tool-content button.alt,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) button.alt,
+body[data-mrb-theme="dark"] .tool-content .alt {
+  background:#493522 !important;
+  color:#ffe2a2 !important;
+  border-color:#9b7545 !important;
+}
+body[data-mrb-theme="dark"] .tool-content table,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) table {
+  background:#211a16 !important;
+  color:#f5eee7 !important;
+  border-color:#66513e !important;
+}
+body[data-mrb-theme="dark"] .tool-content th,
+body[data-mrb-theme="dark"] .tool-content td,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) th,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) td {
+  background:#30251e !important;
+  color:#f5eee7 !important;
+  border-color:#66513e !important;
+}
+body[data-mrb-theme="dark"] .tool-content hr,
+body[data-mrb-theme="dark"] .app-page:not(#recipesPage) hr {
+  border-color:#66513e !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Dark mode only: make the tool-group labels readable while preserving their pastel fills. */
+body[data-mrb-theme="dark"] #toolsPage .tools-direct-groups .tools-direct-group .tools-direct-heading,
+body[data-mrb-theme="dark"] #toolsPage .tools-direct-groups .tools-direct-group-0 .tools-direct-heading {
+  color:#263d1d !important; opacity:1 !important; -webkit-text-fill-color:#263d1d !important;
+}
+body[data-mrb-theme="dark"] #toolsPage .tools-direct-groups .tools-direct-group-1 .tools-direct-heading,
+body[data-mrb-theme="dark"] #toolsPage .wine-mead-tools-dropdown > summary {
+  color:#563b16 !important; opacity:1 !important; -webkit-text-fill-color:#563b16 !important;
+}
+body[data-mrb-theme="dark"] #toolsPage .tools-direct-groups .tools-direct-group-2 .tools-direct-heading,
+body[data-mrb-theme="dark"] #toolsPage .main-tool-dropdown > summary {
+  color:#203d5a !important; opacity:1 !important; -webkit-text-fill-color:#203d5a !important;
+}
+body[data-mrb-theme="dark"] #toolsPage .tools-direct-heading,
+body[data-mrb-theme="dark"] #toolsPage .wine-mead-tools-dropdown > summary,
+body[data-mrb-theme="dark"] #toolsPage .main-tool-dropdown > summary {
+  text-shadow:none !important; font-weight:850 !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Dark mode: the voice-command panel must match the recipe dialog, not the light theme. */
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel.panel,
+body[data-mrb-theme="dark"] #detailDlg #handsFreePanel {
+  background-color: #30251e !important;
+  background-image: none !important;
+  color: #f6ead8 !important;
+  border: 1px solid #70583f !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.32) !important;
+}
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel p,
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel .help,
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel #voiceStatus {
+  color: #d8c9b6 !important;
+  opacity: 1 !important;
+}
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel button.alt {
+  background-color: #3b2b20 !important;
+  background-image: none !important;
+  color: #f6ead8 !important;
+  border: 1px solid #70583f !important;
+}
+body[data-mrb-theme="dark"] dialog#detailDlg #handsFreePanel button:not(.alt) {
+  color: #24180e !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+body{font:16px Arial;max-width:760px;margin:25px auto}pre{white-space:pre-wrap;font:inherit}h2{border-bottom:1px solid #aaa}
+
+/* ---- Original style block boundary ---- */
+
+
+#welcomeGuideDlg{width:min(680px,calc(100% - 18px));max-height:92vh}
+#welcomeGuideDlg .guide-body{padding:14px}
+#welcomeGuideDlg .guide-tabs{display:flex;gap:8px;margin-bottom:12px}
+#welcomeGuideDlg .guide-tabs button{flex:1}
+#welcomeGuideDlg .guide-tabs button[aria-selected="true"]{background:var(--g);color:#fff}
+#welcomeGuideDlg .guide-stage{position:relative;min-height:205px;border-radius:14px;background:linear-gradient(145deg,#edf4ea,#f8faff);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;padding:16px}
+#welcomeGuideDlg .guide-scene{width:min(100%,390px);min-height:155px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative}
+#welcomeGuideDlg .guide-phone{width:116px;height:154px;border:5px solid #344238;border-radius:18px;background:#fff;box-shadow:0 5px 12px #0002;padding:9px 7px;position:relative;animation:guideFloat 2.6s ease-in-out infinite}
+#welcomeGuideDlg .guide-screenbar{height:10px;background:#e7ece5;border-radius:5px;margin-bottom:8px}
+#welcomeGuideDlg .guide-page-preview{height:116px;overflow:hidden;border:1px solid #dce3d9;border-radius:6px;background:#fbfcfa;padding:5px;color:#253126;font-size:6px;line-height:1.25;text-align:left;animation:guidePageIn .35s ease both}
+#welcomeGuideDlg .guide-preview-title{font-size:8px;font-weight:800;background:#1A73E8;color:#fff;border-radius:3px;padding:4px;margin:-5px -5px 5px}
+#welcomeGuideDlg .guide-preview-card{display:flex;align-items:center;gap:4px;padding:5px;margin:4px 0;background:#fff;border:1px solid #dce3d9;border-radius:4px;font-size:8px;font-weight:700}
+#welcomeGuideDlg .guide-preview-chip{display:inline-block;background:#eaf1e8;border-radius:5px;padding:3px 4px;margin:2px}
+#welcomeGuideDlg .guide-preview-line{height:5px;border-radius:3px;background:#dce8f5;margin:4px 0}
+#welcomeGuideDlg .guide-preview-line.short{width:62%}
+#welcomeGuideDlg .guide-preview-action{display:block;background:#1A73E8;color:#fff;border-radius:3px;padding:4px;margin:4px 0;font-weight:700}
+@keyframes guidePageIn{from{opacity:.35;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+#welcomeGuideDlg .guide-screenline{height:7px;background:#dce8f5;border-radius:5px;margin:7px 0}
+#welcomeGuideDlg .guide-screenline.short{width:62%}
+#welcomeGuideDlg .guide-recipe-card{height:48px;border-radius:7px;background:#f4eadb;margin:7px 0;display:grid;place-items:center;font-size:1.6rem;animation:guidePulse 2.2s ease-in-out infinite}
+#welcomeGuideDlg .guide-big-icon{font-size:3.6rem;filter:drop-shadow(0 4px 3px #0002);animation:guideBounce 1.8s ease-in-out infinite}
+#welcomeGuideDlg .guide-hand{position:absolute;right:20%;bottom:5px;font-size:2rem;animation:guideTap 1.6s ease-in-out infinite}
+#welcomeGuideDlg .guide-motion{font-size:1.5rem;color:var(--g);animation:guideArrow 1.2s ease-in-out infinite}
+#welcomeGuideDlg .guide-caption{text-align:center;margin:13px 0 4px;font-weight:750;font-size:1.08rem}
+#welcomeGuideDlg .guide-description{text-align:center;color:var(--muted);margin:0 auto;max-width:520px;min-height:44px}
+#welcomeGuideDlg .guide-progress{height:6px;background:#e7ece5;border-radius:9px;overflow:hidden;margin:14px 0 10px}
+#welcomeGuideDlg .guide-progress>span{display:block;height:100%;background:var(--g);width:0;transition:width .25s}
+#welcomeGuideDlg .guide-controls{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+#welcomeGuideDlg .guide-controls .right{display:flex;gap:8px}
+@keyframes guideFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes guidePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes guideBounce{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
+@keyframes guideTap{0%,65%,100%{transform:translate(0,0) scale(1)}78%{transform:translate(-7px,-8px) scale(.88)}}
+@keyframes guideArrow{0%,100%{transform:translateX(0);opacity:.55}50%{transform:translateX(7px);opacity:1}}
+@media(prefers-reduced-motion:reduce){#welcomeGuideDlg *,#welcomeGuideDlg *::before{animation:none!important;transition:none!important}}
+@media(max-width:430px){#welcomeGuideDlg .guide-stage{min-height:180px}#welcomeGuideDlg .guide-phone{width:100px;height:140px}#welcomeGuideDlg .guide-scene{gap:8px}}
+
+
+/* ---- Original style block boundary ---- */
+
+
+#recipeBookUpdateNotice{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:99999;max-width:560px;margin:0 auto;background:#fff;border:2px solid #1A73E8;border-radius:14px;box-shadow:0 8px 30px #0003;padding:14px;color:#253126;display:none}
+#recipeBookUpdateNotice strong{display:block;font-size:1.02rem;margin-bottom:4px}
+#recipeBookUpdateNotice p{margin:0 0 10px;font-size:.92rem}
+#recipeBookUpdateNotice .update-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+#recipeBookUpdateNotice button{min-width:104px}
+
+
+/* ---- Original style block boundary ---- */
+
+
+#recipeBookInstallInvite{width:min(460px,calc(100% - 24px));max-height:88vh;border:0;border-radius:18px;padding:0;box-shadow:0 16px 55px #0005}
+#recipeBookInstallInvite::backdrop{background:#17231899}
+#recipeBookInstallInvite .install-invite-head{background:var(--g);color:#fff;padding:18px 18px 14px;text-align:center}
+#recipeBookInstallInvite .install-invite-icon{font-size:2.7rem;line-height:1.2}
+#recipeBookInstallInvite h2{font-size:1.3rem;margin:5px 0}
+#recipeBookInstallInvite .install-invite-body{padding:18px;text-align:center}
+#recipeBookInstallInvite .install-invite-body p{margin:0 0 14px}
+#recipeBookInstallInvite .install-primary{width:100%;font-size:1.04rem;padding:13px}
+#recipeBookInstallInvite .install-secondary{width:100%;margin-top:9px}
+#recipeBookInstallInvite .install-instructions{margin:12px 0 0;padding:12px;border-radius:10px;background:#f2f6f0;text-align:left;font-size:.9rem}
+#recipeBookInstallInvite .install-instructions[hidden]{display:none}
+
+
+/* ---- Original style block boundary ---- */
+
+body{font:16px Arial;padding:24px}h1{font-size:22px}pre{white-space:pre-wrap;font:16px/1.6 Arial}
+
+/* ---- Original style block boundary ---- */
+
+
+.category-view-switch{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 12px;padding:10px 12px;background:var(--panel,#fff);border:1px solid var(--line);border-radius:11px}
+.category-view-switch label{font-size:.9rem;white-space:nowrap}.category-view-switch select{max-width:100%;flex:1;min-width:180px;padding:9px}
+.category-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:6px;margin:0 0 12px}.category-tiles{align-items:start;grid-auto-rows:min-content}.category-dropdown-item{align-self:start}
+.category-tile{background:var(--panel,#fff);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:7px 9px;text-align:left;min-height:40px;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:6px}
+.category-tile strong{font-size:.86rem;line-height:1.2;overflow-wrap:anywhere}.category-tile span{font-size:.82rem;color:var(--muted);flex-shrink:0}.category-tile.active{border:2px solid var(--g);background:var(--soft,#f1f6ff);color:var(--g)}
+.category-accordion{display:grid;gap:9px;margin:0 0 14px}.category-accordion details{background:var(--panel,#fff);border:1px solid var(--line);border-radius:11px;overflow:hidden}.category-accordion summary{cursor:pointer;list-style:none;padding:13px 14px;font-weight:750;display:flex;justify-content:space-between;align-items:center;gap:10px}.category-accordion summary::-webkit-details-marker{display:none}.category-accordion summary:after{content:'＋';color:var(--g);font-size:1.1rem}.category-accordion details[open]>summary:after{content:'−'}.category-accordion .accordion-recipes{padding:0 10px 10px}.category-accordion .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+@media(max-width:500px){.category-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.category-accordion .cards{grid-template-columns:1fr}}
+
+
+/* ---- Original style block boundary ---- */
+
+
+#browserCompatibilityNotice{position:fixed;z-index:10050;left:12px;right:12px;bottom:12px;max-width:680px;margin:0 auto;background:var(--panel,#fff);color:var(--ink,#222);border:1px solid var(--line,#ccc);border-left:5px solid var(--g,#477b52);border-radius:13px;box-shadow:0 8px 30px #0003;padding:14px 15px;font:inherit;max-height:65vh;overflow:auto}
+#browserCompatibilityNotice[hidden]{display:none}
+#browserCompatibilityNotice h3{margin:0 34px 7px 0;font-size:1.02rem}
+#browserCompatibilityNotice p{margin:6px 0;font-size:.9rem;line-height:1.45}
+#browserCompatibilityNotice ul{margin:7px 0 8px;padding-left:21px;font-size:.88rem;line-height:1.45}
+#browserCompatibilityNotice .compat-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#browserCompatibilityNotice button{font:inherit;padding:8px 12px;border-radius:9px;cursor:pointer}
+#browserCompatibilityNotice .compat-close{position:absolute;right:10px;top:8px;min-width:34px;padding:5px;background:transparent;border:0;font-size:1.2rem}
+#browserCompatibilityNotice .compat-good{color:var(--g,#27643a);font-weight:700}
+#browserCompatibilityNotice .compat-warn{color:#9a5b00;font-weight:700}
+@media(max-width:480px){#browserCompatibilityNotice{left:8px;right:8px;bottom:8px;padding:12px}}
+
+
+/* ---- Original style block boundary ---- */
+
+
+#licenseTermsDlg{color:var(--ink,#222);background:var(--panel,#fff);border:1px solid var(--line,#ccc);border-radius:14px;padding:0;box-shadow:0 12px 45px #0005}
+#licenseTermsDlg::backdrop{background:#0009}
+#licenseTermsDlg .mh{position:sticky;top:0;background:var(--panel,#fff);z-index:1}
+#licenseTermsDlg h3{margin:16px 0 6px;font-size:1rem}
+#licenseTermsDlg ul{padding-left:22px}
+#licenseTermsDlg li{margin:5px 0}
+
+
+/* ---- Original style block boundary ---- */
+
+
+.category-accordion summary{user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:pointer}
+.category-accordion summary:active{background:var(--soft,#f1f6ff)}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Optional light appearance. Layout and category interactions are unchanged. */
+body[data-mrb-theme="light"], body[data-mrb-theme="light"] main,
+body[data-mrb-theme="light"] #recipesPage,
+body[data-mrb-theme="light"] #toolsPage,
+body[data-mrb-theme="light"] footer {background:#f5f2ec!important;color:#29251f!important}
+body[data-mrb-theme="light"] header{background:rgba(255,255,255,.97)!important;color:#29251f!important;border-bottom:1px solid #d8d0c4!important;box-shadow:0 5px 18px #0001!important}
+body[data-mrb-theme="light"] .head-brand h1,
+body[data-mrb-theme="light"] #listTitle,
+body[data-mrb-theme="light"] .card h3,
+body[data-mrb-theme="light"] .recipe-card-heading h3{color:#79501d!important}
+body[data-mrb-theme="light"] #recipesPage .recipe-list-toolbar,
+body[data-mrb-theme="light"] #recipesPage #cards .card,
+body[data-mrb-theme="light"] .card,
+body[data-mrb-theme="light"] #toolsPage .panel,
+body[data-mrb-theme="light"] #toolsPage .tool-content,
+body[data-mrb-theme="light"] #toolsPage .main-tool-dropdown,
+body[data-mrb-theme="light"] #toolsPage .tool-dropdown,
+body[data-mrb-theme="light"] #toolsPage .wine-mead-tools-dropdown,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover,
+body[data-mrb-theme="light"] #quickToolsDropdown > .tool-content,
+body[data-mrb-theme="light"] #quickToolsDropdown .tools-sections,
+body[data-mrb-theme="light"] #quickToolsDropdown .tool-dropdown,
+body[data-mrb-theme="light"] #quickToolsDropdown .tool-dropdown > .tool-content,
+body[data-mrb-theme="light"] .empty,
+body[data-mrb-theme="light"] #detail,
+body[data-mrb-theme="light"] .recipe-title-box,
+body[data-mrb-theme="light"] .recipe-links,
+body[data-mrb-theme="light"] .scale-panel,
+body[data-mrb-theme="light"] .recipe-baking-timer {background:#fff!important;color:#29251f!important;border-color:#d8d0c4!important;box-shadow:0 3px 12px #0000000d!important}
+body[data-mrb-theme="light"] #recipesPage #cards .card .body,
+body[data-mrb-theme="light"] .card .body,
+body[data-mrb-theme="light"] #toolsPage .tool-dropdown > .tool-content,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover {color:#29251f!important}
+body[data-mrb-theme="light"] #toolsPage .main-tool-dropdown > summary,
+body[data-mrb-theme="light"] #toolsPage .tool-dropdown > summary,
+body[data-mrb-theme="light"] #toolsPage .wine-mead-tools-dropdown > summary,
+body[data-mrb-theme="light"] #toolsPage details > summary,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover summary {background:#eee7dc!important;color:#70491b!important;border-color:#d8d0c4!important}
+body[data-mrb-theme="light"] input,body[data-mrb-theme="light"] textarea,body[data-mrb-theme="light"] select,
+body[data-mrb-theme="light"] #toolsPage input,body[data-mrb-theme="light"] #toolsPage select,body[data-mrb-theme="light"] #toolsPage textarea,
+body[data-mrb-theme="light"] #quickToolsDropdown input,body[data-mrb-theme="light"] #quickToolsDropdown select {background:#fff!important;color:#29251f!important;border-color:#cfc5b7!important}
+body[data-mrb-theme="light"] button,
+body[data-mrb-theme="light"] #toolsPage .tool-button,
+body[data-mrb-theme="light"] #toolsPage button,
+body[data-mrb-theme="light"] #toolsPage .btn,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover button,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover a,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover .tool-button,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover .quick-tool-link {background:#e6c58d!important;color:#352515!important;border-color:#c39b5d!important}
+body[data-mrb-theme="light"] button.alt,
+body[data-mrb-theme="light"] .cattool,
+body[data-mrb-theme="light"] .category-tile,
+body[data-mrb-theme="light"] .tool-button.alt {background:#eee7dc!important;color:#40372d!important;border-color:#d2c6b6!important}
+body[data-mrb-theme="light"] .muted,body[data-mrb-theme="light"] .help,
+body[data-mrb-theme="light"] .recipe-swipe-count,body[data-mrb-theme="light"] #toolsPage label,
+body[data-mrb-theme="light"] #toolsPage p,body[data-mrb-theme="light"] #toolsPage .help,
+body[data-mrb-theme="light"] #toolsPage small,body[data-mrb-theme="light"] #toolsPage h1,
+body[data-mrb-theme="light"] #toolsPage h2,body[data-mrb-theme="light"] #toolsPage h3,
+body[data-mrb-theme="light"] #toolsPage strong,body[data-mrb-theme="light"] #toolsPage .field,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover p,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover .help,
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tools-popover label {color:#51483e!important}
+body[data-mrb-theme="light"] .pill{background:#f3eadb!important;color:#70491b!important;border-color:#d8c6a9!important}
+body[data-mrb-theme="light"] #status{background:#eee7dc!important;color:#29251f!important;border-color:#d8d0c4!important}
+body[data-mrb-theme="light"] footer{border-top:1px solid #d8d0c4!important;color:#51483e!important}
+body[data-mrb-theme="light"] #detailDlg,body[data-mrb-theme="light"] #editor,
+body[data-mrb-theme="light"] #importDlg,body[data-mrb-theme="light"] #backupDlg,
+body[data-mrb-theme="light"] #appIconDlg,body[data-mrb-theme="light"] #cookingHistoryDlg,
+body[data-mrb-theme="light"] #cookingEntryDlg,body[data-mrb-theme="light"] #licenseTermsDlg {background:#fff!important;color:#29251f!important;border-color:#d8d0c4!important}
+body[data-mrb-theme="light"] .mh{background:#eee7dc!important;color:#70491b!important;border-color:#d8d0c4!important}
+body[data-mrb-theme="light"] .mh h2,body[data-mrb-theme="light"] #detail h2,
+body[data-mrb-theme="light"] #detail h3{color:#79501d!important}
+body[data-mrb-theme="light"] .mb{background:#fff!important;color:#29251f!important}
+body[data-mrb-theme="light"] #detail p,body[data-mrb-theme="light"] #detail li,
+body[data-mrb-theme="light"] #detail pre{color:#29251f!important}
+body[data-mrb-theme="light"] #quickToolsDropdown .quick-tool-order-row{background:#f4eee5!important;color:#29251f!important;border-color:#d8d0c4!important}
+body[data-mrb-theme="light"] #recipeBookInstallInvite,
+body[data-mrb-theme="light"] #browserCompatibilityNotice,
+body[data-mrb-theme="light"] #recipeBookUpdateNotice{background:#fff!important;color:#29251f!important}
+#themeModeBtn{white-space:nowrap;font-size:.82rem!important;padding:7px 10px!important;min-height:36px!important}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Dark mode polish based on the phone screenshot: consistent surfaces and readable text. */
+body[data-mrb-theme="dark"] #recipesPage .recipe-list-toolbar,
+body[data-mrb-theme="dark"] #recipesPage .category-tiles,
+body[data-mrb-theme="dark"] #recipesPage .categories-menu,
+body[data-mrb-theme="dark"] #recipesPage .categories-popover,
+body[data-mrb-theme="dark"] #recipesPage .catlist,
+body[data-mrb-theme="dark"] #recipesPage .cat-heading,
+body[data-mrb-theme="dark"] #recipesPage .add-category-box {
+  background:#211a16!important;color:#f5eee7!important;border-color:#514238!important;
+}
+body[data-mrb-theme="dark"] #recipesPage .category-tiles button,
+body[data-mrb-theme="dark"] #recipesPage .category-tiles .category-tile,
+body[data-mrb-theme="dark"] #recipesPage .categories-menu>summary,
+body[data-mrb-theme="dark"] #recipesPage .catlist button,
+body[data-mrb-theme="dark"] #recipesPage .catlist .cattool {
+  background:#30251e!important;color:#f5e7d2!important;border:1px solid #66513e!important;
+}
+body[data-mrb-theme="dark"] #recipesPage .category-tiles button.active,
+body[data-mrb-theme="dark"] #recipesPage .category-tiles .active,
+body[data-mrb-theme="dark"] #recipesPage .catlist button.active {
+  background:#d99518!important;color:#21170e!important;border-color:#e6a92d!important;
+}
+body[data-mrb-theme="dark"] #recipesPage .recipe-list-toolbar #listTitle {color:#f6bd3b!important}
+body[data-mrb-theme="dark"] #recipesPage .recipe-list-toolbar input,
+body[data-mrb-theme="dark"] #recipesPage .recipe-list-toolbar select {
+  background:#17120f!important;color:#f5eee7!important;border-color:#66513e!important;
+}
+body[data-mrb-theme="dark"] #recipesPage #cards .card,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body {
+  background:#211a16!important;color:#f5eee7!important;
+}
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body p,
+body[data-mrb-theme="dark"] #recipesPage #cards .card p,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .description,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .muted,
+body[data-mrb-theme="dark"] #recipesPage #cards .card small {
+  color:#e2d8cd!important;opacity:1!important;
+}
+body[data-mrb-theme="dark"] #recipesPage #cards .card h3,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .recipe-card-heading h3 {
+  color:#f6bd3b!important;
+}
+body[data-mrb-theme="dark"] #recipesPage #cards .card .pill {
+  background:#392b20!important;color:#ffe0a0!important;border-color:#765a37!important;
+}
+@media(max-width:700px){
+ body[data-mrb-theme="dark"] #recipesPage #cards .card .body {padding:10px!important;gap:8px!important}
+ body[data-mrb-theme="dark"] #recipesPage #cards .card .body p,
+ body[data-mrb-theme="dark"] #recipesPage #cards .card p {font-size:.91rem!important;line-height:1.45!important}
+ body[data-mrb-theme="dark"] #recipesPage #cards .card h3 {font-size:1.03rem!important;line-height:1.3!important}
+ body[data-mrb-theme="dark"] #recipesPage #cards .card .body p:not(.pill) {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+ body[data-mrb-theme="dark"] #recipesPage #cards .card .body button {font-size:.82rem!important;padding:8px 9px!important;min-width:0!important}
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Target the real existing recipe toolbar and category markup. Styling only: no layout or behavior changes. */
+body[data-mrb-theme="dark"] #recipesPage .toolbar.recipe-list-toolbar,
+body[data-mrb-theme="dark"] #recipesPage .category-location-menu,
+body[data-mrb-theme="dark"] #recipesPage .categories-popover,
+body[data-mrb-theme="dark"] #recipesPage .cat-heading,
+body[data-mrb-theme="dark"] #recipesPage #categoryContents,
+body[data-mrb-theme="dark"] #recipesPage .catlist,
+body[data-mrb-theme="dark"] #recipesPage .add-category-box,
+body[data-mrb-theme="dark"] #recipesPage .category-subcategory-menu {
+  background:#211a16!important;color:#f5eee7!important;border-color:#594638!important;
+}
+body[data-mrb-theme="dark"] #recipesPage .toolbar.recipe-list-toolbar {
+  border:1px solid #594638!important;border-radius:16px!important;padding:12px!important;
+  box-shadow:0 5px 18px #0005!important;
+}
+body[data-mrb-theme="dark"] #recipesPage #listTitle,
+body[data-mrb-theme="dark"] #recipesPage .cat-heading h2,
+body[data-mrb-theme="dark"] #recipesPage .categories-popover h2 {color:#f3bd55!important}
+body[data-mrb-theme="dark"] #recipesPage .category-location-menu>summary,
+body[data-mrb-theme="dark"] #recipesPage .category-tile,
+body[data-mrb-theme="dark"] #recipesPage .category-dropdown-line>.category-tile,
+body[data-mrb-theme="dark"] #recipesPage .category-subitem .category-tile,
+body[data-mrb-theme="dark"] #recipesPage .catlist button,
+body[data-mrb-theme="dark"] #recipesPage .catlist .cattool {
+  background:#34271f!important;color:#f7ead8!important;border:1px solid #6a503b!important;
+  box-shadow:0 3px 9px #0005!important;
+}
+body[data-mrb-theme="dark"] #recipesPage .category-tile.active,
+body[data-mrb-theme="dark"] #recipesPage .category-tile[aria-pressed="true"],
+body[data-mrb-theme="dark"] #recipesPage .catlist button.active {
+  background:#d99a2b!important;color:#21170e!important;border-color:#f0bd5a!important;
+}
+body[data-mrb-theme="dark"] #recipesPage input#search,
+body[data-mrb-theme="dark"] #recipesPage #sort,
+body[data-mrb-theme="dark"] #recipesPage #newCat {
+  background:#17120f!important;color:#fff4e8!important;border:1px solid #6a503b!important;
+}
+body[data-mrb-theme="dark"] #recipesPage input#search::placeholder,
+body[data-mrb-theme="dark"] #recipesPage #newCat::placeholder {color:#c9b9a8!important;opacity:1!important}
+body[data-mrb-theme="dark"] #recipesPage #cards .card,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body {background:#211a16!important;color:#f5eee7!important}
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body p,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body .muted,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body .description,
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body small {color:#e7ded4!important;opacity:1!important}
+body[data-mrb-theme="dark"] #recipesPage #cards .card .body h3 {color:#f3bd55!important}
+body[data-mrb-theme="dark"] #recipesPage #cards .card .pill {background:#3b2c20!important;color:#ffe4b4!important;border-color:#785b3b!important}
+body[data-mrb-theme="dark"] #recipesPage .categories-popover,
+body[data-mrb-theme="dark"] #recipesPage .category-subcategory-menu {box-shadow:0 10px 28px #0009!important}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Light mode: restore the recipe cards to the original light appearance.
+   Other light-mode surfaces and all dark-mode styling remain unchanged. */
+body[data-mrb-theme="light"] #recipesPage #cards .card,
+body[data-mrb-theme="light"] #recipesPage #cards .card .body {
+  background:#ffffff!important;
+  color:#253126!important;
+  border-color:#dce3d9!important;
+}
+body[data-mrb-theme="light"] #recipesPage #cards .card .body h3,
+body[data-mrb-theme="light"] #recipesPage #cards .card .recipe-card-heading h3 {
+  color:#253126!important;
+}
+body[data-mrb-theme="light"] #recipesPage #cards .card .body p,
+body[data-mrb-theme="light"] #recipesPage #cards .card .body .muted,
+body[data-mrb-theme="light"] #recipesPage #cards .card .body .description,
+body[data-mrb-theme="light"] #recipesPage #cards .card .body small {
+  color:#667267!important;
+  opacity:1!important;
+}
+body[data-mrb-theme="light"] #recipesPage #cards .card .pill {
+  background:#eef2eb!important;color:#253126!important;border-color:#dce3d9!important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* In Light Mode, match Quick Tools and the gear to the category selector buttons. */
+body[data-mrb-theme="light"] .head-actions .quick-tools-menu > summary,
+body[data-mrb-theme="light"] .head-actions .tools-gear {
+  background: #e7ece5 !important;
+  color: #263627 !important;
+  border: 1px solid #bac8b8 !important;
+  box-shadow: 0 2px 5px #00000020 !important;
+}
+body[data-mrb-theme="light"] .head-actions .quick-tools-menu[open] > summary,
+body[data-mrb-theme="light"] .head-actions .tools-gear[aria-current="page"] {
+  background: #e7ece5 !important;
+  color: #263627 !important;
+  border-color: #bac8b8 !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Light Mode: style the actual Quick Tools header control (details > summary),
+   not only the links inside its opened menu. */
+body[data-mrb-theme="light"] .head-actions #quickToolsDropdown,
+body[data-mrb-theme="light"] .head-actions #quickToolsDropdown > summary,
+body[data-mrb-theme="light"] header .head-actions #quickToolsDropdown > summary {
+  background:#e6c58d !important;
+  background-color:#e6c58d !important;
+  color:#352515 !important;
+  border:1px solid #c39b5d !important;
+  box-shadow:0 2px 5px rgba(0,0,0,.12) !important;
+}
+body[data-mrb-theme="light"] .head-actions #quickToolsDropdown > summary:hover,
+body[data-mrb-theme="light"] header .head-actions #quickToolsDropdown > summary:hover {
+  background:#dcb777 !important;
+  color:#2d2014 !important;
+}
+body[data-mrb-theme="light"] .head-actions #quickToolsDropdown[open] > summary {
+  background:#dcb777 !important;
+  color:#2d2014 !important;
+}
+
+
+/* ---- Original style block boundary ---- */
+
+
+#customBrewPage .panel{border-radius:18px}
+#customBrewPage .field{margin:14px 0}
+#customBrewPage .field label{display:block;margin-bottom:7px}
+#customBrewPage input,#customBrewPage select,#customBrewPage textarea{width:100%;box-sizing:border-box;max-width:100%;font:inherit}
+#customBrewPage textarea{resize:vertical;min-height:86px}
+#customBrewPage .custom-brew-card{border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0;background:var(--panel,transparent)}
+#customBrewPage .custom-brew-card h3{margin:0 0 5px}
+#customBrewPage .custom-brew-meta{color:var(--muted);font-size:.92rem;margin:4px 0 10px}
+#customBrewPage .custom-brew-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#customBrewPage .custom-brew-actions button{min-height:40px}
+
+
+/* ---- Original style block boundary ---- */
+
+
+body.mrb-section-chooser .head-actions #quickToolsDropdown,body.mrb-section-chooser .head-actions .tools-gear{display:none!important}
+#sectionChooserPage{max-width:980px;margin:0 auto;padding:clamp(18px,4vw,38px) 14px 32px}
+.section-welcome{text-align:center;margin:10px 0 24px}.section-welcome h1{font-size:clamp(1.6rem,4vw,2.25rem);margin:0 0 8px}.section-welcome p{margin:0;color:var(--muted,#777)}
+.section-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.section-choice{display:flex;flex-direction:column;align-items:stretch;text-align:left;overflow:hidden;padding:0!important;border:1px solid var(--line)!important;border-radius:18px!important;background:var(--panel)!important;color:var(--ink)!important;box-shadow:0 5px 16px rgba(0,0,0,.10);min-width:0;white-space:normal}
+.section-choice-photo{display:block;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center}
+.baking-photo{background-image:linear-gradient(135deg,#b88750,#f2d9a2 48%,#8c5d35)}
+.smoking-photo{background-image:linear-gradient(135deg,#65402e,#bd7850 52%,#e2b57c)}
+.brewing-photo{background-image:linear-gradient(135deg,#563a26,#a56e3d 50%,#d7ae70)}
+.section-choice-title{font-size:1.3rem;font-weight:800;padding:14px 15px 4px}.section-choice-desc{font-size:.92rem;font-weight:500;line-height:1.45;padding:0 15px 17px;color:var(--muted,#777)}
+.section-choice:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+body[data-mrb-theme="dark"] .section-choice{background:#30251d!important;color:#f6e8c4!important;border-color:#796344!important}
+body[data-mrb-theme="dark"] .section-choice-desc{color:#d4c7b5}
+.tools-direct-group[data-section="Baking"],.tools-direct-group[data-section="Smoking / Curing"],.tools-direct-group[data-section="Brewing"]{display:none}
+#toolsPage[data-current-section="Baking"] .tools-direct-group[data-section="Baking"],#toolsPage[data-current-section="Smoking / Curing"] .tools-direct-group[data-section="Smoking / Curing"],#toolsPage[data-current-section="Brewing"] .tools-direct-group[data-section="Brewing"]{display:block}
+#toolsPage .tools-direct-group[data-section="App Tools"]{display:block}
+@media(max-width:700px){.section-choice-grid{grid-template-columns:1fr;gap:12px}.section-choice{display:grid;grid-template-columns:36% 1fr;grid-template-rows:auto 1fr;align-items:center}.section-choice-photo{grid-row:1/3;height:100%;min-height:112px;aspect-ratio:auto}.section-choice-title{padding:10px 12px 3px;font-size:1.12rem}.section-choice-desc{padding:0 12px 10px;font-size:.85rem}}
+
+
+/* ---- Original style block boundary ---- */
+
+
+.quick-tools-panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;padding:2px 0 8px;border-bottom:1px solid var(--line)}
+.quick-tools-panel-header strong{color:var(--ink);font-size:.98rem}
+.quick-tools-close-btn{flex:0 0 auto;min-height:36px;padding:6px 11px}
+
+
+/* ---- Original style block boundary ---- */
+
+
+/* Shared responsive recipe-card layout for Baking, Smoking/Curing and Brewing. */
+#recipesPage .toolbar.recipe-list-toolbar{
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ align-items:center!important;justify-content:stretch!important;gap:9px!important;
+ width:100%!important;min-width:0!important;
+}
+#recipesPage .toolbar.recipe-list-toolbar #listTitle{
+ grid-column:1/-1!important;display:block!important;width:100%!important;min-width:0!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.3!important;
+}
+#recipesPage #switchSectionBtn,#recipesPage #sectionAddRecipeBtn{
+ width:100%!important;min-width:0!important;white-space:normal!important;
+}
+#recipesPage #categorySearchHost,#recipesPage #categoriesDropdown,#recipesPage #sort{
+ grid-column:1/-1!important;width:100%!important;max-width:none!important;min-width:0!important;
+}
+#recipesPage #categorySearchHost input{width:100%!important;min-width:0!important}
+#recipesPage #cards.cards{
+ display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important;
+ gap:16px!important;width:100%!important;max-width:100%!important;min-width:0!important;
+}
+#recipesPage #cards .card{width:100%!important;min-width:0!important}
+#recipesPage #cards .card .body{min-width:0!important}
+#recipesPage #cards .card .recipe-card-description{overflow-wrap:anywhere!important}
+#recipesPage #cards .card .actions{
+ display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+ align-items:center!important;gap:7px!important;
+}
+#recipesPage #cards .card .actions button{flex:0 1 auto!important;min-width:0!important;white-space:nowrap!important}
+@media(max-width:620px){
+ #recipesPage #cards.cards{grid-template-columns:minmax(0,1fr)!important}
+ #recipesPage #cards .card .body{padding:13px!important}
+ #recipesPage #cards .card .actions button{font-size:.88rem!important;padding:8px 10px!important}
+}
+
+/* Ensure the two additional Brewing calculators remain visible in their section. */
+#toolsPage .tools-direct-group[data-section="Brewing"] #openAbvBoostCalculatorBtn,
+#toolsPage .tools-direct-group[data-section="Brewing"] #openSweetnessCalculatorBtn {
+  display:block!important; visibility:visible!important; width:100%!important; min-height:44px;
+}
+
+
+
+/* ===== next original style block ===== */
+
+body{font:16px Arial;max-width:760px;margin:25px auto}pre{white-space:pre-wrap;font:inherit}h2{border-bottom:1px solid #aaa}
+
+/* ===== next original style block ===== */
+
+body{font:16px Arial;padding:24px}h1{font-size:22px}pre{white-space:pre-wrap;font:16px/1.6 Arial}

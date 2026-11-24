@@ -1,68 +1,19 @@
-// My Recipe Book service worker — photo persistence release v6
-const CACHE = 'my-recipe-book-rebuilt-v6';
-const CACHE_PREFIX = 'my-recipe-book-rebuilt-';
-const APP_FILES = ['./', './index.html', './manifest.webmanifest'];
+// My Recipe Book - test service worker
+// Temporary diagnostic version: no app files are cached.
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE)
-      .then(cache => cache.addAll(APP_FILES))
-      .then(() => self.skipWaiting())
-  );
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
 });
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(
-        keys
-          .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE)
-          .map(key => caches.delete(key))
-      ))
-      .then(() => self.clients.claim())
-  );
+self.addEventListener("activate", (event) => {
+  event.waitUntil((async () => {
+    const cacheNames = await caches.keys();
+    await Promise.all(cacheNames.map((name) => caches.delete(name)));
+    await self.clients.claim();
+  })());
 });
 
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET') return;
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return;
-
-  const isPage = request.mode === 'navigate' ||
-    request.destination === 'document' ||
-    url.pathname.endsWith('/index.html');
-
-  if (isPage) {
-    event.respondWith(
-      fetch(request, { cache: 'no-store' })
-        .then(async response => {
-          if (response && response.ok) {
-            const cache = await caches.open(CACHE);
-            await cache.put(request, response.clone());
-          }
-          return response;
-        })
-        .catch(async () => {
-          const cached = await caches.match(request);
-          if (cached) return cached;
-          const appShell = new URL('./index.html', self.registration.scope).href;
-          return (await caches.match(appShell)) || Response.error();
-        })
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
-      return fetch(request).then(async response => {
-        if (response && response.ok) {
-          const cache = await caches.open(CACHE);
-          await cache.put(request, response.clone());
-        }
-        return response;
-      });
-    })
-  );
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+  event.respondWith(fetch(event.request));
 });

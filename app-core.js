@@ -339,7 +339,7 @@ function renderQuickTools(){
  const selected=getQuickToolSelection().filter(id=>QUICK_TOOL_ITEMS.some(x=>x.id===id));
  const links=$('quickToolsLinks');
  links.innerHTML='';
- QUICK_TOOL_ITEMS.filter(x=>selected.includes(x.id)&&(document.body.classList.contains('mrb-section-chooser')||x.group===((currentSection||'Baking')+' Tools')||x.group==='App Tools')).forEach(item=>{const b=document.createElement('button');b.type='button';b.className='tool-button alt';b.textContent=item.label;b.addEventListener('click',()=>openQuickTool(item.id));links.appendChild(b);});
+ QUICK_TOOL_ITEMS.filter(x=>selected.includes(x.id)&&(!$('sectionChooserPage').classList.contains('hidden')||x.group===((currentSection||'Baking')+' Tools')||x.group==='App Tools')).forEach(item=>{const b=document.createElement('button');b.type='button';b.className='tool-button alt';b.textContent=item.label;b.addEventListener('click',()=>openQuickTool(item.id));links.appendChild(b);});
  if(!links.children.length){const note=document.createElement('p');note.className='help';note.textContent='No quick tools selected. Open “Add or remove Quick Tools” to choose some.';links.appendChild(note);}
  ['quickToolsManager','appQuickToolsManager','bakingQuickToolsManager','hydrationQuickToolsManager'].forEach(containerId=>{
   const host=$(containerId);if(!host)return;host.innerHTML='';

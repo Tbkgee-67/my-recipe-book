@@ -301,8 +301,41 @@ const QUICK_TOOL_ITEMS=[
 ];
 const QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION='myRecipeBook_quick_tools_dough_default_v1';
 const QUICK_TOOLS_SUGAR_MIGRATION='myRecipeBook_quick_tools_sugar_v1';
-function getQuickToolSelection(){try{const raw=localStorage.getItem(QUICK_TOOLS_KEY);let v=raw?JSON.parse(raw):null;if(!Array.isArray(v))v=['drycure','starter','hydration','dough'];if(localStorage.getItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION)!=='done'){if(!v.includes('dough'))v.push('dough');localStorage.setItem(QUICK_TOOLS_KEY,JSON.stringify(v));localStorage.setItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION,'done');}if(localStorage.getItem(QUICK_TOOLS_SUGAR_MIGRATION)!=='done'){if(!v.includes('sugarNutrition'))v.push('sugarNutrition');localStorage.setItem(QUICK_TOOLS_KEY,JSON.stringify(v));localStorage.setItem(QUICK_TOOLS_SUGAR_MIGRATION,'done');}v=v.filter(id=>id!=='preservation'&&id!=='family');localStorage.setItem(QUICK_TOOLS_KEY,JSON.stringify(v));return v;}catch{return ['drycure','starter','hydration','dough','sugarNutrition'];}}
-function saveQuickToolSelection(ids){try{localStorage.setItem(QUICK_TOOLS_KEY,JSON.stringify(ids));localStorage.setItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION,'done');}catch{}}
+// The startup page and each recipe section keep their own independent selection.
+function getQuickToolsScope(){
+ if(!$('sectionChooserPage').classList.contains('hidden'))return 'startup';
+ return currentSection==='Smoking / Curing'?'smoking':currentSection==='Brewing'?'brewing':'baking';
+}
+function getQuickToolsStorageKey(scope=getQuickToolsScope()){
+ return scope==='startup'?QUICK_TOOLS_KEY:QUICK_TOOLS_KEY+'_'+scope;
+}
+function getQuickToolSelection(scope=getQuickToolsScope()){
+ try{
+  const key=getQuickToolsStorageKey(scope);
+  let raw=localStorage.getItem(key);
+  // Preserve the existing selection on the startup page. New section lists begin
+  // with only tools relevant to that section, then can be customized separately.
+  if(raw===null&&scope!=='startup'){
+   const base=getQuickToolSelection('startup');
+   const group=scope==='smoking'?'Smoking / Curing Tools':scope==='brewing'?'Brewing Tools':'Baking Tools';
+   const initial=base.filter(id=>{const item=QUICK_TOOL_ITEMS.find(x=>x.id===id);return item&&(item.group===group||item.group==='App Tools');});
+   localStorage.setItem(key,JSON.stringify(initial));
+   return initial;
+  }
+  let v=raw?JSON.parse(raw):null;
+  if(!Array.isArray(v))v=['drycure','starter','hydration','dough'];
+  if(scope==='startup'){
+   if(localStorage.getItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION)!=='done'){if(!v.includes('dough'))v.push('dough');localStorage.setItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION,'done');}
+   if(localStorage.getItem(QUICK_TOOLS_SUGAR_MIGRATION)!=='done'){if(!v.includes('sugarNutrition'))v.push('sugarNutrition');localStorage.setItem(QUICK_TOOLS_SUGAR_MIGRATION,'done');}
+  }
+  v=v.filter(id=>id!=='preservation'&&id!=='family');
+  localStorage.setItem(key,JSON.stringify(v));
+  return v;
+ }catch{return ['drycure','starter','hydration','dough','sugarNutrition'];}
+}
+function saveQuickToolSelection(ids,scope=getQuickToolsScope()){
+ try{localStorage.setItem(getQuickToolsStorageKey(scope),JSON.stringify(ids));if(scope==='startup')localStorage.setItem(QUICK_TOOLS_DOUGH_DEFAULT_MIGRATION,'done');}catch{}
+}
 function openQuickTool(id){const item=QUICK_TOOL_ITEMS.find(x=>x.id===id);if(!item)return;const menu=$('quickToolsDropdown');if(menu)menu.open=false;quickToolMode=true;if(id==='calendar'){calendarRecipeOptions();if(!$('calendarStart').value)$('calendarStart').value=calendarDateKey(new Date());showPage('calendar');renderCalendar();return;}if(item.page==='action'){showPage('recipes');if(id==='backup')$('backupBtn').click();else if(id==='pin')$('pinSettingsBtn').click();else if(id==='addrecipe')$('addBtn').click();else if(id==='import')$('importBtn').click();else if(id==='autosave')$('autoSaveLocationBtn').click();return;}showPage(item.page);}
 // Pointer-based drag sorting works with mouse, touchscreen and stylus.
 function enableTouchDragSort(list,row,handle,onCommit){

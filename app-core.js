@@ -1252,7 +1252,11 @@ async function syncDriveNow(quiet=true){
     if(locallyDeleted.includes(rid))continue;
     const i=recipes.findIndex(r=>String(r.id)===rid);
     if(i<0){
-     if(!recipes.some(r=>r.title===cr.title&&r.ingredients===cr.ingredients))recipes.push(cr);
+     if(!recipes.some(r=>r.title===cr.title&&r.ingredients===cr.ingredients)){
+      // Store incoming cloud photos in IndexedDB before compacting localStorage.
+      if(cr.photo)await storeRecipePhoto(rid,cr.photo);
+      recipes.push(cr);
+     }
     }
     // If this recipe ID already exists locally, keep the local copy. This
     // prevents an older or conflicting Drive version from replacing it.
@@ -1265,7 +1269,7 @@ async function syncDriveNow(quiet=true){
  }catch(e){driveSay('Automatic sync paused: '+(e.message||'Drive sync failed')+'. Reconnect Drive if needed.',true)}
  finally{driveSyncBusy=false}
 }
-function saveLocalOnly(){try{localStorage.setItem(K,JSON.stringify(recipes));localStorage.setItem(CK,JSON.stringify(cats));localStorage.setItem(SK,$('shopText').value)}catch{}}
+function saveLocalOnly(){try{const compact=recipes.map(r=>{const x={...r};delete x.photo;return x});localStorage.setItem(K,JSON.stringify(compact));localStorage.setItem(CK,JSON.stringify(cats));localStorage.setItem(SK,$('shopText').value)}catch{}}
 async function uploadDriveBackupCore(){
  const existing=await driveApi('/files?q='+encodeURIComponent("name='my-recipe-book-backup.json' and trashed=false")+'&spaces=drive&pageSize=10&orderBy=modifiedTime desc&fields=files(id,name,modifiedTime)');
  const fileData=JSON.stringify({app:'My Recipe Book',version:2,updated:new Date().toISOString(),categories:cats,deletedRecipeIds:getDeletedRecipeIds(),recipes,cookingHistory:JSON.parse(localStorage.getItem('myRecipeBook_cooking_history_v1')||'[]')},null,2);const boundary='recipebook_'+Date.now();

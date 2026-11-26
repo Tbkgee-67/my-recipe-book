@@ -201,8 +201,8 @@ $('saveCategoryManager').onclick=()=>{const section=currentSection||'Baking';con
 $('cancelCategoryManager').onclick=$('categoryManagerBackBtn').onclick=()=>showPage('tools');
 $('openCategoryManagerBtn').onclick=startCategoryManager;
 
-$('toolsGearBtn').onclick=()=>showPage($('recipesPage').classList.contains('hidden')?'recipes':'tools');$('switchSectionBtn').onclick=showMRBSectionChooser;document.querySelectorAll('[data-mrb-section]').forEach(btn=>btn.addEventListener('click',()=>chooseMRBSection(btn.dataset.mrbSection)));
-$('appToolsBackBtn').onclick=()=>showPage('recipes');
+$('toolsGearBtn').onclick=()=>{if(!$('toolsPage').classList.contains('hidden'))showPage(currentSection?'recipes':'sectionChooser');else showPage('tools')};$('switchSectionBtn').onclick=showMRBSectionChooser;document.querySelectorAll('[data-mrb-section]').forEach(btn=>btn.addEventListener('click',()=>chooseMRBSection(btn.dataset.mrbSection)));
+$('appToolsBackBtn').onclick=()=>showPage(currentSection?'recipes':'sectionChooser');
 $('quickStarterBtn').onclick=()=>showPage('starter');
 
 $('quickTimerBtn').onclick=()=>showPage('timer');

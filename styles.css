@@ -1457,3 +1457,7 @@ body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-
   color: #f5eee7 !important;
 }
 
+
+
+/* Dark-mode-only release: never display the retired theme switch. */
+#themeModeBtn{display:none!important;visibility:hidden!important;pointer-events:none!important}

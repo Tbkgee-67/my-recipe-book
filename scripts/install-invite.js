@@ -1,83 +1,115 @@
-(()=>{
- 'use strict';
- const dlg=document.getElementById('recipeBookInstallInvite');
- const installBtn=document.getElementById('recipeBookInstallAction');
- const laterBtn=document.getElementById('recipeBookInstallLater');
- const instructions=document.getElementById('recipeBookInstallInstructions');
- if(!dlg||!installBtn||!laterBtn)return;
- const DISMISSED_KEY='myRecipeBook_installInviteDismissed_v1';
- let installPrompt=null,shown=false;
- const isInstalled=()=>{
-  try{return window.matchMedia('(display-mode: standalone)').matches ||
-    window.matchMedia('(display-mode: minimal-ui)').matches ||
-    window.navigator.standalone===true ||
-    document.referrer.startsWith('android-app://');}
-  catch(e){return false}
- };
- window.addEventListener('beforeinstallprompt',event=>{
-  event.preventDefault();
-  installPrompt=event;
-  installBtn.textContent='⬇ Install My Recipe Book';
-  installBtn.hidden=false;
- });
- window.addEventListener('appinstalled',()=>{
-  installPrompt=null;
-  try{localStorage.setItem(DISMISSED_KEY,'installed')}catch(e){}
-  if(dlg.open)dlg.close();
- });
- function deviceInstructions(){
-  const ua=navigator.userAgent||'';
-  if(/iPhone|iPad|iPod/i.test(ua)){
-   return '<strong>Install on iPhone or iPad</strong><br>Tap the Share button in Safari, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>. If you are using another browser, open this website in Safari first.';
-  }
-  if(/Android/i.test(ua)){
-   return '<strong>Install on Android</strong><br>Tap your browser menu (⋮) and choose <strong>Install app</strong> or <strong>Add to Home screen</strong>, then follow the prompts.';
-  }
-  return '<strong>Install on your computer</strong><br>In Chrome or Edge, look for the install icon in the address bar, or open the browser menu and choose <strong>Install My Recipe Book</strong> / <strong>Install this site as an app</strong>, if available.';
- }
- function show(){
-  if(shown||isInstalled())return;
-  try{if(localStorage.getItem(DISMISSED_KEY))return;}catch(e){}
-  shown=true;
-  if(!dlg.open){if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');}
- }
- function schedule(){
-  if(isInstalled())return;
-  window.setTimeout(()=>{
-   const welcome=document.getElementById('welcomeGuideDlg');
-   if(welcome&&welcome.open){
-    welcome.addEventListener('close',()=>window.setTimeout(show,500),{once:true});
-   }else show();
-  },2200);
- }
- installBtn.addEventListener('click',async()=>{
-  if(installPrompt){
-   const promptEvent=installPrompt;
-   installPrompt=null;
-   try{
-    await promptEvent.prompt();
-    const choice=await promptEvent.userChoice;
-    if(choice&&choice.outcome==='accepted'){
-     try{localStorage.setItem(DISMISSED_KEY,'installed')}catch(e){}
-     if(dlg.open)dlg.close();
-     return;
+/* My Recipe Book installation invitation */
+(() => {
+  "use strict";
+
+  const dialog = document.getElementById("recipeBookInstallInvite");
+  const installButton = document.getElementById("recipeBookInstallAction");
+  const laterButton = document.getElementById("recipeBookInstallLater");
+  const instructions = document.getElementById("recipeBookInstallInstructions");
+  if (!dialog || !installButton || !laterButton || !instructions) return;
+
+  const STORAGE_KEY = "myRecipeBook_installInviteDismissed_v2";
+  const REMIND_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
+  let installPrompt = null;
+  let retryCount = 0;
+
+  const isInstalled = () => {
+    try {
+      return window.matchMedia("(display-mode: standalone)").matches ||
+        window.matchMedia("(display-mode: minimal-ui)").matches ||
+        window.navigator.standalone === true ||
+        document.referrer.startsWith("android-app://");
+    } catch (_) { return false; }
+  };
+
+  const markDismissed = (value = String(Date.now())) => {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+  };
+
+  const dismiss = () => {
+    markDismissed();
+    if (dialog.open) dialog.close();
+  };
+
+  const deviceInstructions = () => {
+    const ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      return "<strong>Install on iPhone or iPad</strong><br>In Safari, tap the Share button, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.";
     }
-   }catch(e){}
-   installBtn.textContent='Install option not available';
-   instructions.innerHTML=deviceInstructions();
-   instructions.hidden=false;
-   return;
+    if (/Android/i.test(ua)) {
+      return "<strong>Install on Android</strong><br>Tap your browser menu (⋮), then choose <strong>Install app</strong> or <strong>Add to Home screen</strong> and follow the prompts.";
+    }
+    return "<strong>Install on your computer</strong><br>In Chrome or Edge, look for the install icon in the address bar, or open the browser menu and choose <strong>Install My Recipe Book</strong>, if available.";
+  };
+
+  const showInvite = () => {
+    if (isInstalled() || dialog.open) return;
+    const anotherDialogOpen = Array.from(document.querySelectorAll("dialog"))
+      .some((item) => item !== dialog && item.open);
+    if (anotherDialogOpen) {
+      if (retryCount++ < 12) window.setTimeout(showInvite, 5000);
+      return;
+    }
+    try { dialog.showModal(); } catch (_) {}
+  };
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    installButton.textContent = "⬇ Install My Recipe Book";
+  });
+
+  window.addEventListener("appinstalled", () => {
+    installPrompt = null;
+    markDismissed("installed");
+    if (dialog.open) dialog.close();
+  });
+
+  laterButton.addEventListener("click", dismiss);
+  dialog.addEventListener("cancel", dismiss);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dismiss();
+  });
+
+  installButton.addEventListener("click", async () => {
+    if (isInstalled()) {
+      markDismissed("installed");
+      if (dialog.open) dialog.close();
+      return;
+    }
+
+    if (installPrompt) {
+      const promptEvent = installPrompt;
+      installPrompt = null;
+      try {
+        await promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
+        if (choice && choice.outcome === "accepted") {
+          markDismissed("installed");
+          if (dialog.open) dialog.close();
+          return;
+        }
+      } catch (_) {}
+    }
+
+    instructions.innerHTML = deviceInstructions();
+    instructions.hidden = false;
+    installButton.textContent = "Got it";
+    installButton.onclick = dismiss;
+  });
+
+  if (isInstalled()) {
+    markDismissed("installed");
+    return;
   }
-  instructions.innerHTML=deviceInstructions();
-  instructions.hidden=false;
-  installBtn.textContent='See installation instructions';
- });
- function dismiss(){
-  try{localStorage.setItem(DISMISSED_KEY,'yes')}catch(e){}
-  if(typeof dlg.close==='function'&&dlg.open)dlg.close();else dlg.removeAttribute('open');
- }
- laterBtn.addEventListener('click',dismiss);
- dlg.addEventListener('click',event=>{if(event.target===dlg)dismiss()});
- dlg.addEventListener('cancel',dismiss);
- schedule();
+
+  let lastDismissed = "";
+  try { lastDismissed = localStorage.getItem(STORAGE_KEY) || ""; } catch (_) {}
+  if (lastDismissed === "installed") return;
+  const lastTime = Number(lastDismissed) || 0;
+  if (Date.now() - lastTime < REMIND_AFTER_MS) return;
+
+  window.addEventListener("load", () => {
+    window.setTimeout(showInvite, 8000);
+  }, { once: true });
 })();

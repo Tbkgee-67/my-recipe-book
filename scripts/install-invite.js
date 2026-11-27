@@ -98,7 +98,30 @@
     installButton.onclick = dismiss;
   });
 
+  const toolsInstallButton = document.getElementById("openInstallFromToolsBtn");
+  if (toolsInstallButton) {
+    toolsInstallButton.addEventListener("click", () => {
+      instructions.hidden = false;
+      if (isInstalled()) {
+        instructions.innerHTML = "<strong>My Recipe Book is already installed</strong><br>You can open it from your home screen or apps list.";
+        installButton.textContent = "Close";
+        installButton.onclick = () => { if (dialog.open) dialog.close(); };
+      } else {
+        instructions.hidden = true;
+        instructions.innerHTML = "";
+        installButton.textContent = "⬇ Install My Recipe Book";
+        installButton.onclick = null;
+      }
+      if (!dialog.open) {
+        try { dialog.showModal(); } catch (_) {}
+      }
+    });
+  }
+
   if (isInstalled()) {
+    markDismissed("installed");
+    return;
+  }  if (isInstalled()) {
     markDismissed("installed");
     return;
   }

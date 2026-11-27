@@ -8,7 +8,7 @@
     const instructions = document.getElementById("recipeBookInstallInstructions");
     if (!dialog || !installButton || !laterButton || !instructions) return;
 
-    const KEY = "mrb_install_invite_preview_dismissed";
+    const KEY = "mrb_install_invite_preview_dismissed_v2";
     const WEEK = 7 * 24 * 60 * 60 * 1000;
     let promptEvent = null;
     const installed = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;

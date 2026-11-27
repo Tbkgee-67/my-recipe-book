@@ -16,7 +16,12 @@
 <body>
 <main class="preview">
   <h1>📖 My Recipe Book</h1>
-  <p>This is a separate preview of the install invitation. It does not change your recipes or the live app.</p>
+  <p>This is a separate preview of the install invitation and the new App Tools option. It does not change your recipes or the live app.</p>
+  <section style="margin:28px auto;padding:18px;border:1px solid #66564a;border-radius:14px;background:#292019;text-align:left">
+    <h2 style="margin-top:0">🧰 App Tools &amp; Settings</h2>
+    <button type="button" id="openInstallFromToolsBtn" class="install-primary" style="width:100%">📲 Install My Recipe Book</button>
+    <p style="font-size:13px;margin-bottom:0">This button will always be available here, even after choosing “Maybe later”.</p>
+  </section>
   <p><a href="../index.html">Open the live recipe book</a></p>
 </main>
 
@@ -45,6 +50,13 @@
     installPrompt = event;
   });
   later.addEventListener("click", () => dialog.close());
+  document.getElementById("openInstallFromToolsBtn").addEventListener("click", () => {
+    instructions.hidden = true;
+    instructions.innerHTML = "";
+    install.textContent = "⬇ Install My Recipe Book";
+    install.onclick = null;
+    if (!dialog.open) dialog.showModal();
+  });
   install.addEventListener("click", async () => {
     if (installPrompt) {
       const prompt = installPrompt;

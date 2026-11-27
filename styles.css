@@ -1473,3 +1473,27 @@ body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-
 #quickToolsDropdown .quick-tools-popover > .tool-dropdown{
   box-shadow:none!important;
 }
+
+/* Quick Tools Add/Remove row: use one clean summary control, not a nested double outline. */
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown{
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding:0!important;
+  margin-top:10px!important;
+}
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown > summary::after{
+  content:none!important;
+  display:none!important;
+}
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown > summary{
+  border:1px solid #806343!important;
+  border-radius:10px!important;
+}
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown > .tool-content{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  margin:0!important;
+}

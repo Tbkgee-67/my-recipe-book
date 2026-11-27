@@ -17,6 +17,7 @@ function recipeMarkup(r,actions=true){
  ${r.notes?`<h2>Notes</h2><pre>${lines(r.notes)}</pre>`:''}
  ${r.videoLink?`<p><a href="${esc(r.videoLink)}" target="_blank" rel="noopener">Watch video</a></p>`:''}
  ${r.websiteLink?`<p><a href="${esc(r.websiteLink)}" target="_blank" rel="noopener">Recipe website</a></p>`:''}
+ ${r.sourceLink?`<p class="source">Recipe source: <a href="${esc(r.sourceLink)}" target="_blank" rel="noopener">${esc(r.sourceName||"Original source")}</a></p>`:'' }
  </article>`;
 }
 function downloadRecipeById(id){

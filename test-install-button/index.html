@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#211a16">
+<title>My Recipe Book — Install Invitation Preview</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;padding:24px;background:#17130f;color:#f5eee7;font:16px Arial,sans-serif;min-height:100vh;display:grid;place-items:center;text-align:center}
+  .preview{max-width:520px}
+  .preview p{line-height:1.6}
+  .preview a{color:#f6bd3b}
+</style>
+</head>
+<body>
+<main class="preview">
+  <h1>📖 My Recipe Book</h1>
+  <p>This is a separate preview of the install invitation and the new App Tools option. It does not change your recipes or the live app.</p>
+  <section style="margin:28px auto;padding:18px;border:1px solid #66564a;border-radius:14px;background:#292019;text-align:left">
+    <h2 style="margin-top:0">🧰 App Tools &amp; Settings</h2>
+    <button type="button" id="openInstallFromToolsBtn" class="install-primary" style="width:100%">📲 Install My Recipe Book</button>
+    <p style="font-size:13px;margin-bottom:0">This button will always be available here, even after choosing “Maybe later”.</p>
+  </section>
+  <p><a href="../index.html">Open the live recipe book</a></p>
+</main>
+
+<dialog id="recipeBookInstallInvite" aria-labelledby="recipeBookInstallTitle">
+ <div class="install-invite-head">
+  <div class="install-invite-icon" aria-hidden="true">📖</div>
+  <h2 id="recipeBookInstallTitle">Enjoying My Recipe Book?</h2>
+  <div>Your recipes, ready whenever you need them.</div>
+ </div>
+ <div class="install-invite-body">
+  <p>If you're enjoying My Recipe Book and think you'll get good use out of it, why not install it on your device? Add it to your home screen for quick and easy access whenever you need it.</p>
+  <button type="button" class="install-primary" id="recipeBookInstallAction">⬇ Install My Recipe Book</button>
+  <div class="install-instructions" id="recipeBookInstallInstructions" hidden></div>
+  <button type="button" class="alt install-secondary" id="recipeBookInstallLater">Maybe later</button>
+ </div>
+</dialog>
+<script>
+(() => {
+  const dialog = document.getElementById("recipeBookInstallInvite");
+  const install = document.getElementById("recipeBookInstallAction");
+  const later = document.getElementById("recipeBookInstallLater");
+  const instructions = document.getElementById("recipeBookInstallInstructions");
+  let installPrompt = null;
+  window.addEventListener("beforeinstallprompt", event => {
+    event.preventDefault();
+    installPrompt = event;
+  });
+  later.addEventListener("click", () => dialog.close());
+  document.getElementById("openInstallFromToolsBtn").addEventListener("click", () => {
+    instructions.hidden = true;
+    instructions.innerHTML = "";
+    install.textContent = "⬇ Install My Recipe Book";
+    install.onclick = null;
+    if (!dialog.open) dialog.showModal();
+  });
+  install.addEventListener("click", async () => {
+    if (installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      try {
+        await prompt.prompt();
+        const choice = await prompt.userChoice;
+        if (choice && choice.outcome === "accepted") {
+          dialog.close();
+          return;
+        }
+      } catch (_) {}
+    }
+    const ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      instructions.innerHTML = "<strong>On iPhone or iPad</strong><br>Open this page in Safari, tap Share, choose <strong>Add to Home Screen</strong>, then tap Add.";
+    } else if (/Android/i.test(ua)) {
+      instructions.innerHTML = "<strong>On Android</strong><br>Tap your browser menu (⋮), choose <strong>Install app</strong> or <strong>Add to Home screen</strong>, then follow the prompts.";
+    } else {
+      instructions.innerHTML = "<strong>On a computer</strong><br>In Chrome or Edge, open the browser menu and choose Install, if available.";
+    }
+    instructions.hidden = false;
+    install.textContent = "Got it";
+    install.onclick = () => dialog.close();
+  });
+  // Preview only: deliberately show every time so it can be tested.
+  window.setTimeout(() => {
+    if (!dialog.open) dialog.showModal();
+  }, 700);
+})();
+</script>
+</body>
+</html>

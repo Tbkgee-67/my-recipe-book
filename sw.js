@@ -1,5 +1,5 @@
 // My Recipe Book - production service worker
-// Release marker: retire theme toggle script and hide button (2026-11-26)
+// Release marker: fix dark-only theme script syntax (2026-11-26)
 // Network-first keeps the installed app current when online, with a cache fallback offline.
 
 const CACHE_PREFIX = "my-recipe-book-cache:";

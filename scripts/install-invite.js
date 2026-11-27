@@ -1,4 +1,4 @@
-/* My Recipe Book installation invitation */
+/* My Recipe Book installation invitation and App Tools installer */
 (() => {
   "use strict";
 
@@ -6,11 +6,12 @@
   const installButton = document.getElementById("recipeBookInstallAction");
   const laterButton = document.getElementById("recipeBookInstallLater");
   const instructions = document.getElementById("recipeBookInstallInstructions");
+  const toolsInstallButton = document.getElementById("openInstallFromToolsBtn");
   if (!dialog || !installButton || !laterButton || !instructions) return;
 
   const STORAGE_KEY = "myRecipeBook_installInviteDismissed_v2";
   const REMIND_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
-  let installPrompt = null;
+  let deferredInstallPrompt = null;
   let retryCount = 0;
 
   const isInstalled = () => {
@@ -26,20 +27,32 @@
     try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
   };
 
-  const dismiss = () => {
-    markDismissed();
+  const closeDialog = () => {
     if (dialog.open) dialog.close();
   };
 
-  const deviceInstructions = () => {
+  const dismissInvite = () => {
+    markDismissed();
+    closeDialog();
+  };
+
+  const showInstructions = () => {
     const ua = navigator.userAgent || "";
     if (/iPhone|iPad|iPod/i.test(ua)) {
-      return "<strong>Install on iPhone or iPad</strong><br>In Safari, tap the Share button, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.";
+      instructions.innerHTML = "<strong>Install on iPhone or iPad</strong><br>In Safari, tap the Share button, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.";
+    } else if (/Android/i.test(ua)) {
+      instructions.innerHTML = "<strong>Install on Android</strong><br>If the direct install prompt is unavailable, open your browser menu (⋮), choose <strong>Install app</strong> or <strong>Add to Home screen</strong>, then follow the prompts.";
+    } else {
+      instructions.innerHTML = "<strong>Install on your computer</strong><br>In Chrome or Edge, use the install icon in the address bar or choose <strong>Install My Recipe Book</strong> from the browser menu, if available.";
     }
-    if (/Android/i.test(ua)) {
-      return "<strong>Install on Android</strong><br>Tap your browser menu (⋮), then choose <strong>Install app</strong> or <strong>Add to Home screen</strong> and follow the prompts.";
+    instructions.hidden = false;
+    installButton.textContent = "Got it";
+  };
+
+  const openDialog = () => {
+    if (!dialog.open) {
+      try { dialog.showModal(); } catch (_) {}
     }
-    return "<strong>Install on your computer</strong><br>In Chrome or Edge, look for the install icon in the address bar, or open the browser menu and choose <strong>Install My Recipe Book</strong>, if available.";
   };
 
   const showInvite = () => {
@@ -50,78 +63,87 @@
       if (retryCount++ < 12) window.setTimeout(showInvite, 5000);
       return;
     }
-    try { dialog.showModal(); } catch (_) {}
+    openDialog();
+  };
+
+  const resetInstallDialog = () => {
+    instructions.hidden = true;
+    instructions.textContent = "";
+    installButton.textContent = "⬇ Install My Recipe Book";
   };
 
   window.addEventListener("beforeinstallprompt", (event) => {
+    // Keep the browser's native install confirmation available to our button.
     event.preventDefault();
-    installPrompt = event;
+    deferredInstallPrompt = event;
     installButton.textContent = "⬇ Install My Recipe Book";
   });
 
   window.addEventListener("appinstalled", () => {
-    installPrompt = null;
+    deferredInstallPrompt = null;
     markDismissed("installed");
-    if (dialog.open) dialog.close();
+    closeDialog();
   });
 
-  laterButton.addEventListener("click", dismiss);
-  dialog.addEventListener("cancel", dismiss);
+  laterButton.addEventListener("click", dismissInvite);
+  dialog.addEventListener("cancel", dismissInvite);
   dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) dismiss();
+    if (event.target === dialog) dismissInvite();
   });
 
   installButton.addEventListener("click", async () => {
     if (isInstalled()) {
       markDismissed("installed");
-      if (dialog.open) dialog.close();
+      closeDialog();
       return;
     }
 
-    if (installPrompt) {
-      const promptEvent = installPrompt;
-      installPrompt = null;
+    // On supported Android/desktop browsers this opens the native install sheet.
+    if (deferredInstallPrompt) {
+      const promptEvent = deferredInstallPrompt;
+      deferredInstallPrompt = null;
       try {
         await promptEvent.prompt();
         const choice = await promptEvent.userChoice;
         if (choice && choice.outcome === "accepted") {
           markDismissed("installed");
-          if (dialog.open) dialog.close();
+          closeDialog();
           return;
         }
-      } catch (_) {}
+        // The user chose not to install yet. Keep the dialog available.
+        installButton.textContent = "⬇ Try installing again";
+        return;
+      } catch (_) {
+        // If the native prompt fails, provide browser-specific instructions below.
+      }
     }
 
-    instructions.innerHTML = deviceInstructions();
-    instructions.hidden = false;
-    installButton.textContent = "Got it";
-    installButton.onclick = dismiss;
+    showInstructions();
+    installButton.onclick = () => {
+      installButton.onclick = null;
+      closeDialog();
+    };
   });
 
-  const toolsInstallButton = document.getElementById("openInstallFromToolsBtn");
   if (toolsInstallButton) {
     toolsInstallButton.addEventListener("click", () => {
-      instructions.hidden = false;
       if (isInstalled()) {
         instructions.innerHTML = "<strong>My Recipe Book is already installed</strong><br>You can open it from your home screen or apps list.";
+        instructions.hidden = false;
         installButton.textContent = "Close";
-        installButton.onclick = () => { if (dialog.open) dialog.close(); };
+        installButton.onclick = () => {
+          installButton.onclick = null;
+          closeDialog();
+        };
       } else {
-        instructions.hidden = true;
-        instructions.innerHTML = "";
-        installButton.textContent = "⬇ Install My Recipe Book";
+        resetInstallDialog();
         installButton.onclick = null;
       }
-      if (!dialog.open) {
-        try { dialog.showModal(); } catch (_) {}
-      }
+      openDialog();
     });
   }
 
   if (isInstalled()) {
-    markDismissed("installed");
-    return;
-  }  if (isInstalled()) {
     markDismissed("installed");
     return;
   }

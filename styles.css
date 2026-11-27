@@ -1461,3 +1461,15 @@ body[data-mrb-theme="dark"] #caloriePage #standaloneNutritionCalculator .recipe-
 
 /* Dark-mode-only release: never display the retired theme switch. */
 #themeModeBtn{display:none!important;visibility:hidden!important;pointer-events:none!important}
+
+/* Quick Tools: prevent the Add/Remove accordion body from drawing a second panel border. */
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown > .tool-content{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  margin:0!important;
+}
+#quickToolsDropdown .quick-tools-popover > .tool-dropdown{
+  box-shadow:none!important;
+}

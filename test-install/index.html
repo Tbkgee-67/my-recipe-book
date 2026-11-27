@@ -33,6 +33,48 @@
   <button type="button" class="alt install-secondary" id="recipeBookInstallLater">Maybe later</button>
  </div>
 </dialog>
-<script src="install-invite.js"></script>
+<script>
+(() => {
+  const dialog = document.getElementById("recipeBookInstallInvite");
+  const install = document.getElementById("recipeBookInstallAction");
+  const later = document.getElementById("recipeBookInstallLater");
+  const instructions = document.getElementById("recipeBookInstallInstructions");
+  let installPrompt = null;
+  window.addEventListener("beforeinstallprompt", event => {
+    event.preventDefault();
+    installPrompt = event;
+  });
+  later.addEventListener("click", () => dialog.close());
+  install.addEventListener("click", async () => {
+    if (installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      try {
+        await prompt.prompt();
+        const choice = await prompt.userChoice;
+        if (choice && choice.outcome === "accepted") {
+          dialog.close();
+          return;
+        }
+      } catch (_) {}
+    }
+    const ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      instructions.innerHTML = "<strong>On iPhone or iPad</strong><br>Open this page in Safari, tap Share, choose <strong>Add to Home Screen</strong>, then tap Add.";
+    } else if (/Android/i.test(ua)) {
+      instructions.innerHTML = "<strong>On Android</strong><br>Tap your browser menu (⋮), choose <strong>Install app</strong> or <strong>Add to Home screen</strong>, then follow the prompts.";
+    } else {
+      instructions.innerHTML = "<strong>On a computer</strong><br>In Chrome or Edge, open the browser menu and choose Install, if available.";
+    }
+    instructions.hidden = false;
+    install.textContent = "Got it";
+    install.onclick = () => dialog.close();
+  });
+  // Preview only: deliberately show every time so it can be tested.
+  window.setTimeout(() => {
+    if (!dialog.open) dialog.showModal();
+  }, 700);
+})();
+</script>
 </body>
 </html>

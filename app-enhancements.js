@@ -9,10 +9,15 @@
 (function(){
  function applyDarkMode(){
   document.body.setAttribute('data-mrb-theme','dark');
-  const oldButton=document.getElementById('themeModeBtn');
-  if(oldButton)oldButton.remove();
+  const removeThemeButton=()=>{document.getElementById('themeModeBtn')?.remove();};
+  removeThemeButton();
+  // Keep the switch hidden even if an older cached script tries to recreate it.
+  if(!window.__mrbDarkOnlyObserver){
+   window.__mrbDarkOnlyObserver=new MutationObserver(removeThemeButton);
+   window.__mrbDarkOnlyObserver.observe(document.documentElement,{childList:true,subtree:true});
+  }
   try{localStorage.removeItem('myRecipeBook_displayTheme_v1');}catch(e){}
-  const meta=document.querySelector('meta[name="theme-color"]');
+  const meta=document.querySelector('meta[name="theme-color"]);
   if(meta)meta.content='#1b1613';
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyDarkMode,{once:true});else applyDarkMode();

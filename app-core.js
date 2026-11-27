@@ -129,13 +129,34 @@ $('detail').addEventListener('click',event=>{
 });
 function open(n){$(n).showModal()}function close(n){if(n==='detailDlg'){if('speechSynthesis'in window)speechSynthesis.cancel();clearTimeout(voiceTimer);if(voiceRecognition&&voiceListening){try{voiceRecognition.stop()}catch{}}setActiveCooking(false);}$(n).close()}$('detailDlg').addEventListener('close',()=>setActiveCooking(false));
 let quickToolMode=false;
-function showPage(which){document.body.classList.toggle('mrb-section-chooser',which==='sectionChooser');if(which==='tools'&&quickToolMode){which='recipes';quickToolMode=false;}const pages=['sectionChooser','recipes','tools','calendar','inventory','categories','starter','timer','baking','calorie','sugarNutrition','hydration','dough','measurement','cookingTemps','substitutes','pantry','shopping','bakersPct','preferment','doughTemp','abv','abvBoost','sweetness','customBrew'];pages.forEach(p=>$(p==='sectionChooser'?'sectionChooserPage':p==='recipes'?'recipesPage':p==='tools'?'toolsPage':p==='calendar'?'calendarPage':p==='inventory'?'inventoryPage':p==='categories'?'categoriesPage':p==='starter'?'starterPage':p==='timer'?'timerPage':p==='calorie'?'caloriePage':p==='sugarNutrition'?'sugarNutritionPage':p==='hydration'?'hydrationPage':p==='dough'?'doughPage':p==='measurement'?'measurementPage':p==='cookingTemps'?'cookingTempsPage':p==='substitutes'?'substitutesPage':p==='pantry'?'pantryPage':p==='shopping'?'shoppingPage':p==='bakersPct'?'bakersPctPage':p==='preferment'?'prefermentPage':p==='doughTemp'?'doughTempPage':p==='abv'?'abvPage':p==='abvBoost'?'abvBoostPage':p==='sweetness'?'sweetnessPage':p==='customBrew'?'customBrewPage':'bakingPage').classList.toggle('hidden',p!==which));if(which==='recipes'||which==='sectionChooser'){$('toolsGearBtn').textContent='⚙';$('toolsGearBtn').removeAttribute('aria-current');$('toolsGearBtn').setAttribute('aria-label','Open Tools and Settings');$('toolsGearBtn').title='Tools & Settings'}else{$('toolsGearBtn').textContent='←';$('toolsGearBtn').setAttribute('aria-current','page');$('toolsGearBtn').setAttribute('aria-label','Back to front page');$('toolsGearBtn').title='Back to front page'}if(which==='tools')$('toolsPage').dataset.currentSection=(String(currentSection||'Baking').trim());if(typeof renderQuickTools==='function')renderQuickTools();window.scrollTo({top:0,behavior:'smooth'})}
+function showPage(which){document.body.classList.toggle('mrb-section-chooser',which==='sectionChooser');if(which==='tools'&&quickToolMode){which='recipes';quickToolMode=false;}const pages=['sectionChooser','recipes','tools','calendar','inventory','categories','starter','timer','baking','calorie','sugarNutrition','hydration','dough','measurement','cookingTemps','substitutes','pantry','shopping','bakersPct','preferment','doughTemp','abv','abvBoost','sweetness','customBrew'];pages.forEach(p=>$(p==='sectionChooser'?'sectionChooserPage':p==='recipes'?'recipesPage':p==='tools'?'toolsPage':p==='calendar'?'calendarPage':p==='inventory'?'inventoryPage':p==='categories'?'categoriesPage':p==='starter'?'starterPage':p==='timer'?'timerPage':p==='calorie'?'caloriePage':p==='sugarNutrition'?'sugarNutritionPage':p==='hydration'?'hydrationPage':p==='dough'?'doughPage':p==='measurement'?'measurementPage':p==='cookingTemps'?'cookingTempsPage':p==='substitutes'?'substitutesPage':p==='pantry'?'pantryPage':p==='shopping'?'shoppingPage':p==='bakersPct'?'bakersPctPage':p==='preferment'?'prefermentPage':p==='doughTemp'?'doughTempPage':p==='abv'?'abvPage':p==='abvBoost'?'abvBoostPage':p==='sweetness'?'sweetnessPage':p==='customBrew'?'customBrewPage':'bakingPage').classList.toggle('hidden',p!==which));if(which==='recipes'||which==='sectionChooser'){$('toolsGearBtn').textContent='⚙';$('toolsGearBtn').removeAttribute('aria-current');$('toolsGearBtn').setAttribute('aria-label','Open Tools and Settings');$('toolsGearBtn').title='Tools & Settings'}else{$('toolsGearBtn').textContent='←';$('toolsGearBtn').setAttribute('aria-current','page');$('toolsGearBtn').setAttribute('aria-label','Back to front page');$('toolsGearBtn').title='Back to front page'}if(which==='tools')$('toolsPage').dataset.currentSection=(String(currentSection||'Baking').trim());if(typeof renderQuickTools==='function')renderQuickTools();window.scrollTo({top:0,behavior:'smooth'});if(!window.__mrbHandlingDeviceBack){try{history.pushState({mrbPage:which},'',location.pathname+location.search)}catch(e){}}}
 function chooseMRBSection(section){currentSection=section;active='All recipes';cats=[...new Set(['All recipes','Favorites',...getSectionCustomCategories(section)])];render();if(typeof renderQuickTools==='function')renderQuickTools();showPage('recipes');}
 function showMRBSectionChooser(){showPage('sectionChooser');}
 window.setMRBSection=chooseMRBSection;window.showMRBSectionChooser=showMRBSectionChooser;
 
 // Expose the page switcher to the separately loaded Wine & Mead calculator controls.
 window.showPage=showPage;
+// Android/device Back button: return to the previous app screen instead of leaving the app.
+(function(){
+ if(window.__mrbDeviceBackHandlerInstalled)return;
+ window.__mrbDeviceBackHandlerInstalled=true;
+ try{history.replaceState({mrbPage:'sectionChooser'},'',location.pathname+location.search);history.pushState({mrbPage:'sectionChooser'},'',location.pathname+location.search);}catch(e){}
+ window.addEventListener('popstate',function(event){
+  // Close an open dialog or expanded tool menu before navigating away from the screen.
+  const dialog=document.querySelector('dialog[open]');
+  if(dialog){try{dialog.close();}catch(e){}return;}
+  const expanded=document.querySelector('details[open]');
+  if(expanded){expanded.open=false;return;}
+  const page=event.state&&event.state.mrbPage;
+  if(page){
+   window.__mrbHandlingDeviceBack=true;
+   try{showPage(page);}finally{window.__mrbHandlingDeviceBack=false;}
+  }else{
+   window.__mrbHandlingDeviceBack=true;
+   try{showPage(currentSection?'recipes':'sectionChooser');}finally{window.__mrbHandlingDeviceBack=false;}
+  }
+ });
+})();
 // Recipe Calendar: independent local schedule storage; it does not alter recipe records.
 const RECIPE_CALENDAR_KEY='myRecipeBook_recipe_calendar_v1';
 let calendarPlans=[],calendarMonth=new Date(new Date().getFullYear(),new Date().getMonth(),1),calendarSelected=calendarDateKey(new Date());

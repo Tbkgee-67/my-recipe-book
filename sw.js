@@ -1,5 +1,5 @@
 // My Recipe Book - production service worker
-// Release marker: light mode removed; dark mode only (2026-11-26)
+// // Release marker: enforce dark-only mode and remove theme switch (2026-11-26)
 // Network-first keeps the installed app current when online, with a cache fallback offline.
 
 const CACHE_PREFIX = "my-recipe-book-cache:";

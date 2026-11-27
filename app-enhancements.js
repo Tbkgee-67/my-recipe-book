@@ -17,7 +17,7 @@
    window.__mrbDarkOnlyObserver.observe(document.documentElement,{childList:true,subtree:true});
   }
   try{localStorage.removeItem('myRecipeBook_displayTheme_v1');}catch(e){}
-  const meta=document.querySelector('meta[name="theme-color"]);
+  const meta=document.querySelector('meta[name="theme-color"]');
   if(meta)meta.content='#1b1613';
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyDarkMode,{once:true});else applyDarkMode();
